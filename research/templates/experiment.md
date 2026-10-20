@@ -1,0 +1,22 @@
+# Research proposal: R-XXXX
+
+- Status: proposed / exploratory / frozen / evaluated / rejected / promoted
+- Family ID / Parent ID:
+- Owner / creation time / decision record:
+- Economic question and mechanism:
+- Falsifiable prediction / expected failure regimes:
+- Instruments, venue, product type, universe as-of rule:
+- Data manifest / available_at policy / known selection bias:
+- Candidate set and total search budget (including manual variants):
+- Baselines and risk-matching method:
+- Signal timing / rebalance / execution timing:
+- Costs, funding, liquidity and adverse scenarios:
+- Development / walk-forward / final holdout dates:
+- Primary metric / secondary diagnostics / uncertainty method:
+- Purging/embargo rule and reason if applicable:
+- Predefined promotion, rejection, operational stop conditions:
+- Code SHA / dirty patch hash / environment lock / seed / config hash:
+- Runs, including failed and abandoned trials:
+- Results / limitations / alternative explanations:
+- Holdout access log:
+- PM decision and next action:
