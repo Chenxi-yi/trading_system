@@ -113,6 +113,13 @@ def main():
    lines.append(f"| {names[key]} | {values[0][0]} {percent(values[0][1]['net_return'])} | {values[1][0]} {percent(values[1][1]['net_return'])} |")
   lines += ['', '回归结果对延迟变化很大，说明执行/调度依赖，不能挑更赚钱的延迟反过来宣称有效。较长延迟允许新信号覆盖等待意图，因此包含此调度假设，并非纯物理延迟测量。',
             '网格这里只延迟初始化/重锚，原有格子仍按原撮合模型，未模拟挂撤单网络延迟；原全门槛通过数仍是0。','']
+ recovery_path=ROOT/'artifacts/recovery/manifest.json'
+ if recovery_path.exists():
+  recovery=json.loads(recovery_path.read_text())
+  lines += ['## 保存与恢复检查','',
+            f"公开研究恢复包绑定Git {recovery['git_head'][:7]}，大小{recovery['archive_bytes']/1000000:.2f}MB；全部成员哈希核验，临时目录恢复61项检查通过，真实BTC回放逐日NAV与原缓存一致。",
+            '包与清单位于本机artifacts/recovery，权限0600，不含密钥/账户/私有账本。这是本机副本，异地数据备份仍未配置。',
+            '本夜自动续跑已在收尾暂停。Git代码/报告已本地提交；本次远端push20秒超时，同步未确认，不能写成已完成远端备份。','']
  # Plot normalized NAV; title marks historical nature.
  fig,ax=plt.subplots(figsize=(11,5))
  for key,x in s['families'].items():
