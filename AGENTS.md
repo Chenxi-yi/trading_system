@@ -16,7 +16,7 @@ docs/RESEARCH_PROTOCOL.md、docs/decisions/ 中相关决策及最近一份 docs/
 - TASKS.md 是唯一任务状态入口：所有已知工作、依赖、阻塞和验收证据集中登记；新增工作及时登记。
 - 用户已接受 W1–W3，已指示启动 W2 并研究 BTC 近期震荡候选；工作包认可不等于资金风险数值或实盘授权。
 - Phase 0：架构与研究治理；策略、数据、风控和交易能力是否实现必须据实报告。
-- 首批策略聚焦 BTC（PM 最新决定）：趋势、均值回归、有限现货网格；carry 先补数据/双腿风险。
+- 首批策略聚焦 BTC（PM 最新决定）：趋势、均值回归、有限现货网格、永续突破与恒定比例再平衡；PM已取消carry收益研究。
   系统总体范围仍含 BTC/ETH/SOL 与股票相关产品；保留已有数据。Daily/4H 按研究族区分，不默认多个 BTC 策略构成分散。
   首批研究计划见 research/plans/BTC_FIRST_COHORT.md；先简单可解释 baseline，再 crypto 数据，再 ML。
 - 用户已指定 OKX 运行，范围现货/合约/美股相关产品；模拟 API 已只读接入。
@@ -53,6 +53,6 @@ python3.11 tools/okx_demo_audit.py
 python3.11 -m tools.okx_capabilities
 python3.11 tools/okx_market_audit.py --page-budget 120
 
-离线测试覆盖教学算例及审计器只读/脱敏/模拟环境控制；实际脚本检查 Demo REST 能力与无签名公开市场历史，均为 GET；共 23 项离线测试。
-数据契约见 docs/DATA_CONTRACT.md；覆盖与研究入口见 docs/workpackages/W2.md。R-0003 仅为草案，未冻结或回测。
+离线测试覆盖教学算例及审计器只读/脱敏/模拟环境控制；实际脚本检查 Demo REST 能力与无签名公开市场历史，均为 GET；共 35 项离线测试。
+数据契约见 docs/DATA_CONTRACT.md；覆盖与研究入口见 docs/workpackages/W2.md。本夜已获PM批准，冻结实验 research/experiments/BTC-NIGHT-001.json；先读本夜最新交接，保护封存历史样本。
 生产模块建立时再加入对应的数值、时间因果、账本和故障测试。

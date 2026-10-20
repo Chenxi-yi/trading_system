@@ -1,0 +1,170 @@
+{
+  "experiment_id": "BTC-NIGHT-001",
+  "status": "frozen_before_strategy_returns",
+  "created_at_shanghai": "2026-10-21T00:26:48.711088+08:00",
+  "scope": "historical research only; no account orders",
+  "candidate_budget": 20,
+  "families": {
+    "trend": {
+      "primary": 90,
+      "variants": [
+        90,
+        60,
+        120,
+        180
+      ],
+      "unit": "completed UTC days",
+      "rule": "positive trailing close return -> enter 95% long once; negative -> exit; no same-state rebalancing"
+    },
+    "reversion": {
+      "primary": 120,
+      "variants": [
+        120,
+        60,
+        90,
+        180
+      ],
+      "unit": "completed 4H bars",
+      "entry_z": -1.5,
+      "exit_z": 0,
+      "max_hold_bars": 12,
+      "stop_atr_multiple": 2,
+      "atr_window": 14,
+      "entry_weight": 0.5,
+      "rule": "log-close z against previous window excluding current; 1 entry, no averaging down; stop at entry minus prior ATR multiple"
+    },
+    "grid": {
+      "primary": 6,
+      "variants": [
+        6,
+        4,
+        8,
+        10
+      ],
+      "unit": "geometric cells",
+      "anchor_days": 20,
+      "lower_multiple": 0.8,
+      "upper_multiple": 1.2,
+      "reset_days": 30,
+      "rule": "equal cash per independent cell, initial upper cells bought at episode initialization; one pre-existing order fill per cell per hour; strict 2bps penetration; fixed episode bounds; close outside bounds or scheduled reset -> flatten then reanchor"
+    },
+    "breakout": {
+      "primary": 30,
+      "variants": [
+        30,
+        20,
+        40,
+        60
+      ],
+      "unit": "completed 4H bars",
+      "compression_range_fraction": 0.12,
+      "exit_channel": 10,
+      "max_notional_weight": 0.75,
+      "rule": "prior-window high-low/mean close <=12%; completed close breaks prior high/low -> long/short; exit 10bar opposite channel or 30bar timeout; 3ATR stop; underlying price proxy not certified perpetual PnL"
+    },
+    "constant_mix": {
+      "primary": 0.5,
+      "variants": [
+        0.5,
+        0.25,
+        0.4,
+        0.6
+      ],
+      "unit": "BTC target weight",
+      "band": 0.05,
+      "rule": "once daily rebalance only if allocation differs by >5 percentage points; no borrowing"
+    }
+  },
+  "clock": {
+    "base": "1H",
+    "signal": "completed 1Dutc or 4H only",
+    "execution": "first hourly open >= decision bar end + 1 hour",
+    "historical_available_at": "unknown; 1h execution lag is explicit assumption",
+    "intrabar_stop": "gap through stop executes at worse opening price, otherwise stop price; market cost added; stop active immediately after market entry"
+  },
+  "research_account": {
+    "reference_nav": 10000,
+    "spot_max_weight": 0.95,
+    "fee_scenarios_bps_per_side": [
+      10,
+      20
+    ],
+    "slippage_bps_per_side": [
+      5,
+      10
+    ],
+    "idle_usdt_yield": 0,
+    "tick": 0.1,
+    "lot": 1e-08,
+    "minimum_quantity": 2e-05,
+    "rules_note": "current product rule snapshot imposed as research scenario, not certified historical venue rules; reference NAV is research unit, no funds deployed"
+  },
+  "splits_utc": {
+    "warmup": [
+      "2020-01-01",
+      "2021-01-01"
+    ],
+    "development": [
+      "2021-01-01",
+      "2024-01-01"
+    ],
+    "walk_forward_test_years": [
+      2024,
+      2025
+    ],
+    "walk_forward_selection": "for each test year, select family variant by previous 2 completed calendar years of daily Sharpe at base cost; primary wins exact tie; flat reinitialization at test start charged costs; warmup only for features",
+    "sealed_historical_validation": [
+      "2026-01-01",
+      "2026-07-01"
+    ],
+    "sealed_selection": "freeze chosen family variant from 2024-2025 training score before reading sealed strategy results",
+    "known_exploration": [
+      "2026-07-01",
+      "2026-10-21"
+    ],
+    "selection_caveat": "BTC and families chosen after knowing recent market; sealed historical data is not equivalent to future prospective validation"
+  },
+  "metrics": [
+    "net_return",
+    "CAGR",
+    "daily_sharpe_365",
+    "max_drawdown",
+    "turnover",
+    "cost",
+    "trade_count",
+    "exposure",
+    "tail_daily_loss",
+    "baseline_difference"
+  ],
+  "uncertainty": {
+    "bootstrap": "daily-return circular block bootstrap, seed20261021, 2000 replicates; block lengths7,14,30 days; one-sided95% mean lower bound",
+    "PBO": "development only, synchronous daily net-return matrix per family, S=8 contiguous blocks; explicit tail trim policy recorded; Sharpe undefined candidates reported",
+    "DSR": "only if effective-trial/non-normality assumptions can be justified; otherwise not estimated"
+  },
+  "research_gate": {
+    "wf_net_return_positive": true,
+    "wf_each_year_positive": true,
+    "sealed_net_return_positive": true,
+    "adverse_cost_wf_net_positive": true,
+    "max_drawdown_limit_research": 0.35,
+    "minimum_fills_wf": 20,
+    "bootstrap_lower_mean_positive_all_blocks": true,
+    "all_family_variants_positive_wf_fraction_at_least": 0.75,
+    "PBO_strict_max": 0.2,
+    "note": "thresholds are declared research screening assumptions, not PM live limits or profit guarantees; failure labels rejected vs insufficient as appropriate"
+  },
+  "demo_gate": {
+    "default": false,
+    "requires": [
+      "strategy research gate",
+      "complete exchange-specific risk rules",
+      "protected asset inventory",
+      "budget reservations",
+      "order state and restart reconciliation",
+      "alerts and kill switch",
+      "demo execution failure drills"
+    ]
+  },
+  "stop_policy": "No search expansion after seeing sealed results. Bug fixes logged with previous runs preserved and sealed access contamination disclosed. Do not count neighboring parameters as distinct strategies.",
+  "freeze_note": "Recorded before any real strategy PnL computation; synthetic unit tests only."
+}

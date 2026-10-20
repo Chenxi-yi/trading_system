@@ -6,7 +6,7 @@ import json
 import time
 from urllib import request, error, parse
 
-INTERVALS = {"1Dutc": 86_400_000, "4H": 14_400_000}
+INTERVALS = {"1Dutc": 86_400_000, "4H": 14_400_000, "1H": 3_600_000, "15m": 900_000}
 PATHS = {
     "trade": "/api/v5/market/history-candles",
     "mark": "/api/v5/market/history-mark-price-candles",

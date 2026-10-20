@@ -1,0 +1,1 @@
+"""Cash and inventory accounting."""
