@@ -17,6 +17,7 @@
 - R-0001 数据源报告与交互地图；公开 GET 样例验证，原始响应保存在忽略目录。
 - OKX 核心样例、Coinbase 日线、Coin Metrics 参考价格可取；Binance REST 451、Bybit OI 403。
 - 已核验 Agent Trade Kit：工具层而非 alpha 库；官方配置文档指出网格 Bot 不支持 demo。
+- 已按 OKX Global 四类产品完成框架审查与 v0.2 步骤建议，见 docs/SCENARIO_REVIEW_AND_PLAN.md；尚未批准所有建议或实现生产能力。
 
 ## 待实施
 
@@ -27,8 +28,9 @@
 ## 下一次第一项工作
 
 用户已确认 OKX Global；美股范围为股票永续与 x-stock 现货。
-先和 PM 讨论 research/notes/R-0001-data-source-survey.md，再选第一批数据、冻结 data adapter 契约。用户要求先看数据地图再讨论填入数据模块，
-不要在未讨论前直接搭完整数据管线或安装 Kit。
+先依据 docs/SCENARIO_REVIEW_AND_PLAN.md 讨论近期 W1–W3：投资/风险预算草案与模拟账户只读审计、
+数据契约与覆盖审计、最小账本/回放与 Daily baseline 预注册。
+用户当前要求审查与列步骤，尚未授权本轮实施完整管线、安装 Kit 或交易。
 完整历史覆盖、WS 连续性、模拟账户权限均未验证；小样本成功不能替代这些验收。
 
 ## PM 待决策（不阻塞当前架构）

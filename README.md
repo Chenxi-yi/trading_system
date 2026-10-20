@@ -19,6 +19,7 @@
 9. [决策记录](docs/decisions/0001-foundation.md)
 10. [交接协议](docs/CONTINUITY.md)
 11. [R-0001：OKX 数据源地图与实测](research/notes/R-0001-data-source-survey.md)
+12. [OKX Global 框架审查与逐步验收路线（建议稿）](docs/SCENARIO_REVIEW_AND_PLAN.md)
 
 运行场所已确定为 OKX Global；美股范围为股票永续与 x-stock 现货。
 公开行情仅完成小样本探测；模拟账户、完整历史与数据管线仍未接入。
