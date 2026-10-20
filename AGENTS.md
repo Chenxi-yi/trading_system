@@ -12,7 +12,7 @@ docs/RESEARCH_PROTOCOL.md、docs/decisions/ 中相关决策及最近一份 docs/
 - 用户是 PM；用问题、证据、决策沟通。中文解释，代码标识符英文。
 - Prediction、alpha、strategy、portfolio、PnL 不混用。盈利不保证。
 - TASKS.md 是唯一任务状态入口：所有已知工作、依赖、阻塞和验收证据集中登记；新增工作及时登记。
-- 用户已接受 W1–W3，当前从 W1 开始；工作包认可不等于资金风险数值或实盘授权。
+- 用户已接受 W1–W3，已指示启动 W2 并研究 BTC 近期震荡候选；工作包认可不等于资金风险数值或实盘授权。
 - Phase 0：架构与研究治理；策略、数据、风控和交易能力是否实现必须据实报告。
 - BTC/ETH/SOL，Daily 优先，4H 随后；先简单可解释 baseline，再 crypto 数据，再 ML。
 - 用户已指定 OKX 运行，范围现货/合约/美股相关产品；模拟 API 已只读接入。
@@ -47,6 +47,8 @@ python3.11 -m unittest discover -s tests -v
 python3.11 examples/cscv_selection_demo.py
 python3.11 tools/okx_demo_audit.py
 python3.11 -m tools.okx_capabilities
+python3.11 tools/okx_market_audit.py --page-budget 120
 
-离线测试覆盖教学算例及审计器只读/脱敏/模拟环境控制；实际脚本检查 Demo REST 连接和账户/产品/费用能力，均为 GET；共 16 项离线测试。
+离线测试覆盖教学算例及审计器只读/脱敏/模拟环境控制；实际脚本检查 Demo REST 能力与无签名公开市场历史，均为 GET；共 23 项离线测试。
+数据契约见 docs/DATA_CONTRACT.md；覆盖与研究入口见 docs/workpackages/W2.md。R-0003 仅为草案，未冻结或回测。
 生产模块建立时再加入对应的数值、时间因果、账本和故障测试。

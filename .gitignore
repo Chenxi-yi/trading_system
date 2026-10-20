@@ -10,7 +10,7 @@ secrets/
 /config.toml.*
 !/config.toml.example
 config/local/
-data/
+/data/
 artifacts/
 runtime/
 *.log

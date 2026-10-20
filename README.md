@@ -2,13 +2,13 @@
 
 面向 BTC / ETH / SOL、Daily / 4H 的长期系统化投资研究项目。
 
-**当前阶段：Phase 0 架构与研究治理。没有已验证 alpha，没有交易接口，没有实盘授权。**
+**当前阶段：Phase 1 数据契约与历史采集原型。没有已验证 alpha、自动下单接口或实盘授权。**
 
 目标：找到有经济解释、样本外证据、扣除可实现成本后仍有价值的策略；允许结论是没有 alpha。
 
 ## 从这里恢复
 
-**固定任务入口：[TASKS.md](TASKS.md)**。当前工作包：[W1 账户能力与投资边界](docs/workpackages/W1.md)。
+**固定任务入口：[TASKS.md](TASKS.md)**。当前工作包：[W2 研究数据](docs/workpackages/W2.md)。
 每次进入读取任务台账与 PROJECT_STATE，完成时更新任务状态、验收证据和交接。
 
 1. [项目指令](AGENTS.md)
@@ -25,7 +25,8 @@
 12. [OKX Global 框架审查与逐步验收路线（建议稿）](docs/SCENARIO_REVIEW_AND_PLAN.md)
 
 运行场所已确定为 OKX Global；美股范围为股票永续与 x-stock 现货。
-公开行情完成小样本探测；模拟账户已只读接入，完整历史与数据管线尚未建立。
+模拟账户已只读接入；[数据契约](docs/DATA_CONTRACT.md)与[首轮覆盖审计](research/notes/W2-first-coverage.md)已完成，
+持续采集与历史规则仍待补齐。[BTC 区间观察](research/notes/R-0003-btc-range-observation.md)与候选研究已登记，尚未回测。
 
 ## 现在可运行的内容
 
@@ -37,12 +38,13 @@ python3.11 examples/cscv_selection_demo.py
 python3.11 -m unittest discover -s tests -v
 python3.11 tools/okx_demo_audit.py
 python3.11 -m tools.okx_capabilities
+python3.11 tools/okx_market_audit.py --page-budget 120
 ```
 
 审计器固定读取根目录已忽略的 config.toml 中 profiles.demo，不使用 default_profile。
 仅向 Global 官方域名发出模拟环境 GET 请求，不下单、不跟随重定向；报告在 ignored runtime/。
 最近结果：14 项 GET 检查成功，六个 crypto USDT 现货/永续产品可见且费用/单位已读；四个股票样例未返回。
-详见 docs/ACCOUNT_CAPABILITIES.md 与 docs/workpackages/W1_REVIEW.md。16 项离线测试通过；WS、交易链路和资金/库存保护尚未验收。
+详见 docs/ACCOUNT_CAPABILITIES.md 与 docs/workpackages/W1_REVIEW.md。23 项离线测试通过；WS、交易链路和资金/库存保护尚未验收。
 
 生产代码将按架构文档中的职责逐步建立，不以空目录和未实现接口冒充完成的系统。
 阶段推进以验收证据为准，不以日历日期为准。
