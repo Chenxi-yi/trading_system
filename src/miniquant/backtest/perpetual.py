@@ -8,8 +8,9 @@ from miniquant.accounting.perpetual import LinearPerpAccount
 from miniquant.backtest.replay import HOUR,DAY,true_range_atr
 
 
-def replay_perpetual(bars,marks,funding,param,start,end,fee_bps=5,slip_bps=5):
+def replay_perpetual(bars,marks,funding,param,start,end,fee_bps=5,slip_bps=5,execution_lag_bars=1):
     step=4*HOUR
+    if type(execution_lag_bars) is not int or execution_lag_bars<1:raise ValueError('Invalid execution lag')
     if start%DAY or end%DAY or end<=start:raise ValueError('Full days required')
     bymark={x['ts']:x for x in marks}
     settlements={x['event_time_ms']:float(x['realized_rate']) for x in funding}
@@ -59,7 +60,7 @@ def replay_perpetual(bars,marks,funding,param,start,end,fee_bps=5,slip_bps=5):
             if (hi-lo)/mean(x['c'] for x in prior)<=0.12:
                 if b['c']>hi:signal=1
                 elif b['c']<lo:signal=-1
-        if signal is not None:pending=dict(time=close+step,direction=signal,atr=true_range_atr(history,14))
+        if signal is not None:pending=dict(time=close+execution_lag_bars*step,direction=signal,atr=true_range_atr(history,14))
         history.append(b)
     last=active[-1]
     if end in settlements:account.settle_funding(settlements[end],bymark[last['ts']]['c'],end)

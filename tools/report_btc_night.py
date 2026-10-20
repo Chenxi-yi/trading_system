@@ -34,7 +34,7 @@ def main():
   lines.append(f"| {names[key]} | {percent(wf.get('net_return'))} | {percent(wf.get('max_drawdown'))} | {percent(sealed.get('net_return'))} | {percent(stress.get('net_return'))} | {x['research_status']} | 否 |")
  lines += ['', '以上净收益不是年化。样本外策略按各年之前的数据选择该族参数，年初重新建仓并计成本；不同族原生信号频率不同。',
            '四个现货方向的基准成本为每次成交10bps费率+5bps市场滑点，压力情景20+10；限价网格按严格穿价与taker费用建模，未假设实际队列必成交。',
-           '永续若有结果，成本为5+5bps，压力10+10，另计历史实际funding；4H执行延迟与合成保证金压力不是完整OKX历史强平模型。','',
+           '永续成本为5+5bps，压力10+10，另计历史实际funding费率/时点；结算名义金额以4H mark边界价格估计，不是真实账单复现。4H执行延迟与合成保证金压力不是完整OKX历史强平模型。','',
            '## 规则、参数与否决理由','']
  for key in ('trend','reversion','grid','breakout','constant_mix'):
   x=s['families'][key]
@@ -44,7 +44,17 @@ def main():
   if 'bootstrap' in x:lines.append(f"- 三种块长的均值下界均为正：{x['bootstrap'].get('all_lower_bounds_positive',False)}。")
   if 'PBO' in x:lines.append(f"- 开发区间PBO相对排名诊断：{x['PBO'].get('pbo_strict')}，状态{x['PBO']['status']}；不是未来亏损概率。")
   lines.append('')
- lines += ['## 该结果说明什么','',
+ lines += ['## 分年结果与尾部风险','',
+           '| 方向 | 2024净收益 | 2025净收益 | WF日收益Sharpe（365） | WF最差日 | 压力成本最大回撤 |',
+           '|---|---:|---:|---:|---:|---:|']
+ for key in ('trend','reversion','grid','breakout','constant_mix'):
+  x=s['families'][key];years=x.get('walk_forward_years',{});wf=x['walk_forward'];stress=x['adverse_cost']
+  sharpe=wf.get('daily_sharpe_365')
+  lines.append(f"| {names[key]} | {percent(years.get('2024',{}).get('net_return'))} | {percent(years.get('2025',{}).get('net_return'))} | {sharpe:.3f} | {percent(wf.get('worst_day'))} | {percent(stress.get('max_drawdown'))} |")
+ lines += ['', '上述Sharpe是描述性年化，未校正收益自相关，不是有效性的证明。突破压力成本回撤超过35%，进一步显示其风险脆弱性。',
+           '每个WF年都盈利、PBO≤0.2等属于本轮事先选择的保守筛查政策，并非金融学定理；未通过不等于证明该策略永远无效。',
+           '“封存历史”是本轮选择前保留的数据，不是从未被人看过的未来。BTC与近期行情已影响选题，因此尚无真正前瞻验证。','',
+           '## 该结果说明什么','',
            '四个现货方向在2024–2025合并净收益为正，封存的2026上半年均亏损。正收益本身不能满足预先设定的稳健性要求；均值回归对成本提高尤其敏感。',
            '固定比例再平衡主要改变BTC风险暴露，不能把其全部收益称为alpha；网格也有方向库存和未实现亏损。',
            f"基准：同一2024–2025窗口95% BTC买入持有净收益{percent(s['baselines']['hold']['net_return'])}，最大回撤{percent(s['baselines']['hold']['max_drawdown'])}；现金收益0。基准连续持有，策略WF年界强制重建，需结合成本和风险差异解释。",'']
@@ -79,7 +89,30 @@ def main():
  cross_path=out/'aggregation-crosscheck.json'
  if cross_path.exists():
   cross=json.loads(cross_path.read_text())
-  lines += ['## 数据聚合复核','',f"小时聚合与原生日线比较{cross['1Dutc']['compared_bars']}条，超一tick差异{cross['1Dutc']['mismatches_over_one_current_tick']}条；与原生4H比较{cross['4H']['compared_bars']}条，差异{cross['4H']['mismatches_over_one_current_tick']}条，集中于2022年12月，尚待解释，未静默修正。",'15m网格结果在当前每格每小时最多一次成交模型下与小时结果一致，主要是聚合/模型一致性检查，不能当独立排队成交证据。','']
+  lines += ['## 数据聚合复核','',f"小时聚合与原生日线比较{cross['1Dutc']['compared_bars']}条，超一tick差异{cross['1Dutc']['mismatches_over_one_current_tick']}条；与原生4H比较{cross['4H']['compared_bars']}条，差异{cross['4H']['mismatches_over_one_current_tick']}条，集中于2022年12月。续跑确认其中一处开盘差与零量小时填充值相符，另一处收盘差仍未解释，未静默修正。",'15m网格结果在当前每格每小时最多一次成交模型下与小时结果一致，主要是聚合/模型一致性检查，不能当独立排队成交证据。','']
+ audit_path=out/'continuation-audit.json'
+ if audit_path.exists():
+  audit=json.loads(audit_path.read_text());checks=audit['cached_ledger_audits']
+  lines += ['## 续跑审计与工程结果','',
+            f"- 从成交/费用/funding独立重算{len(checks)}份已保存运行，最大NAV终值差{max(x['nav_error'] for x in checks):.3g}；原manifest列出的7份源码快照哈希一致。",
+            '- 主现货小时历史12个零量bar，永续4H历史1个；没有已保存成交落在这些bar起点。零量仍可能影响特征，不能把完整bar覆盖当可交易性认证。',
+            '- 新增未来价格/mark/funding扰动和输入截断测试，历史交易前缀保持一致。原永续manifest遗漏导入依赖的哈希，原始来源证据仍有限制。',
+            '- 本机paper已实现SQLite原子预算/库存预留、幂等意图与成交、部分成交、unknown保留资金、重启强制对账和持久停机；不含OKX订单接口。',
+            '- 统一离线检查61项通过，含进程未提交退出回滚。测试是工程案例证据，不能代替真实账户/长时间运维验收。',
+            '- 详细审计：research/notes/BTC-NIGHT-001-continuation-audit.md；paper边界：docs/decisions/0005-local-paper-order-journal.md。',
+            '- 趋势与固定比例日收益相关0.843，网格与固定比例0.832，突破与固定比例0.820；未事后优化组合权重。','']
+ delay_path=out/'delay-audit/summary.json'
+ if delay_path.exists():
+  delay=json.loads(delay_path.read_text())
+  lines += ['## 固定选择的执行延迟压力','',
+            '该诊断在原封存结果已知后另行登记，只复用原WF参数，不重选赢家，不提供新的干净样本外证据。10个默认年度回放与原缓存完全一致。','',
+            '| 方向 | 延迟场景一：2024–2025净收益 | 延迟场景二：2024–2025净收益 |',
+            '|---|---:|---:|']
+  for key in ('trend','reversion','grid','breakout','constant_mix'):
+   values=list(delay['results'][key].items())
+   lines.append(f"| {names[key]} | {values[0][0]} {percent(values[0][1]['net_return'])} | {values[1][0]} {percent(values[1][1]['net_return'])} |")
+  lines += ['', '回归结果对延迟变化很大，说明执行/调度依赖，不能挑更赚钱的延迟反过来宣称有效。较长延迟允许新信号覆盖等待意图，因此包含此调度假设，并非纯物理延迟测量。',
+            '网格这里只延迟初始化/重锚，原有格子仍按原撮合模型，未模拟挂撤单网络延迟；原全门槛通过数仍是0。','']
  # Plot normalized NAV; title marks historical nature.
  fig,ax=plt.subplots(figsize=(11,5))
  for key,x in s['families'].items():
@@ -90,19 +123,20 @@ def main():
  ax.set(title='Historical walk-forward 2024-2025 | net model NAV',ylabel='Normalized NAV',xlabel='UTC');ax.grid(alpha=0.25);ax.legend();fig.tight_layout();fig.savefig(out/'walk-forward.png',dpi=160);plt.close(fig)
  lines += ['## 图表与可复现入口','',f'![历史时序验证曲线]({out / "walk-forward.png"})','',
            '- 原始现货研究：artifacts/BTC-NIGHT-001/summary.json；每个运行的daily/fills均保存。',
-           '- 永续研究：artifacts/BTC-NIGHT-001-PERP/summary.json（完成后生成）。',
+           '- 永续研究：artifacts/BTC-NIGHT-001-PERP/summary.json。',
            '- 费用、代码、输入哈希：各manifest与source_snapshot；第一次封存访问日志已保存。',
            '- 主协议：research/experiments/BTC-NIGHT-001.json；永续分支协议：BTC-NIGHT-001-PERP.json。',
            '- 代码或数据变化时runner拒绝复用旧缓存；不得看完封存结果后继续调参并称干净样本外。','',
            '## 数据与工程限制','',
-           '- BTC小时与4H历史已实际取得；15m扩展是否完成以采集checkpoint为准，不把未完成作业写成完整数据。',
+           '- 六项主采集共223849条，含BTC现货小时/4H/15m、永续4H和近期mark/index；所请求窗口缺口0不表示历史交易未中断。',
            '- 官方月度funding归档已找到，弥补REST最近约三个月限制。具体文件哈希、覆盖和REST交叉核对在data/funding-archive/BTC-USDT-SWAP/manifest.json。',
            '- 2022年12月两处非标准funding时间戳已隔离，不取整或填零；永续研究因此从2023年开始，并在计算其收益前记录数据边界调整。',
            '- 当前产品元数据与历史listTime冲突尚未完全解释，历史发布时刻未知，费用和交易规则是明示情景。',
-           '- 网格队列/细频成交、历史强平tier、旧库存保护、统一资金预留、交易所订单状态/重启对账/告警尚未完整验收。',
+           '- 网格真实队列、历史强平tier、实际旧库存保护、交易所资金预留/订单回报/恢复对账与告警尚未验收；本机paper实现只覆盖合成现货。',
+           '- 历史产品规则认证、常驻shadow前瞻、完整kill switch降仓演练未完成；没有用这些未完成工作为策略发放通过结论。',
            '- 原始数据与运行结果在忽略目录，本机Git提交只保存代码/文档，不代替数据备份。','',
            '## 决定与下一步','',
-           '本轮不把未达标策略推进到交易所Demo。继续完成数据/实现复核及工程门槛，保留失败结论；新假设需要新的登记与未知样本。',
+           '本轮研究全门槛通过0，交易所Demo准入0，目标五个未达成。保留所有失败证据，不把未达标策略直接接上Demo。下一步先接通不下单的shadow与实际账户只读保护对账，补执行/行情质量验收；新研究另登记，并用冻结之后的未知数据观察。',
            '首轮通宵工作的目标数量未获得保证，最终只按真实证据报告；不能用五个近邻参数或放宽门槛补齐数量。']
  report.write_text('\n'.join(lines)+'\n')
  atomic_json(ROOT/'runtime/overnight/report-status.json',dict(report=str(report.relative_to(ROOT)),perpetual_completed=pp.exists(),demo_ready=0,updated_at=datetime.now(timezone.utc).isoformat()))

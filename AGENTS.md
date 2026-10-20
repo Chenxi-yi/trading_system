@@ -53,10 +53,11 @@ python3.11 tools/okx_demo_audit.py
 python3.11 -m tools.okx_capabilities
 python3.11 tools/okx_market_audit.py --page-budget 120
 
-离线测试覆盖教学算例及审计器只读/脱敏/模拟环境控制；实际脚本检查 Demo REST 能力与无签名公开市场历史，均为 GET；共 47 项离线测试。
+离线测试覆盖教学算例及审计器只读/脱敏/模拟环境控制；实际脚本检查 Demo REST 能力与无签名公开市场历史，均为 GET；共 61 项离线测试。
 数据契约见 docs/DATA_CONTRACT.md；覆盖与研究入口见 docs/workpackages/W2.md。本夜已获PM批准，冻结实验 research/experiments/BTC-NIGHT-001.json；先读本夜最新交接，保护封存历史样本。
 生产模块建立时再加入对应的数值、时间因果、账本和故障测试。
 
-当前通宵已批准且已运行20配置，最新恢复读docs/sessions/2026-10-21-overnight-phase2.md。
-历史研究未过全门槛，禁止为凑5个修改已访问封存样本或超预算搜索；先完成细频/实现复核和工程验收。
-heartbeat btc 在03:20续跑；worker持OS锁，恢复时先检查进程与日志，避免重复采集/写入。
+当前通宵20配置与续跑审计已完成，最新恢复读docs/sessions/2026-10-21-overnight-phase4.md。
+历史研究全门槛0通过、Demo准入0；禁止凑5个修改已访问样本或超预算搜索。
+固定原WF参数的延迟诊断与paper工程不改变原结论；原runner指纹拒绝是保护，不删除manifest绕过。
+worker已完成；恢复时仍先检查进程与锁，避免重复采集/写入；本夜heartbeat关闭状态见最新交接。

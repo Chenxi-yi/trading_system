@@ -1,0 +1,23 @@
+{
+  "audit_id": "BTC-NIGHT-001-DELAY-AUDIT",
+  "registered_at_utc": "2026-10-20T19:30:06.385688+00:00",
+  "scope": "Post-result implementation/latency stress; not a new clean validation or strategy search",
+  "known_results": "All original sealed outcomes already seen; zero qualified strategies",
+  "parameters": "Use ONLY original 2024/2025 walk-forward choices; no reselection, no new alpha variants",
+  "window": [
+    "2024-01-01",
+    "2026-01-01"
+  ],
+  "spot_execution_lag_hours": [
+    4,
+    8
+  ],
+  "perpetual_execution_lag_4h_bars": [
+    2,
+    3
+  ],
+  "reference": "Original spot lag 1h; perpetual lag 1x4h",
+  "costs": "Original base costs and actual funding, unchanged",
+  "gate_policy": "Original failed qualification remains failed; report adverse results, do not promote or choose best delay",
+  "engineering": "Preserve original code snapshot and manifests, compare default replay to selected original cached paths before stress"
+}

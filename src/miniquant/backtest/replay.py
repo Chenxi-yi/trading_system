@@ -40,7 +40,8 @@ class ReplayResult:
     assumptions: dict
 
 
-def replay(bars,family,param,start,end,fee_bps=10,slip_bps=5,initial=10000,liquidate=True,base_interval=HOUR):
+def replay(bars,family,param,start,end,fee_bps=10,slip_bps=5,initial=10000,liquidate=True,base_interval=HOUR,execution_lag_hours=1):
+    if type(execution_lag_hours) is not int or execution_lag_hours<1:raise ValueError('Invalid execution lag')
     if family not in ('trend','reversion','constant_mix','grid','hold','cash'):raise ValueError('Unsupported spot family')
     if base_interval not in (HOUR,900000):raise ValueError('Unsupported replay base interval')
     if not bars or any(b['ts']-a['ts']!=base_interval for a,b in zip(bars,bars[1:])):raise ValueError('Hourly input gaps or duplicates')
@@ -133,7 +134,7 @@ def replay(bars,family,param,start,end,fee_bps=10,slip_bps=5,initial=10000,liqui
             reset=not cells or close_time>=grid_reset or b['c']<grid_bounds[0] or b['c']>grid_bounds[1]
             if reset:signal=dict(kind='reset_grid',anchor=mean(x['c'] for x in d[-20:]))
         if signal is not None:
-            signal['decision_at']=close_time;signal['execute_at']=close_time+HOUR
+            signal['decision_at']=close_time;signal['execute_at']=close_time+execution_lag_hours*HOUR
             pending=signal
     if last_bar is None:raise ValueError('Empty evaluation')
     if liquidate and account.quantity>=account.minimum:
@@ -142,6 +143,6 @@ def replay(bars,family,param,start,end,fee_bps=10,slip_bps=5,initial=10000,liqui
     if result_daily:result_daily[-1]['nav']=final
     if len(result_daily)!=(end-start)//DAY:raise ValueError('Daily valuation coverage mismatch')
     return ReplayResult(result_daily,account.fills,account.fees,account.turnover,final,exposure*base_interval/HOUR,hours*base_interval/HOUR,
-                        dict(base_interval_ms=base_interval,fee_bps=fee_bps,slip_bps=slip_bps,execution_lag_hours=1,grid_limit_penetration_bps=2,
+                        dict(base_interval_ms=base_interval,fee_bps=fee_bps,slip_bps=slip_bps,execution_lag_hours=execution_lag_hours,grid_limit_penetration_bps=2,
                              grid_limit_fill_model='at most one fill per cell/hour; fills assumed on strict penetration; sensitivity required',
                              risk='finite cash/inventory; venue order lifecycle not implemented',historical_product_rules='current snapshot assumption'))
