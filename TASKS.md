@@ -32,7 +32,7 @@ PROJECT_STATE.md 只概述现状，任务状态以本台账为准。
 | ID | 任务 | 状态 | 负责人 | 依赖 | 完成条件与证据 |
 |---|---|---|---|---|---|
 | W1-01 | 建立投资授权草案 | done | Agent | F-005 | docs/INVESTMENT_MANDATE.md；区分已确认/待定，不编造风险预算 |
-| W1-02 | 决定模拟规模与预算口径 | waiting_input | PM | W1-01 | PM 确认；敏感金额留在本机私有记录，不自动提交 Git |
+| W1-02 | 决定模拟规模与预算口径 | waiting_input | PM | W1-01 | 规模/会员开支/损失比例已记 config/local/investment-mandate.json；仅损失范围和基准口径等待确认，敏感数值不提交 Git |
 | W1-03 | 编写模拟凭证本机配置步骤 | done | Agent | F-005 | docs/OKX_DEMO_SETUP.md；只读、Global、demo 明确，不要求聊天发送密钥 |
 | W1-04 | 用户在本机配置 demo 只读凭证 | waiting_input | PM | W1-03 | 用户确认已配置；不读取或打印明文，不修改账户模式 |
 | W1-05 | 实现受限只读账户审计器 | backlog | Agent | W1-03 | GET allowlist、签名本机完成、强制 demo、秘密脱敏；离线签名/拒绝写入/日志泄漏检查 |
