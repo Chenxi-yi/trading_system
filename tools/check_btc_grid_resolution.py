@@ -2,6 +2,7 @@
 
 No re-selection, no sealed re-optimization, no new parameter candidates.
 """
+import fcntl
 from pathlib import Path
 import hashlib,json,sys
 ROOT=Path(__file__).resolve().parents[1]
@@ -29,4 +30,9 @@ def main():
  print('Fine grid sensitivity completed')
 
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    lock_path=ROOT/'artifacts/BTC-NIGHT-001'/'grid-resolution.lock'
+    lock_path.parent.mkdir(parents=True,exist_ok=True)
+    with lock_path.open('a') as handle:
+        fcntl.flock(handle,fcntl.LOCK_EX)
+        main()

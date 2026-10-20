@@ -1,6 +1,7 @@
 """Build Chinese research report and static curves from preserved run artifacts."""
 from datetime import datetime,timezone
 import hashlib,json,math,sys,subprocess
+import fcntl
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT));sys.path.insert(0,str(ROOT/'src'))
@@ -75,6 +76,10 @@ def main():
  lines += ['## 结论的适用范围','',
            '本轮仅检验登记的20个规则配置。否决它们不代表所有BTC策略、趋势或网格都无效；后续新假设须另登记，并承认本轮历史已被查看。',
            '永续突破即使某验证段盈利，也需同时通过更早时序验证、不确定性、选择偏差和工程门槛；不能因它是最好的一个就自动标有效。','']
+ cross_path=out/'aggregation-crosscheck.json'
+ if cross_path.exists():
+  cross=json.loads(cross_path.read_text())
+  lines += ['## 数据聚合复核','',f"小时聚合与原生日线比较{cross['1Dutc']['compared_bars']}条，超一tick差异{cross['1Dutc']['mismatches_over_one_current_tick']}条；与原生4H比较{cross['4H']['compared_bars']}条，差异{cross['4H']['mismatches_over_one_current_tick']}条，集中于2022年12月，尚待解释，未静默修正。",'15m网格结果在当前每格每小时最多一次成交模型下与小时结果一致，主要是聚合/模型一致性检查，不能当独立排队成交证据。','']
  # Plot normalized NAV; title marks historical nature.
  fig,ax=plt.subplots(figsize=(11,5))
  for key,x in s['families'].items():
@@ -104,4 +109,9 @@ def main():
  print('Report:',report,flush=True)
 
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    lock_path=ROOT/'artifacts/BTC-NIGHT-001'/'report.lock'
+    lock_path.parent.mkdir(parents=True,exist_ok=True)
+    with lock_path.open('a') as handle:
+        fcntl.flock(handle,fcntl.LOCK_EX)
+        main()
