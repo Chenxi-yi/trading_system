@@ -20,7 +20,7 @@
 10. [交接协议](docs/CONTINUITY.md)
 11. [R-0001：OKX 数据源地图与实测](research/notes/R-0001-data-source-survey.md)
 
-运行场所已确定为 OKX，新增美股相关产品研究范围（具体产品待确认）。
+运行场所已确定为 OKX Global；美股范围为股票永续与 x-stock 现货。
 公开行情仅完成小样本探测；模拟账户、完整历史与数据管线仍未接入。
 
 ## 现在可运行的内容
