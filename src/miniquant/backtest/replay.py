@@ -13,12 +13,12 @@ HOUR=3600000
 DAY=24*HOUR
 
 
-def aggregate(bars,period):
+def aggregate(bars,period,base_interval=HOUR):
     groups={}
     for b in bars:groups.setdefault(b['ts']//period*period,[]).append(b)
     out=[]
     for ts,rows in sorted(groups.items()):
-        if len(rows)!=period//HOUR or rows[0]['ts']!=ts or any(b['ts']-a['ts']!=HOUR for a,b in zip(rows,rows[1:])):continue
+        if len(rows)!=period//base_interval or rows[0]['ts']!=ts or any(b['ts']-a['ts']!=base_interval for a,b in zip(rows,rows[1:])):continue
         out.append(dict(ts=ts,end=ts+period,o=rows[0]['o'],h=max(x['h'] for x in rows),l=min(x['l'] for x in rows),c=rows[-1]['c']))
     return out
 
@@ -40,14 +40,15 @@ class ReplayResult:
     assumptions: dict
 
 
-def replay(bars,family,param,start,end,fee_bps=10,slip_bps=5,initial=10000,liquidate=True):
+def replay(bars,family,param,start,end,fee_bps=10,slip_bps=5,initial=10000,liquidate=True,base_interval=HOUR):
     if family not in ('trend','reversion','constant_mix','grid','hold','cash'):raise ValueError('Unsupported spot family')
-    if not bars or any(b['ts']-a['ts']!=HOUR for a,b in zip(bars,bars[1:])):raise ValueError('Hourly input gaps or duplicates')
+    if base_interval not in (HOUR,900000):raise ValueError('Unsupported replay base interval')
+    if not bars or any(b['ts']-a['ts']!=base_interval for a,b in zip(bars,bars[1:])):raise ValueError('Hourly input gaps or duplicates')
     for b in bars:
-        if b['ts']%HOUR or not all(math.isfinite(b[k]) and b[k]>0 for k in ('o','h','l','c')) or b['l']>min(b['o'],b['c']) or b['h']<max(b['o'],b['c']):raise ValueError('Invalid hourly bar')
+        if b['ts']%base_interval or not all(math.isfinite(b[k]) and b[k]>0 for k in ('o','h','l','c')) or b['l']>min(b['o'],b['c']) or b['h']<max(b['o'],b['c']):raise ValueError('Invalid hourly bar')
     if start%DAY or end%DAY or end<=start:raise ValueError('Evaluation requires full UTC days')
-    if bars[0]['ts']>start or bars[-1]['ts']+HOUR<end:raise ValueError('Evaluation window not covered')
-    daily_bars=aggregate(bars,DAY);four_bars=aggregate(bars,4*HOUR)
+    if bars[0]['ts']>start or bars[-1]['ts']+base_interval<end:raise ValueError('Evaluation window not covered')
+    daily_bars=aggregate(bars,DAY,base_interval);four_bars=aggregate(bars,4*HOUR,base_interval)
     d_index=q_index=0;d=[];q=[]
     account=SpotAccount(initial,fee_rate=fee_bps/10000,slippage=slip_bps/10000)
     pending=None;stop=None;entry=None
@@ -55,7 +56,7 @@ def replay(bars,family,param,start,end,fee_bps=10,slip_bps=5,initial=10000,liqui
     result_daily=[];exposure=0.0;hours=0
     last_bar=None
     for b in bars:
-        ts=b['ts'];close_time=ts+HOUR
+        ts=b['ts'];close_time=ts+base_interval
         if ts>=end:break
         # Histories at the hourly OPEN contain only bars already closed by it.
         while d_index<len(daily_bars) and daily_bars[d_index]['end']<=ts:d.append(daily_bars[d_index]);d_index+=1
@@ -79,7 +80,7 @@ def replay(bars,family,param,start,end,fee_bps=10,slip_bps=5,initial=10000,liqui
                 levels=[lo*(hi/lo)**(j/param) for j in range(param+1)]
                 budget=account.cash*0.95/param
                 for j in range(param):
-                    cell=dict(cash=budget,quantity=0.0,buy=levels[j],sell=levels[j+1])
+                    cell=dict(cash=budget,quantity=0.0,last_fill_hour=ts//HOUR,buy=math.floor(levels[j]/0.1)*0.1,sell=math.ceil(levels[j+1]/0.1)*0.1)
                     if levels[j]>=b['o']:
                         before_cash=account.cash
                         cell['quantity']=account.buy(budget,b['o'],ts,'grid_initial')
@@ -94,15 +95,16 @@ def replay(bars,family,param,start,end,fee_bps=10,slip_bps=5,initial=10000,liqui
         if family=='grid' and cells and not did_reset and not(pending and pending['kind']=='reset_grid'):
             for cell in cells:
                 # One prior-side fill per hour. Replenishment becomes eligible next hour.
+                if cell['last_fill_hour']==ts//HOUR:continue
                 held=cell['quantity']>=account.minimum
                 if held and b['h']>cell['sell']*1.0002:
                     before=account.cash
                     sold=account.sell(cell['quantity'],cell['sell'],ts,'grid_limit_sell',limit=True)
-                    cell['quantity']-=sold;cell['cash']+=account.cash-before
+                    cell['quantity']-=sold;cell['cash']+=account.cash-before;cell['last_fill_hour']=ts//HOUR
                 elif not held and b['l']<cell['buy']*0.9998:
                     before=account.cash
                     bought=account.buy(cell['cash'],cell['buy'],ts,'grid_limit_buy',limit=True)
-                    cell['quantity']+=bought;cell['cash']-=before-account.cash
+                    cell['quantity']+=bought;cell['cash']-=before-account.cash;cell['last_fill_hour']=ts//HOUR
         nav=account.nav(b['c']);account.check()
         exposure+=account.quantity*b['c']/nav if nav>0 else 0
         if close_time%DAY==0:result_daily.append(dict(ts=close_time,nav=nav))
@@ -139,7 +141,7 @@ def replay(bars,family,param,start,end,fee_bps=10,slip_bps=5,initial=10000,liqui
     final=account.nav(last_bar['c'])
     if result_daily:result_daily[-1]['nav']=final
     if len(result_daily)!=(end-start)//DAY:raise ValueError('Daily valuation coverage mismatch')
-    return ReplayResult(result_daily,account.fills,account.fees,account.turnover,final,exposure,hours,
-                        dict(fee_bps=fee_bps,slip_bps=slip_bps,execution_lag_hours=1,grid_limit_penetration_bps=2,
+    return ReplayResult(result_daily,account.fills,account.fees,account.turnover,final,exposure*base_interval/HOUR,hours*base_interval/HOUR,
+                        dict(base_interval_ms=base_interval,fee_bps=fee_bps,slip_bps=slip_bps,execution_lag_hours=1,grid_limit_penetration_bps=2,
                              grid_limit_fill_model='at most one fill per cell/hour; fills assumed on strict penetration; sensitivity required',
                              risk='finite cash/inventory; venue order lifecycle not implemented',historical_product_rules='current snapshot assumption'))

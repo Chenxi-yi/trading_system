@@ -53,6 +53,10 @@ python3.11 tools/okx_demo_audit.py
 python3.11 -m tools.okx_capabilities
 python3.11 tools/okx_market_audit.py --page-budget 120
 
-离线测试覆盖教学算例及审计器只读/脱敏/模拟环境控制；实际脚本检查 Demo REST 能力与无签名公开市场历史，均为 GET；共 35 项离线测试。
+离线测试覆盖教学算例及审计器只读/脱敏/模拟环境控制；实际脚本检查 Demo REST 能力与无签名公开市场历史，均为 GET；共 47 项离线测试。
 数据契约见 docs/DATA_CONTRACT.md；覆盖与研究入口见 docs/workpackages/W2.md。本夜已获PM批准，冻结实验 research/experiments/BTC-NIGHT-001.json；先读本夜最新交接，保护封存历史样本。
 生产模块建立时再加入对应的数值、时间因果、账本和故障测试。
+
+当前通宵已批准且已运行20配置，最新恢复读docs/sessions/2026-10-21-overnight-phase2.md。
+历史研究未过全门槛，禁止为凑5个修改已访问封存样本或超预算搜索；先完成细频/实现复核和工程验收。
+heartbeat btc 在03:20续跑；worker持OS锁，恢复时先检查进程与日志，避免重复采集/写入。

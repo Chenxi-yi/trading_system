@@ -15,6 +15,7 @@ PATHS = {
     "instruments": "/api/v5/public/instruments",
     "time": "/api/v5/public/time",
     "ticker": "/api/v5/market/ticker",
+    "archive": "/api/v5/public/market-data-history",
 }
 PARAMS = {
     "trade": {"instId", "bar", "after", "limit"},
@@ -22,6 +23,7 @@ PARAMS = {
     "index": {"instId", "bar", "after", "limit"},
     "funding": {"instId", "after", "limit"},
     "instruments": {"instType"}, "time": set(), "ticker": {"instId"},
+    "archive": {"module", "instType", "instIdList", "instFamilyList", "dateAggrType", "begin", "end"},
 }
 
 

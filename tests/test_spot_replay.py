@@ -80,6 +80,18 @@ class CausalReplayTests(unittest.TestCase):
         self.assertEqual(len(aggregate(rows[:-1],DAY)),2)
         with self.assertRaises(ValueError):replay(rows[:10]+rows[11:],'hold',0,0,3*DAY)
 
+    def test_fine_grid_preserves_lag_and_prevents_intra_hour_cycles(self):
+        rows=[dict(ts=j*900000,o=100.0,h=150.0,l=50.0,c=100.0) for j in range(30*96)]
+        r=replay(rows,'grid',6,20*DAY,30*DAY,base_interval=900000)
+        counts={}
+        for f in r.fills:
+            if f['reason'].startswith('grid_limit'):
+                hour=f['ts']//HOUR;counts[hour]=counts.get(hour,0)+1
+        self.assertTrue(counts)
+        self.assertLessEqual(max(counts.values()),6)
+        self.assertEqual(r.total_hours,240)
+        self.assertEqual(r.fills[0]['ts'],21*DAY+HOUR)
+
     def test_grid_cannot_sell_preexisting_or_create_free_roundtrips(self):
         rows=hourly(30)
         for b in rows:b.update(h=150,l=50)

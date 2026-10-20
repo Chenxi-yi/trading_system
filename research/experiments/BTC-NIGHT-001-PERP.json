@@ -1,0 +1,60 @@
+{
+  "experiment_id": "BTC-NIGHT-001-PERP",
+  "parent": "BTC-NIGHT-001",
+  "status": "frozen_before_perpetual_strategy_returns",
+  "note": "Completes the four already budgeted breakout variants, no added candidate search. Spot sealed outcomes have already been observed; this branch is not pristine independent confirmation.",
+  "variants": [
+    30,
+    20,
+    40,
+    60
+  ],
+  "compression_range_fraction": 0.12,
+  "exit_channel": 10,
+  "max_hold_bars": 30,
+  "stop_atr_multiple": 3,
+  "weight": 0.75,
+  "clock": "4H completed bars, execute at first 4H open >= signal end + 4H; explicit conservative deviation from parent hourly clock because venue mark and trade history available at 4H",
+  "funding": "actual official monthly archive retrospective funding_rate, crosschecked with recent realizedRate REST; charge on pre-settlement quantity before boundary orders; no carry alpha",
+  "data_start": "2023-01-01",
+  "walk_forward": {
+    "2024": {
+      "train": [
+        "2023-01-01",
+        "2024-01-01"
+      ],
+      "test": [
+        "2024-01-01",
+        "2025-01-01"
+      ]
+    },
+    "2025": {
+      "train": [
+        "2023-01-01",
+        "2025-01-01"
+      ],
+      "test": [
+        "2025-01-01",
+        "2026-01-01"
+      ]
+    }
+  },
+  "sealed_choice_train": [
+    "2024-01-01",
+    "2026-01-01"
+  ],
+  "sealed": [
+    "2026-01-01",
+    "2026-07-01"
+  ],
+  "costs": {
+    "base_fee_bps": 5,
+    "base_slip_bps": 5,
+    "adverse_fee_bps": 10,
+    "adverse_slip_bps": 10
+  },
+  "risk": "USDT linear contracts, contractvalue0.01BTC, lot0.01contract; notional at entry<=75%NAV. Synthetic10%maintenance stress threshold is NOT actual OKX historical liquidation model; no demo readiness claim.",
+  "gates": "parent screening thresholds retained, plus mark/funding full window coverage; historical liquidation rules and execution lifecycle remain blocking for demo",
+  "data_quality_deviation": "Before any perpetual strategy return: official archive has off-grid settlement timestamps in Dec2022 (one 2.9h shift and one +1s event). Quarantine 2022; do not round or zero-fill. 2024 selection uses complete2023 only; remaining periods unchanged.",
+  "created_at_utc": "2026-10-20T16:41:18.436652+00:00"
+}

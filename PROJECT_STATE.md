@@ -78,5 +78,9 @@ W2-01 已完成。下一步处理当前 listTime 与历史数据起点不一致�
 ## 本夜最新检查点
 
 PM同意后已启动，heartbeat btc ACTIVE（03:20）、采集工具session66204、日志runtime/overnight/collector.log。
-BTC-NIGHT-001已冻结；最小现货账本/回放/诊断实现，35项测试通过。真实策略PnL尚未运行。
-恢复读docs/sessions/2026-10-21-overnight-phase1.md及实际进程状态，避免重复采集/写入。
+BTC-NIGHT-001已冻结；最小现货账本/回放/诊断实现，35项测试通过。20配置首轮真实历史PnL与时序验证已完成；没有通过全部研究/模拟门槛的策略，报告research/reports/BTC_OVERNIGHT_2026-10-21.md。
+恢复读docs/sessions/2026-10-21-overnight-phase2.md及实际进程状态，避免重复采集/写入。
+
+最新：47项测试通过；worker工具session6392续采15m/细频与报告；官方monthly funding已取55月5025事件，突破含实际成本。
+2022Dec异常时间戳隔离，永续研究从2023起；纯风控检查已实现，完整订单/预算预留/保护对账门槛未通过。
+源数据、缓存、封存访问日志均保留，已看结果不可重调后再称干净验证。

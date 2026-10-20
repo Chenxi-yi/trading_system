@@ -27,7 +27,7 @@
 
 运行场所已确定为 OKX Global；美股范围为股票永续与 x-stock 现货。
 模拟账户已只读接入；[数据契约](docs/DATA_CONTRACT.md)与[首轮覆盖审计](research/notes/W2-first-coverage.md)已完成，
-持续采集与历史规则仍待补齐。[BTC 区间观察](research/notes/R-0003-btc-range-observation.md)与[首批多策略计划](research/plans/BTC_FIRST_COHORT.md)已登记，含网格，尚未回测。
+持续采集与历史规则仍待补齐。[BTC 区间观察](research/notes/R-0003-btc-range-observation.md)与[首批多策略计划](research/plans/BTC_FIRST_COHORT.md)已登记，含网格，首轮回测已运行，尚无通过全部研究和模拟准入门槛的策略。
 
 ## 现在可运行的内容
 
@@ -49,3 +49,7 @@ python3.11 tools/okx_market_audit.py --page-budget 120
 
 生产代码将按架构文档中的职责逐步建立，不以空目录和未实现接口冒充完成的系统。
 阶段推进以验收证据为准，不以日历日期为准。
+
+首轮通宵结果：[BTC-NIGHT-001 报告](research/reports/BTC_OVERNIGHT_2026-10-21.md)。
+当前47项测试通过。研究测试包含numpy，可使用Python3.11环境安装可选依赖 `pip install -e ".[research]"`；
+已下载数据和研究缓存不在Git内，重现需对应manifest数据；报告不表示Demo或实盘就绪。

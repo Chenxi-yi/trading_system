@@ -1,0 +1,103 @@
+# BTC 首轮研究：历史筛查与模拟准入
+
+更新：2026-10-20T16:43:58.741362+00:00（UTC）。所有数值为历史模型结果，不是账户收益。
+
+当前没有通过全部研究与模拟准入门槛的策略。此前冻结的门槛未因结果不理想而放宽；未执行任何交易所订单。
+
+## 五方向结果
+
+| 方向 | 2024–2025时序样本外净收益 | 同窗最大回撤 | 2026H1封存历史净收益 | 更差成本同窗净收益 | 研究筛查 | 模拟就绪 |
+|---|---:|---:|---:|---:|---|---|
+| 日频趋势 | +48.74% | -29.18% | -16.16% | +42.91% | rejected_or_insufficient | 否 |
+| 4H均值回归 | +11.30% | -11.96% | -19.90% | -3.47% | rejected_or_insufficient | 否 |
+| 有限现货网格 | +29.60% | -18.83% | -22.54% | +23.43% | rejected_or_insufficient | 否 |
+| 永续双向突破 | +15.41% | -34.99% | +24.66% | +13.31% | rejected_or_insufficient | 否 |
+| 恒定比例再平衡 | +22.11% | -8.44% | -16.76% | +21.86% | rejected_or_insufficient | 否 |
+
+以上净收益不是年化。样本外策略按各年之前的数据选择该族参数，年初重新建仓并计成本；不同族原生信号频率不同。
+四个现货方向的基准成本为每次成交10bps费率+5bps市场滑点，压力情景20+10；限价网格按严格穿价与taker费用建模，未假设实际队列必成交。
+永续若有结果，成本为5+5bps，压力10+10，另计历史实际funding；4H执行延迟与合成保证金压力不是完整OKX历史强平模型。
+
+## 规则、参数与否决理由
+
+### 日频趋势
+
+- 状态：rejected_or_insufficient。
+- 原因：nonpositive_walk_forward_year, nonpositive_sealed_historical_return, mean_return_uncertainty_includes_no_edge, selection_instability_or_undefined_PBO。
+- 封存前已选参数：90。
+- 三种块长的均值下界均为正：False。
+- 开发区间PBO相对排名诊断：0.5857142857142857，状态diagnostic；不是未来亏损概率。
+
+### 4H均值回归
+
+- 状态：rejected_or_insufficient。
+- 原因：nonpositive_sealed_historical_return, nonpositive_adverse_cost_return, mean_return_uncertainty_includes_no_edge, selection_instability_or_undefined_PBO。
+- 封存前已选参数：180。
+- 三种块长的均值下界均为正：False。
+- 开发区间PBO相对排名诊断：0.9571428571428572，状态diagnostic；不是未来亏损概率。
+
+### 有限现货网格
+
+- 状态：rejected_or_insufficient。
+- 原因：nonpositive_sealed_historical_return, mean_return_uncertainty_includes_no_edge, selection_instability_or_undefined_PBO, grid_real_fill_model_unverified。
+- 封存前已选参数：8。
+- 三种块长的均值下界均为正：False。
+- 开发区间PBO相对排名诊断：0.9571428571428572，状态diagnostic；不是未来亏损概率。
+
+### 永续双向突破
+
+- 状态：rejected_or_insufficient。
+- 原因：nonpositive_walk_forward_year, mean_return_uncertainty_includes_no_edge, selection_instability_or_undefined_PBO。
+- 封存前已选参数：{'walk_forward': {'2024': 60, '2025': 60}, 'sealed': 40, 'recorded_before_perpetual_sealed': True, 'spot_historical_sealed_already_seen': True}。
+- 三种块长的均值下界均为正：False。
+- 开发区间PBO相对排名诊断：0.9142857142857143，状态diagnostic；不是未来亏损概率。
+
+### 恒定比例再平衡
+
+- 状态：rejected_or_insufficient。
+- 原因：nonpositive_walk_forward_year, nonpositive_sealed_historical_return, insufficient_fills, mean_return_uncertainty_includes_no_edge, selection_instability_or_undefined_PBO。
+- 封存前已选参数：0.5。
+- 三种块长的均值下界均为正：False。
+- 开发区间PBO相对排名诊断：0.7142857142857143，状态diagnostic；不是未来亏损概率。
+
+## 该结果说明什么
+
+四个现货方向在2024–2025合并净收益为正，封存的2026上半年均亏损。正收益本身不能满足预先设定的稳健性要求；均值回归对成本提高尤其敏感。
+固定比例再平衡主要改变BTC风险暴露，不能把其全部收益称为alpha；网格也有方向库存和未实现亏损。
+基准：同一2024–2025窗口95% BTC买入持有净收益+99.79%，最大回撤-31.46%；现金收益0。基准连续持有，策略WF年界强制重建，需结合成本和风险差异解释。
+
+## 风险与归因补充
+
+已另存对BTC持有基准的beta、残差均值与块bootstrap，以及事后波动率匹配基准；这些是解释性诊断，不是可部署的事后配仓规则。
+
+| 方向 | 对持有基准beta | 同波动基准净收益（事后诊断） | 残差均值下界均为正 |
+|---|---:|---:|---|
+| 日频趋势 | 0.667 | +81.22% | False |
+| 4H均值回归 | 0.135 | +26.43% | False |
+| 有限现货网格 | 0.407 | +46.28% | False |
+| 恒定比例再平衡 | 0.259 | +24.72% | False |
+| 永续双向突破 | 0.613 | +76.44% | False |
+
+## 图表与可复现入口
+
+![历史时序验证曲线](/Users/yichenxi/Desktop/量化交易系统/artifacts/BTC-NIGHT-001/walk-forward.png)
+
+- 原始现货研究：artifacts/BTC-NIGHT-001/summary.json；每个运行的daily/fills均保存。
+- 永续研究：artifacts/BTC-NIGHT-001-PERP/summary.json（完成后生成）。
+- 费用、代码、输入哈希：各manifest与source_snapshot；第一次封存访问日志已保存。
+- 主协议：research/experiments/BTC-NIGHT-001.json；永续分支协议：BTC-NIGHT-001-PERP.json。
+- 代码或数据变化时runner拒绝复用旧缓存；不得看完封存结果后继续调参并称干净样本外。
+
+## 数据与工程限制
+
+- BTC小时与4H历史已实际取得；15m扩展是否完成以采集checkpoint为准，不把未完成作业写成完整数据。
+- 官方月度funding归档已找到，弥补REST最近约三个月限制。具体文件哈希、覆盖和REST交叉核对在data/funding-archive/BTC-USDT-SWAP/manifest.json。
+- 2022年12月两处非标准funding时间戳已隔离，不取整或填零；永续研究因此从2023年开始，并在计算其收益前记录数据边界调整。
+- 当前产品元数据与历史listTime冲突尚未完全解释，历史发布时刻未知，费用和交易规则是明示情景。
+- 网格队列/细频成交、历史强平tier、旧库存保护、统一资金预留、交易所订单状态/重启对账/告警尚未完整验收。
+- 原始数据与运行结果在忽略目录，本机Git提交只保存代码/文档，不代替数据备份。
+
+## 决定与下一步
+
+本轮不把未达标策略推进到交易所Demo。继续完成数据/实现复核及工程门槛，保留失败结论；新假设需要新的登记与未知样本。
+首轮通宵工作的目标数量未获得保证，最终只按真实证据报告；不能用五个近邻参数或放宽门槛补齐数量。
