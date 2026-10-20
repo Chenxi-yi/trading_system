@@ -24,3 +24,8 @@
 
 论文笔记模板：问题 → 关键词 → 经济机制 → 数据/假设 → 方法 → 发现与证据 →
 失败边界 → 对本项目意义 → 可实现项 → 复现差异 → PM 决策。
+
+补充首批 BTC 合约/网格研究入口（2026-10-21）：
+
+- [BIS Working Paper 1087: Crypto carry](https://www.bis.org/publications/working-paper-1087-crypto-carry)：基差经济机制与风险，待全文精读/复现。
+- [OKX Spot grid FAQ](https://www.okx.com/help/spot-grid-bot-faq)：产品行为、费用与库存风险参考；产品说明不作为 alpha 实证。
