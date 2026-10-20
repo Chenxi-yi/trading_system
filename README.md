@@ -10,6 +10,7 @@
 
 **固定任务入口：[TASKS.md](TASKS.md)**。当前工作包：[W2 研究数据](docs/workpackages/W2.md)。
 每次进入读取任务台账与 PROJECT_STATE，完成时更新任务状态、验收证据和交接。
+[PM 与研究/工程负责人合作协议](docs/OPERATING_MODEL.md)规定从选题到验证、上线准备与运营的责任。
 
 1. [项目指令](AGENTS.md)
 2. [当前状态](PROJECT_STATE.md)

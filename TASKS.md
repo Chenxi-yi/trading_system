@@ -1,6 +1,6 @@
 # 项目任务台账（唯一任务状态入口）
 
-更新时间：2026-10-20（Asia/Shanghai）
+更新时间：2026-10-21（Asia/Shanghai）
 当前工作包：**W2 核心数据与覆盖审计**。PM 最新决定首批聚焦 BTC 多策略（含网格），见 research/plans/BTC_FIRST_COHORT.md；W1 交易前保护尚未验收。
 本文件记录全部已知工作；新发现的任务在执行前或发现时登记，不能承诺预知所有未来工作。
 PROJECT_STATE.md 只概述现状，任务状态以本台账为准。
@@ -24,6 +24,12 @@ PROJECT_STATE.md 只概述现状，任务状态以本台账为准。
 | F-004 | R-0001 数据源首轮调研 | done | research/notes/R-0001-data-source-survey.md；research/evidence/R-0001-public-probes.json；仅样例可用性，不是完整覆盖审计 |
 | F-005 | OKX Global 场景审查与实施路线 | done | docs/SCENARIO_REVIEW_AND_PLAN.md；用户已认可近期工作包 |
 | F-006 | 固定任务台账与 W1 执行入口 | done | 本文件、docs/workpackages/W1.md、docs/INVESTMENT_MANDATE.md、docs/ACCOUNT_CAPABILITIES.md |
+
+## 合作执行约定
+
+PM 与 Agent 的责任、从选题到上线的十一环节及交付见 docs/OPERATING_MODEL.md。
+Agent 主动承担授权内研究/实现/验证/风险与执行准备；PM 决定预算、重大风险变更与实盘启动。
+角色复核不冒充独立团队，拒绝/证据不足均可为有效结论，不以保证盈利作验收。
 
 ## W1：当前执行清单
 
@@ -52,7 +58,7 @@ W1-09 的交易前隔离审查未完成；不阻塞公开数据契约与历史�
 | W2-01 | 核心数据契约 | done | W1 能力证据；公开部分可提前 | docs/DATA_CONTRACT.md；src/miniquant/data/okx_public.py；时间/单位/未知可得时刻、质量规则已实现；23 项统一测试通过 |
 | W2-02 | 历史覆盖和成本数据审计 | in_progress | W2-01 | 首轮 16,690 条与覆盖报告已完成：research/notes/W2-first-coverage.md；历史 listTime 冲突、长期 funding/mark/index 与费用情景待解决，不静默补零 |
 | W2-03 | 持续数据采集与恢复 | in_progress | W2-01 | tools/okx_market_audit.py 已有页快照、哈希、检查点恢复/去重质量报告；尚缺跨运行增量合并、补洞调度/告警、股票前瞻及 WS 验证 |
-| W3-01 | 领域对象与最小账本 | backlog | W2-01 | 单位和现金/持仓守恒手算案例；资金流与收益区分 |
+| W3-01 | 领域对象与最小账本 | backlog | W2-01；合成案例不依赖完整行情 | 单位和现金/持仓守恒手算案例；资金流与收益区分 |
 | W3-02 | 因果回放与模拟 broker | backlog | W3-01,W2-02 | 信号→目标→最小 Risk→订单→成交→NAV；无同 bar 偷看 |
 | W3-03 | R-0002 BTC Daily 趋势 baseline 预注册与运行 | backlog | W3-02 | 假设、候选预算、基准、样本切分冻结；保存全部有效候选及失败 |
 | W3-04 | 策略子账本与预存库存保护 | backlog | W3-01,W1-09 | 新买现货与预存同币库存分开；子账本合计对齐 Bot；禁止动用预存资产 |
@@ -82,7 +88,8 @@ W1-09 的交易前隔离审查未完成；不阻塞公开数据契约与历史�
 ## 本次下一动作
 
 W2-01 已完成，首轮覆盖审计与 BTC 近期描述已落盘。下一步查清历史产品规则/listTime 不一致，寻找更早 funding 的可验证来源，并扩展 mark/index 历史。
-优先解决 BTC 的数据规则与成本，继续 W2-03 跨运行增量合并/补洞，再做 W3 最小账本/因果回放。
+解决 BTC 的数据规则与成本，继续 W2-03；可同时推进 W3-01 合成案例最小账本，不以永续 funding 缺失阻塞现货基础实现。
+有数据验收后连接因果回放并产出投资研究结论；研究计划/实现/验证/风险/执行准备由 Agent 主动推进。
 首批策略为 BTC 趋势、均值回归与有限现货网格，各族先一个主要候选、冻结后再回测；BTC carry 先补数据与双腿风险。
 已有 BTC/ETH/SOL 六产品数据保留；费用快照独立版本，永续包含 funding/mark/index；详见 research/plans/BTC_FIRST_COHORT.md。
 股票样例当前未在 Demo 清单返回，只开展参考数据研究；W1-09 的保护验收须在交易前补齐。WS 与交易链路未测。

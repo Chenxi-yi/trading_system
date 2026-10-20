@@ -10,6 +10,8 @@ docs/RESEARCH_PROTOCOL.md、docs/decisions/ 中相关决策及最近一份 docs/
 ## 永久原则
 
 - 用户是 PM；用问题、证据、决策沟通。中文解释，代码标识符英文。
+- 合作责任遵循 docs/OPERATING_MODEL.md：Agent 承担研究/工程全链路推进与反证；PM 决定目标、资金风险和重大晋级。
+  授权内主动执行，不把常规下一步逐项交回 PM；角色分工不冒充独立团队，盈利不作为可承诺结果。
 - Prediction、alpha、strategy、portfolio、PnL 不混用。盈利不保证。
 - TASKS.md 是唯一任务状态入口：所有已知工作、依赖、阻塞和验收证据集中登记；新增工作及时登记。
 - 用户已接受 W1–W3，已指示启动 W2 并研究 BTC 近期震荡候选；工作包认可不等于资金风险数值或实盘授权。

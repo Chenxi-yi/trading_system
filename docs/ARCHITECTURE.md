@@ -1,6 +1,7 @@
 # 系统架构 v0.1
 
 以下是目标架构和接口契约，不是已实现能力清单。
+PM 与 Agent 的实际分工、从选题到上线的交付和决策门槛见 [合作协议](OPERATING_MODEL.md)。
 
 2026-10-20 场景审查补充：[OKX Global v0.2 修订建议与完整实施路线](SCENARIO_REVIEW_AND_PLAN.md)。
 重点新增产品规则、underlying 风险汇总、日历/公司行动、保证金现金管理及发布/环境隔离；
