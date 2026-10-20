@@ -25,7 +25,7 @@
 12. [OKX Global 框架审查与逐步验收路线（建议稿）](docs/SCENARIO_REVIEW_AND_PLAN.md)
 
 运行场所已确定为 OKX Global；美股范围为股票永续与 x-stock 现货。
-公开行情仅完成小样本探测；模拟账户、完整历史与数据管线仍未接入。
+公开行情完成小样本探测；模拟账户已只读接入，完整历史与数据管线尚未建立。
 
 ## 现在可运行的内容
 
@@ -36,11 +36,13 @@
 python3.11 examples/cscv_selection_demo.py
 python3.11 -m unittest discover -s tests -v
 python3.11 tools/okx_demo_audit.py
+python3.11 -m tools.okx_capabilities
 ```
 
 审计器固定读取根目录已忽略的 config.toml 中 profiles.demo，不使用 default_profile。
 仅向 Global 官方域名发出模拟环境 GET 请求，不下单、不跟随重定向；报告在 ignored runtime/。
-最近结果：用户修正凭证后，Demo 的公共 time、签名 account/config 与 account/balance 全部成功；产品、费率、WS、交易链路未测。
+最近结果：14 项 GET 检查成功，六个 crypto USDT 现货/永续产品可见且费用/单位已读；四个股票样例未返回。
+详见 docs/ACCOUNT_CAPABILITIES.md 与 docs/workpackages/W1_REVIEW.md。16 项离线测试通过；WS、交易链路和资金/库存保护尚未验收。
 
 生产代码将按架构文档中的职责逐步建立，不以空目录和未实现接口冒充完成的系统。
 阶段推进以验收证据为准，不以日历日期为准。

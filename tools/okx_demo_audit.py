@@ -27,6 +27,8 @@ ALLOWED_PATHS = {
     "/api/v5/account/balance": {"ccy"},
     "/api/v5/account/instruments": {"instType", "instId"},
     "/api/v5/account/trade-fee": {"instType", "instId", "instFamily", "groupId"},
+    "/api/v5/account/positions": {"instType", "instId"},
+    "/api/v5/trade/orders-pending": {"instType", "instId", "limit"},
 }
 
 

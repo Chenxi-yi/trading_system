@@ -15,7 +15,7 @@ docs/RESEARCH_PROTOCOL.md、docs/decisions/ 中相关决策及最近一份 docs/
 - 用户已接受 W1–W3，当前从 W1 开始；工作包认可不等于资金风险数值或实盘授权。
 - Phase 0：架构与研究治理；策略、数据、风控和交易能力是否实现必须据实报告。
 - BTC/ETH/SOL，Daily 优先，4H 随后；先简单可解释 baseline，再 crypto 数据，再 ML。
-- 用户已指定 OKX 运行，范围现货/合约/美股相关产品；模拟 API 尚未接入。
+- 用户已指定 OKX 运行，范围现货/合约/美股相关产品；模拟 API 已只读接入。
   已确认 Global 站点，美股为股票永续与 x-stock 现货。数据源调研后先与 PM 讨论，再实现数据模块。
 - 任何研究都记录失败、试验族、参数搜索和人工筛选；不能删除失败以美化结果。
 - 时间语义是契约：event_time / available_at / ingested_at，决策只能使用当时可得数据。
@@ -29,7 +29,7 @@ docs/RESEARCH_PROTOCOL.md、docs/decisions/ 中相关决策及最近一份 docs/
 - 未获得明确实盘授权，不发送真实订单、不转账、不索要密钥明文。
 - 数据、密钥、账户信息不得进入 Git；忽略规则不等于安全扫描或备份。
 - 根目录 config.toml 为用户私有凭证文件：已忽略并设为 0600；禁止打印内容或加入提交。
-  连接测试显式使用 profiles.demo，忽略 default_profile；修正后 Demo REST 的 config/balance 只读认证已成功，产品/费率/WS/交易仍待验证。
+  连接测试显式使用 profiles.demo，忽略 default_profile；修正后 Demo REST 的 config/balance 只读认证已成功，产品/费率已完成六个 crypto 样例的只读审计；WS/交易未验证，隔离保护尚未验收。
 - 先模块化单体；没有可验证需求，不引入微服务、复杂模型或大量占位代码。
 
 ## 每个有实质进展的工作单元结束
@@ -46,6 +46,7 @@ docs/RESEARCH_PROTOCOL.md、docs/decisions/ 中相关决策及最近一份 docs/
 python3.11 -m unittest discover -s tests -v
 python3.11 examples/cscv_selection_demo.py
 python3.11 tools/okx_demo_audit.py
+python3.11 -m tools.okx_capabilities
 
-离线测试覆盖教学算例及审计器只读/脱敏/模拟环境控制；实际脚本仅检查 Demo REST 连接。
+离线测试覆盖教学算例及审计器只读/脱敏/模拟环境控制；实际脚本检查 Demo REST 连接和账户/产品/费用能力，均为 GET；共 16 项离线测试。
 生产模块建立时再加入对应的数值、时间因果、账本和故障测试。
