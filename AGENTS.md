@@ -27,7 +27,7 @@ docs/RESEARCH_PROTOCOL.md、docs/decisions/ 中相关决策及最近一份 docs/
 - 未获得明确实盘授权，不发送真实订单、不转账、不索要密钥明文。
 - 数据、密钥、账户信息不得进入 Git；忽略规则不等于安全扫描或备份。
 - 根目录 config.toml 为用户私有凭证文件：已忽略并设为 0600；禁止打印内容或加入提交。
-  连接测试显式使用 profiles.demo，忽略 default_profile；当前 API Key 认证返回 50111，尚未连接成功。
+  连接测试显式使用 profiles.demo，忽略 default_profile；修正后 Demo REST 的 config/balance 只读认证已成功，产品/费率/WS/交易仍待验证。
 - 先模块化单体；没有可验证需求，不引入微服务、复杂模型或大量占位代码。
 
 ## 每个有实质进展的工作单元结束

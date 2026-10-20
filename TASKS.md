@@ -34,14 +34,14 @@ PROJECT_STATE.md 只概述现状，任务状态以本台账为准。
 | W1-01 | 建立投资授权草案 | done | Agent | F-005 | docs/INVESTMENT_MANDATE.md；区分已确认/待定，不编造风险预算 |
 | W1-02 | 决定规模、预算与总体亏损口径 | done | PM | W1-01 | 规模/预算与本 Bot 相对初始本金的总体亏损口径已确认；私有记录 config/local/investment-mandate.json；执行阈值尚未实现 |
 | W1-03 | 编写模拟凭证本机配置步骤 | done | Agent | F-005 | docs/OKX_DEMO_SETUP.md；只读、Global、demo 明确，不要求聊天发送密钥 |
-| W1-04 | 用户在本机配置 demo 只读凭证 | waiting_input | PM | W1-03 | 文件已提供并受 Git 忽略/0600 保护；Demo 认证 50111，待 PM 本机核对 API Key；Key 权限尚未核验 |
+| W1-04 | 本机模拟凭证只读接入 | done | PM+Agent | W1-03 | PM 修正后显式 demo 认证、config/balance GET 成功；config.toml 忽略/0600；客户端只读，不推定 Key 仅有 Read 权限 |
 | W1-05 | 实现受限只读账户审计器 | done | Agent | W1-03 | tools/okx_demo_audit.py；GET allowlist、显式 demo、无重定向、脱敏；6 项审计器测试通过 |
-| W1-06 | 核验账户模式与产品支持 | blocked | Agent | W1-04,W1-05 | 已发只读 config 请求，认证 50111；凭证修正后核验产品。见 docs/sessions/2026-10-20-demo-connection.md |
+| W1-06 | 核验账户模式与产品支持 | in_progress | Agent | W1-04,W1-05 | 认证/config/balance 已成功；模式字段解释和逐产品清单待补。见 docs/sessions/2026-10-20-demo-retest.md |
 | W1-07 | 核验费率、单位与保证金/持仓模式 | backlog | Agent | W1-06 | 有对应账户只读证据；不以模拟费率推定未来实盘费率 |
 | W1-08 | W1 验收与下一步决定 | backlog | PM+Agent | W1-02,W1-06,W1-07 | 支持/不支持/未知明确；未知项有降级方案；W2 首批产品与范围固定 |
 
 W1-05 可以在等待凭证时独立完成；规模/预算与总体亏损口径已确认。
-W1-05 已完成；W1-06 首次认证测试受阻，W1-07 尚未执行，没有发单。
+W1-04/05 已完成；W1-06 认证障碍已解除，产品支持仍待核验；W1-07 尚未执行，没有发单。
 
 ## 后续完整工作分解
 
@@ -74,5 +74,5 @@ W1-05 已完成；W1-06 首次认证测试受阻，W1-07 尚未执行，没有�
 
 ## 本次下一动作
 
-按 W1.md 推进：等待 PM 在本机核对 profiles.demo.api_key，随后复测认证，再核验产品与费率。
+按 W1.md 推进：Demo REST 已认证成功，下一步核验账户模式、产品清单和费率；WS 与交易链路未测。
 后续新增子任务使用稳定 ID，保留变更与失败证据，不悄悄从台账删除。

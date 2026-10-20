@@ -8,7 +8,7 @@
 
 长期构建 Personal Mini Quant Fund；Phase 0 基线已建立，当前完成 R-0001 数据源调研首轮。
 用户指定运行在 OKX，范围为现货、合约、美股相关产品；crypto 仍从 BTC/ETH/SOL、Daily → 4H 开始。
-用户已在根目录 config.toml 配置模拟 API；只读连接测试返回 50111，尚未成功认证。无生产策略或实盘权限。
+用户已在根目录 config.toml 配置模拟 API；重新复制后 Demo REST 只读认证成功。无生产策略或实盘权限。
 
 ## 已完成
 
@@ -25,7 +25,7 @@
 - PM 已提供资金/预算规划输入，本机私有配置已记录；已确认本 Bot 相对初始本金的累计亏损口径，不激活实盘。
 - 最近成功同步至 ae5f423，之前因网络积压的提交已补推；后续更新以 Git 实际状态为准。
 - W1-05 只读审计器已完成，统一离线测试 12 项通过；根目录凭证已 Git 忽略并设 0600。
-- Global 两个官方入口公共 time 成功，但 demo account/config 均返回 HTTP 401 / 50111，需本机核对模拟 API Key。
+- 用户修正凭证后，在 openapi.okx.com 上 time、签名 account/config、account/balance 均成功；此前 50111 已解除。
 
 ## 待实施
 
@@ -36,9 +36,8 @@
 ## 下一次第一项工作
 
 用户已确认 OKX Global；美股范围为股票永续与 x-stock 现货。
-按 TASKS.md 推进已接受的 W1–W3；用户核对本机 config.toml 的 profiles.demo.api_key 后，
-运行 python3.11 tools/okx_demo_audit.py 复测，认证成功后再审计账户产品与费率。
-只读审计器已实现；目前账户未成功认证，无 Kit 安装或交易授权。
+按 TASKS.md 推进已接受的 W1–W3；Demo REST 认证已成功，继续 W1-06/07 的账户模式、产品清单和费率审计。
+当前只验证 time/config/balance；无 WS/下单测试，无 Kit 安装或交易授权。
 完整历史覆盖、WS 连续性、模拟账户权限均未验证；小样本成功不能替代这些验收。
 
 ## PM 待决策（不阻塞当前架构）

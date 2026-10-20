@@ -7,8 +7,8 @@ W1 只做账户只读审计。使用 OKX Global 的模拟交易 API，不使用�
 用户已采用项目根目录 config.toml（Git 忽略，0600），作为本轮唯一凭证来源；无需另外复制到 JSON。
 审计器固定选择 profiles.demo 并要求 demo=true，即使默认 profile 指向其他环境也不会使用。
 API Key、Secret、Passphrase 分别填写 api_key、secret_key、passphrase。
-最近在 openapi.okx.com 与 www.okx.com 的模拟 GET 检查中，公共 time 成功，账户 config 返回 HTTP 401 / 50111。
-请在本机核对模拟盘 API Key，排查复制不完整或字段填反，再复测；没有成功认证之前不查询后续账户能力。
+首次检查曾返回 50111。用户重新复制配置后，openapi.okx.com 的模拟 time、签名 config/balance 查询已全部成功。
+当前已具备 Demo REST 只读连接能力；产品/费用/WS 和订单链路仍需分别验证。
 
 运行：`python3.11 tools/okx_demo_audit.py`。Python 3.11+ 标准库实现，无需安装 Kit。
 签名与密码均不输出；JSON 报告保存于 ignored runtime/okx-demo-audit/，只包含状态与耗时。

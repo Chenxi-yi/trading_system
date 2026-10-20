@@ -40,7 +40,7 @@ python3.11 tools/okx_demo_audit.py
 
 审计器固定读取根目录已忽略的 config.toml 中 profiles.demo，不使用 default_profile。
 仅向 Global 官方域名发出模拟环境 GET 请求，不下单、不跟随重定向；报告在 ignored runtime/。
-最近结果：公共 time 接口成功，签名账户配置查询返回 50111，等待本机修正 demo API Key 后复测。
+最近结果：用户修正凭证后，Demo 的公共 time、签名 account/config 与 account/balance 全部成功；产品、费率、WS、交易链路未测。
 
 生产代码将按架构文档中的职责逐步建立，不以空目录和未实现接口冒充完成的系统。
 阶段推进以验收证据为准，不以日历日期为准。
