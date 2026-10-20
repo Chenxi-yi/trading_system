@@ -14,7 +14,9 @@ docs/RESEARCH_PROTOCOL.md、docs/decisions/ 中相关决策及最近一份 docs/
 - TASKS.md 是唯一任务状态入口：所有已知工作、依赖、阻塞和验收证据集中登记；新增工作及时登记。
 - 用户已接受 W1–W3，已指示启动 W2 并研究 BTC 近期震荡候选；工作包认可不等于资金风险数值或实盘授权。
 - Phase 0：架构与研究治理；策略、数据、风控和交易能力是否实现必须据实报告。
-- BTC/ETH/SOL，Daily 优先，4H 随后；先简单可解释 baseline，再 crypto 数据，再 ML。
+- 首批策略聚焦 BTC（PM 最新决定）：趋势、均值回归、有限现货网格；carry 先补数据/双腿风险。
+  系统总体范围仍含 BTC/ETH/SOL 与股票相关产品；保留已有数据。Daily/4H 按研究族区分，不默认多个 BTC 策略构成分散。
+  首批研究计划见 research/plans/BTC_FIRST_COHORT.md；先简单可解释 baseline，再 crypto 数据，再 ML。
 - 用户已指定 OKX 运行，范围现货/合约/美股相关产品；模拟 API 已只读接入。
   已确认 Global 站点，美股为股票永续与 x-stock 现货。数据源调研后先与 PM 讨论，再实现数据模块。
 - 任何研究都记录失败、试验族、参数搜索和人工筛选；不能删除失败以美化结果。

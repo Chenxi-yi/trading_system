@@ -16,8 +16,9 @@ AI 复核不能称作真正独立的验证团队。
 ## 投资边界
 
 2026-10-20 用户明确：目标运行场所 OKX，范围为现货、合约、美股；准备提供模拟盘 API。
-Crypto 研究从 BTC/ETH/SOL 开始；Daily 传统趋势优先，4H 是后续独立研究。
-用户已确认 OKX Global，美股范围为股票永续与 x-stock 现货；模拟账户产品可用性待测（ADR-0002）。
+总体 crypto 范围为 BTC/ETH/SOL；PM 于 2026-10-20 明确首批聚焦 BTC 多策略，含趋势、均值回归与网格。
+Daily 趋势作为 baseline，4H 回归与有限网格独立研究；carry 先补数据/双腿风险，见 research/plans/BTC_FIRST_COHORT.md。
+用户已确认 OKX Global，美股范围为股票永续与 x-stock 现货；六个 crypto USDT 产品已只读可见，股票四样例未返回，交易链路未验证（见 ACCOUNT_CAPABILITIES.md）。
 第一版建议以无借贷现货 long/flat 建立账本和因果基线；
 这是一项建议，产品范围尚待 PM 决定。永续模型必须包括历史 funding、保证金和强平。
 暂不做 HFT、大规模 ML 搜索、复杂跨所套利或未经审计的自动资金移动。

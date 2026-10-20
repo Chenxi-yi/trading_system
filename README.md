@@ -1,6 +1,6 @@
 # Personal Mini Quant Fund
 
-面向 BTC / ETH / SOL、Daily / 4H 的长期系统化投资研究项目。
+面向 BTC / ETH / SOL、Daily / 4H 的长期系统化投资研究项目；第一批策略聚焦 BTC。
 
 **当前阶段：Phase 1 数据契约与历史采集原型。没有已验证 alpha、自动下单接口或实盘授权。**
 
@@ -26,7 +26,7 @@
 
 运行场所已确定为 OKX Global；美股范围为股票永续与 x-stock 现货。
 模拟账户已只读接入；[数据契约](docs/DATA_CONTRACT.md)与[首轮覆盖审计](research/notes/W2-first-coverage.md)已完成，
-持续采集与历史规则仍待补齐。[BTC 区间观察](research/notes/R-0003-btc-range-observation.md)与候选研究已登记，尚未回测。
+持续采集与历史规则仍待补齐。[BTC 区间观察](research/notes/R-0003-btc-range-observation.md)与[首批多策略计划](research/plans/BTC_FIRST_COHORT.md)已登记，含网格，尚未回测。
 
 ## 现在可运行的内容
 
