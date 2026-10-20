@@ -26,6 +26,8 @@ docs/RESEARCH_PROTOCOL.md、docs/decisions/ 中相关决策及最近一份 docs/
 - 交易本金、杠杆、交易场所、司法辖区和实盘参数未由 PM 决定前，不自行假设。
 - 未获得明确实盘授权，不发送真实订单、不转账、不索要密钥明文。
 - 数据、密钥、账户信息不得进入 Git；忽略规则不等于安全扫描或备份。
+- 根目录 config.toml 为用户私有凭证文件：已忽略并设为 0600；禁止打印内容或加入提交。
+  连接测试显式使用 profiles.demo，忽略 default_profile；当前 API Key 认证返回 50111，尚未连接成功。
 - 先模块化单体；没有可验证需求，不引入微服务、复杂模型或大量占位代码。
 
 ## 每个有实质进展的工作单元结束
@@ -39,7 +41,9 @@ docs/RESEARCH_PROTOCOL.md、docs/decisions/ 中相关决策及最近一份 docs/
 
 ## 当前可用检查
 
-python3 -m unittest discover -s tests -v
-python3 examples/cscv_selection_demo.py
+python3.11 -m unittest discover -s tests -v
+python3.11 examples/cscv_selection_demo.py
+python3.11 tools/okx_demo_audit.py
 
-以上只验证教学算例。生产模块建立时再加入对应的数值、时间因果、账本和故障测试。
+离线测试覆盖教学算例及审计器只读/脱敏/模拟环境控制；实际脚本仅检查 Demo REST 连接。
+生产模块建立时再加入对应的数值、时间因果、账本和故障测试。
