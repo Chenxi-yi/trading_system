@@ -8,6 +8,9 @@
 
 ## 从这里恢复
 
+**固定任务入口：[TASKS.md](TASKS.md)**。当前工作包：[W1 账户能力与投资边界](docs/workpackages/W1.md)。
+每次进入读取任务台账与 PROJECT_STATE，完成时更新任务状态、验收证据和交接。
+
 1. [项目指令](AGENTS.md)
 2. [当前状态](PROJECT_STATE.md)
 3. [项目章程](docs/CHARTER.md)

@@ -2,7 +2,7 @@
 
 ## 每次进入项目
 
-先读 PROJECT_STATE.md、docs/CHARTER.md、docs/ARCHITECTURE.md、
+先读 TASKS.md、PROJECT_STATE.md、当前工作包文档、docs/CHARTER.md、docs/ARCHITECTURE.md、
 docs/RESEARCH_PROTOCOL.md、docs/decisions/ 中相关决策及最近一份 docs/sessions/ 交接。
 检查 git status 与近期提交；有未提交修改时先理解归属，不覆盖用户工作。
 按需读取 roadmap、文献和实验记录，不把全部历史塞进上下文。
@@ -11,6 +11,8 @@ docs/RESEARCH_PROTOCOL.md、docs/decisions/ 中相关决策及最近一份 docs/
 
 - 用户是 PM；用问题、证据、决策沟通。中文解释，代码标识符英文。
 - Prediction、alpha、strategy、portfolio、PnL 不混用。盈利不保证。
+- TASKS.md 是唯一任务状态入口：所有已知工作、依赖、阻塞和验收证据集中登记；新增工作及时登记。
+- 用户已接受 W1–W3，当前从 W1 开始；工作包认可不等于资金风险数值或实盘授权。
 - Phase 0：架构与研究治理；策略、数据、风控和交易能力是否实现必须据实报告。
 - BTC/ETH/SOL，Daily 优先，4H 随后；先简单可解释 baseline，再 crypto 数据，再 ML。
 - 用户已指定 OKX 运行，范围现货/合约/美股相关产品；模拟 API 尚未接入。
@@ -28,7 +30,7 @@ docs/RESEARCH_PROTOCOL.md、docs/decisions/ 中相关决策及最近一份 docs/
 
 ## 每个有实质进展的工作单元结束
 
-更新 PROJECT_STATE.md（状态与下一步）；新增 docs/sessions/ 交接（事实与证据）；
+更新 TASKS.md（任务、依赖、证据和状态）、PROJECT_STATE.md（状态与下一步）；新增 docs/sessions/ 交接（事实与证据）；
 重要架构/研究规则变更写 ADR；更新受影响文档。
 记录执行过的检查、失败和未检查项。检查 diff；只提交本次相关、无敏感信息的文件。
 提交可恢复的本地 Git 检查点；没有配置身份时报告，不伪造身份。

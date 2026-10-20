@@ -2,6 +2,8 @@
 
 更新时间：2026-10-20（Asia/Shanghai）
 
+固定任务台账：TASKS.md（唯一任务状态入口）。当前工作包：docs/workpackages/W1.md。
+
 ## 目标与边界
 
 长期构建 Personal Mini Quant Fund；Phase 0 基线已建立，当前完成 R-0001 数据源调研首轮。
@@ -18,6 +20,7 @@
 - OKX 核心样例、Coinbase 日线、Coin Metrics 参考价格可取；Binance REST 451、Bybit OI 403。
 - 已核验 Agent Trade Kit：工具层而非 alpha 库；官方配置文档指出网格 Bot 不支持 demo。
 - 已按 OKX Global 四类产品完成框架审查与 v0.2 步骤建议，见 docs/SCENARIO_REVIEW_AND_PLAN.md；尚未批准所有建议或实现生产能力。
+- 用户已接受近期 W1–W3；已建立根目录任务台账、W1 执行文档、投资授权草案、账户能力矩阵和本机模拟凭证配置指引。
 
 ## 待实施
 
@@ -28,9 +31,9 @@
 ## 下一次第一项工作
 
 用户已确认 OKX Global；美股范围为股票永续与 x-stock 现货。
-先依据 docs/SCENARIO_REVIEW_AND_PLAN.md 讨论近期 W1–W3：投资/风险预算草案与模拟账户只读审计、
-数据契约与覆盖审计、最小账本/回放与 Daily baseline 预注册。
-用户当前要求审查与列步骤，尚未授权本轮实施完整管线、安装 Kit 或交易。
+按 TASKS.md 推进已接受的 W1–W3，当前 W1：用户本机准备模拟只读凭证并回答预算口径；
+可独立推进 W1-05 受限只读审计器，完成离线检查后才实际查询账户。
+本轮已完成 W1 执行准备文档，审计器未实现、账户未接入。无 Kit 安装或交易授权。
 完整历史覆盖、WS 连续性、模拟账户权限均未验证；小样本成功不能替代这些验收。
 
 ## PM 待决策（不阻塞当前架构）
