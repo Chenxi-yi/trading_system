@@ -4,8 +4,9 @@
 
 ## 目标与边界
 
-长期构建 Personal Mini Quant Fund；目前只做 Phase 0 的架构、研究治理和 PBO 精读。
-交易研究对象 BTC/ETH/SOL，Daily → 4H。尚无生产策略、下载数据、交易接入或实盘权限。
+长期构建 Personal Mini Quant Fund；Phase 0 基线已建立，当前完成 R-0001 数据源调研首轮。
+用户指定运行在 OKX，范围为现货、合约、美股相关产品；crypto 仍从 BTC/ETH/SOL、Daily → 4H 开始。
+用户准备提供模拟盘 API，但尚未接收或接入。无生产策略或实盘权限。
 
 ## 已完成
 
@@ -13,6 +14,9 @@
 - 研究试验与最终留出集管理、风险与执行设计、跨会话交接规范。
 - 原创 CSCV 手算/可运行教学算例及边界测试。
 - 已关联 GitHub 仓库 https://github.com/Chenxi-yi/trading_system；main 跟踪 origin/main，项目初始提交已推送。
+- R-0001 数据源报告与交互地图；公开 GET 样例验证，原始响应保存在忽略目录。
+- OKX 核心样例、Coinbase 日线、Coin Metrics 参考价格可取；Binance REST 451、Bybit OI 403。
+- 已核验 Agent Trade Kit：工具层而非 alpha 库；官方配置文档指出网格 Bot 不支持 demo。
 
 ## 待实施
 
@@ -22,15 +26,16 @@
 
 ## 下一次第一项工作
 
-读研究规范，写 R-0001 数据可用性审计：比较可访问场所 BTC/ETH/SOL 的现货与永续历史、
-上市时间、OHLCV 时间含义、funding 时间/频率、限流、许可、缺口和修订。
-先确认可用产品与数据，再冻结 baseline 研究计划及留出时间段。
-第一条 vertical slice 只需一个标的、一个信号、明确成本、严格滞后和可对账 PnL。
+先和 PM 讨论 research/notes/R-0001-data-source-survey.md，确认“美股”具体产品与账户实体，
+再选第一批数据、冻结 data adapter 契约。用户要求先看数据地图再讨论填入数据模块，
+不要在未讨论前直接搭完整数据管线或安装 Kit。
+完整历史覆盖、WS 连续性、模拟账户权限均未验证；小样本成功不能替代这些验收。
 
 ## PM 待决策（不阻塞当前架构）
 
-- 可合法使用的交易场所及产品；居住/适用司法辖区。
-- 现货 long/flat 与永续 long/short 的阶段优先级。
+- OKX 账户站点/地区实体，以及可用产品权限。
+- 美股指股票永续、Unified Tokenized Stocks，还是希望持有真实股票；本轮异步询问，尚未答复。
+- 现货、永续、交割与美股相关产品的阶段优先级。
 - 最终研究/运行预算与小额实盘风险预算；最大可接受损失。
 
 ## 需要记住的限制

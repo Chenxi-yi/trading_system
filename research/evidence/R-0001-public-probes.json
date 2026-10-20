@@ -1,0 +1,372 @@
+{
+  "scope": "Unsigned GET samples only; not full-history or account entitlement validation",
+  "results": [
+    {
+      "id": "okx_spot",
+      "url": "https://www.okx.com/api/v5/public/instruments?instType=SPOT",
+      "observed_at_utc": "2026-10-20T14:05:42.855774+00:00",
+      "http_status": 200,
+      "sha256": "1807f5c55e602d6e0c94dd1f9ae2ce5bd32af427ed713b8de75579888ef0cf2b",
+      "api_code": "0",
+      "records": 1185,
+      "status": "sample_retrieved",
+      "selected_instruments": [
+        {
+          "instId": "BTC-USDT",
+          "instType": "SPOT",
+          "state": "live",
+          "listTime": "1611907686000",
+          "expTime": "",
+          "ctVal": "",
+          "ctValCcy": ""
+        },
+        {
+          "instId": "ETH-USDT",
+          "instType": "SPOT",
+          "state": "live",
+          "listTime": "1611907686000",
+          "expTime": "",
+          "ctVal": "",
+          "ctValCcy": ""
+        },
+        {
+          "instId": "SOL-USDT",
+          "instType": "SPOT",
+          "state": "live",
+          "listTime": "1611907686000",
+          "expTime": "",
+          "ctVal": "",
+          "ctValCcy": ""
+        },
+        {
+          "instId": "XAAPL-USDT",
+          "instType": "SPOT",
+          "state": "live",
+          "listTime": "1784181600000",
+          "expTime": "",
+          "ctVal": "",
+          "ctValCcy": ""
+        }
+      ]
+    },
+    {
+      "id": "okx_swap",
+      "url": "https://www.okx.com/api/v5/public/instruments?instType=SWAP",
+      "observed_at_utc": "2026-10-20T14:05:42.856467+00:00",
+      "http_status": 200,
+      "sha256": "999ae6e489651280cb17feb3e5a121b4017f75654ca7623c43d2be12351108d4",
+      "api_code": "0",
+      "records": 515,
+      "status": "sample_retrieved",
+      "selected_instruments": [
+        {
+          "instId": "BTC-USDT-SWAP",
+          "instType": "SWAP",
+          "state": "live",
+          "listTime": "1573557408000",
+          "expTime": "",
+          "ctVal": "0.01",
+          "ctValCcy": "BTC"
+        },
+        {
+          "instId": "ETH-USDT-SWAP",
+          "instType": "SWAP",
+          "state": "live",
+          "listTime": "1573557408000",
+          "expTime": "",
+          "ctVal": "0.1",
+          "ctValCcy": "ETH"
+        },
+        {
+          "instId": "SOL-USDT-SWAP",
+          "instType": "SWAP",
+          "state": "live",
+          "listTime": "1611298800000",
+          "expTime": "",
+          "ctVal": "1",
+          "ctValCcy": "SOL"
+        },
+        {
+          "instId": "AAPL-USDT-SWAP",
+          "instType": "SWAP",
+          "state": "live",
+          "listTime": "1772612100000",
+          "expTime": "",
+          "ctVal": "1",
+          "ctValCcy": "AAPL"
+        },
+        {
+          "instId": "NVDA-USDT-SWAP",
+          "instType": "SWAP",
+          "state": "live",
+          "listTime": "1772607600000",
+          "expTime": "",
+          "ctVal": "1",
+          "ctValCcy": "NVDA"
+        },
+        {
+          "instId": "TSLA-USDT-SWAP",
+          "instType": "SWAP",
+          "state": "live",
+          "listTime": "1772010000000",
+          "expTime": "",
+          "ctVal": "1",
+          "ctValCcy": "TSLA"
+        }
+      ]
+    },
+    {
+      "id": "okx_futures",
+      "url": "https://www.okx.com/api/v5/public/instruments?instType=FUTURES",
+      "observed_at_utc": "2026-10-20T14:05:42.856732+00:00",
+      "http_status": 200,
+      "sha256": "e0ac73331d2d553a6d6f4c3d14e962076904cd6274c846d815ff672ed0d8d6bf",
+      "api_code": "0",
+      "records": 272,
+      "status": "sample_retrieved",
+      "selected_instruments": []
+    },
+    {
+      "id": "okx_daily",
+      "url": "https://www.okx.com/api/v5/market/history-candles?instId=BTC-USDT&bar=1Dutc&limit=3",
+      "observed_at_utc": "2026-10-20T14:05:45.156413+00:00",
+      "http_status": 200,
+      "sha256": "e11e82e0bb2b3743b925f982526e3f58a38f66fbf33a57a57f2c623efb3f1517",
+      "api_code": "0",
+      "records": 3,
+      "status": "sample_retrieved",
+      "sample_timestamps": [
+        "1792454400000",
+        "1792368000000",
+        "1792281600000"
+      ]
+    },
+    {
+      "id": "okx_eth_4h",
+      "url": "https://www.okx.com/api/v5/market/history-candles?instId=ETH-USDT&bar=4H&limit=3",
+      "observed_at_utc": "2026-10-20T14:05:45.413751+00:00",
+      "http_status": 200,
+      "sha256": "15a6e55c13035eb424dfe934d11512851000e629e3a3007bcb09a5360d49122f",
+      "api_code": "0",
+      "records": 3,
+      "status": "sample_retrieved",
+      "sample_timestamps": [
+        "1792497600000",
+        "1792483200000",
+        "1792468800000"
+      ]
+    },
+    {
+      "id": "okx_sol_4h",
+      "url": "https://www.okx.com/api/v5/market/history-candles?instId=SOL-USDT-SWAP&bar=4H&limit=3",
+      "observed_at_utc": "2026-10-20T14:05:46.508536+00:00",
+      "http_status": 200,
+      "sha256": "2263c8dbb8b9297726a08f3a7b3b923b574431bc5076bfe06dd3e32e648ae7c9",
+      "api_code": "0",
+      "records": 3,
+      "status": "sample_retrieved",
+      "sample_timestamps": [
+        "1792497600000",
+        "1792483200000",
+        "1792468800000"
+      ]
+    },
+    {
+      "id": "okx_btc_2020",
+      "url": "https://www.okx.com/api/v5/market/history-candles?instId=BTC-USDT&bar=1Dutc&after=1578096000000&limit=3",
+      "observed_at_utc": "2026-10-20T14:05:46.777536+00:00",
+      "http_status": 200,
+      "sha256": "13ba3d040a5899f4cae6848c0f5db694dc0e059a47caa767f99cb6e85a111d2b",
+      "api_code": "0",
+      "records": 3,
+      "status": "sample_retrieved",
+      "sample_timestamps": [
+        "1578009600000",
+        "1577923200000",
+        "1577836800000"
+      ]
+    },
+    {
+      "id": "okx_aapl",
+      "url": "https://www.okx.com/api/v5/market/history-candles?instId=AAPL-USDT-SWAP&bar=1Dutc&limit=3",
+      "observed_at_utc": "2026-10-20T14:05:47.144885+00:00",
+      "http_status": 200,
+      "sha256": "47abe15800a4d6a07f102666995528d57703d80ae279c5c60c260b7ad332e024",
+      "api_code": "0",
+      "records": 3,
+      "status": "sample_retrieved",
+      "sample_timestamps": [
+        "1792454400000",
+        "1792368000000",
+        "1792281600000"
+      ]
+    },
+    {
+      "id": "okx_xaapl",
+      "url": "https://www.okx.com/api/v5/market/history-candles?instId=XAAPL-USDT&bar=1Dutc&limit=3",
+      "observed_at_utc": "2026-10-20T14:05:48.092543+00:00",
+      "http_status": 200,
+      "sha256": "6241e1732ce87bbabcbac805ce3a649de7c77102c54d5e9c31073b5f173e26a0",
+      "api_code": "0",
+      "records": 3,
+      "status": "sample_retrieved",
+      "sample_timestamps": [
+        "1792454400000",
+        "1792368000000",
+        "1792281600000"
+      ]
+    },
+    {
+      "id": "okx_funding",
+      "url": "https://www.okx.com/api/v5/public/funding-rate-history?instId=BTC-USDT-SWAP&limit=3",
+      "observed_at_utc": "2026-10-20T14:05:48.298463+00:00",
+      "http_status": 200,
+      "sha256": "2e7e65dd1905eb67310bf4d5ddca46515a28866acfa39a7c877c3bf951387a22",
+      "api_code": "0",
+      "records": 3,
+      "status": "sample_retrieved",
+      "sample_fields": [
+        "formulaType",
+        "fundingRate",
+        "fundingTime",
+        "instId",
+        "instType",
+        "method",
+        "realizedRate"
+      ]
+    },
+    {
+      "id": "okx_oi",
+      "url": "https://www.okx.com/api/v5/public/open-interest?instType=SWAP&instId=BTC-USDT-SWAP",
+      "observed_at_utc": "2026-10-20T14:05:48.720348+00:00",
+      "http_status": 200,
+      "sha256": "e4506c2578a7a4096a236577283918150f14c33c90a9afb13f88ea2605c699a7",
+      "api_code": "0",
+      "records": 1,
+      "status": "sample_retrieved",
+      "sample_fields": [
+        "instId",
+        "instType",
+        "oi",
+        "oiCcy",
+        "oiUsd",
+        "ts"
+      ]
+    },
+    {
+      "id": "okx_book",
+      "url": "https://www.okx.com/api/v5/market/books?instId=BTC-USDT&sz=5",
+      "observed_at_utc": "2026-10-20T14:05:49.767785+00:00",
+      "http_status": 200,
+      "sha256": "1d4f7d9451d19ea3615aed6f94a6d7c70247f2ab82ec2fc24aa113dce24d686a",
+      "api_code": "0",
+      "records": 1,
+      "status": "sample_retrieved",
+      "sample_fields": [
+        "asks",
+        "bids",
+        "seqId",
+        "ts"
+      ]
+    },
+    {
+      "id": "okx_mark",
+      "url": "https://www.okx.com/api/v5/public/mark-price?instType=SWAP&instId=BTC-USDT-SWAP",
+      "observed_at_utc": "2026-10-20T14:05:49.860863+00:00",
+      "http_status": 200,
+      "sha256": "5afb6eb82dca792f174fa4c430a9429fa6239fff3a9ededc5bc3a257c645a41f",
+      "api_code": "0",
+      "records": 1,
+      "status": "sample_retrieved",
+      "sample_fields": [
+        "instId",
+        "instType",
+        "markPx",
+        "ts"
+      ]
+    },
+    {
+      "id": "okx_index",
+      "url": "https://www.okx.com/api/v5/market/index-tickers?instId=BTC-USDT",
+      "observed_at_utc": "2026-10-20T14:05:50.289047+00:00",
+      "http_status": 200,
+      "sha256": "cb620521e2356d010ee8126c471159936bd7cbae8ce9ac9eaa40254e426998b9",
+      "api_code": "0",
+      "records": 1,
+      "status": "sample_retrieved",
+      "sample_fields": [
+        "high24h",
+        "idxPx",
+        "instId",
+        "low24h",
+        "open24h",
+        "sodUtc0",
+        "sodUtc8",
+        "ts"
+      ]
+    },
+    {
+      "id": "binance_spot",
+      "url": "https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1d&limit=3",
+      "observed_at_utc": "2026-10-20T14:05:51.436195+00:00",
+      "http_status": 451,
+      "status": "http_error",
+      "error": "HTTP Error 451: "
+    },
+    {
+      "id": "binance_funding",
+      "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=BTCUSDT&limit=3",
+      "observed_at_utc": "2026-10-20T14:05:51.971367+00:00",
+      "http_status": 451,
+      "status": "http_error",
+      "error": "HTTP Error 451: "
+    },
+    {
+      "id": "binance_archive_checksum",
+      "url": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1d/BTCUSDT-1d-2025-01.zip.CHECKSUM",
+      "observed_at_utc": "2026-10-20T14:05:52.041980+00:00",
+      "http_status": 200,
+      "sha256": "05d0a547d855337e21458aac72e9586949f164dd8e7b5c9390832c70cf1f8b9c",
+      "checksum_text": "3a3eb1b723d944deb4dbef5ae361bbe39340a17fe987fe22e397ef03dca268d2  BTCUSDT-1d-2025-01.zip",
+      "status": "checksum_retrieved_not_archive_verified"
+    },
+    {
+      "id": "bybit_oi",
+      "url": "https://api.bybit.com/v5/market/open-interest?category=linear&symbol=BTCUSDT&intervalTime=1d&limit=3",
+      "observed_at_utc": "2026-10-20T14:05:52.912706+00:00",
+      "http_status": 403,
+      "status": "http_error",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "id": "coinmetrics",
+      "url": "https://community-api.coinmetrics.io/v4/timeseries/asset-metrics?assets=btc&metrics=PriceUSD&frequency=1d&page_size=2&start_time=2025-01-01&end_time=2025-01-03",
+      "observed_at_utc": "2026-10-20T14:05:53.437585+00:00",
+      "http_status": 200,
+      "sha256": "843f16ddc2d024b35c064faca8bbc3a38e129459eaa671b186ca1000a1cc9fee",
+      "api_code": null,
+      "records": 2,
+      "status": "sample_retrieved",
+      "sample_fields": [
+        "PriceUSD",
+        "asset",
+        "time"
+      ]
+    },
+    {
+      "id": "coinbase_daily",
+      "url": "https://api.exchange.coinbase.com/products/BTC-USD/candles?granularity=86400&start=2025-01-01&end=2025-01-03",
+      "observed_at_utc": "2026-10-20T14:06:30.299526+00:00",
+      "http_status": 200,
+      "sha256": "e873f0528530a6702e57e877e6d8038a96e0e183215f2017ccdf02ed6a848c83",
+      "api_code": null,
+      "records": 3,
+      "status": "sample_retrieved",
+      "sample_timestamps": [
+        1735862400,
+        1735776000,
+        1735689600
+      ]
+    }
+  ]
+}
