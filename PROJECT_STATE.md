@@ -286,3 +286,5 @@ ADR-0009：013独立重试数据来源，父010停在353日101661行永久保留
 代码提交6ac4e8b9af84ad6fa2cf0d28c576d1eb61365d4a，223冻结源码通过。本机恢复包artifacts/recovery/BTC-NIGHT-001-6ac4e8b9af84.tar.gz，62899799字节/0600，SHA256 4c6f44b551ea8d1251081aa4468e06eeb240b987c4259d9a11e12ba2b6e5e06e；全部成员哈希、恢复191测试、原选定逐日NAV一致。最新代码远端未核验，仅本地保存。
 
 结束实际主9%/次53%，触发<10%停止新工作。现有btc已实际应用更新为ACTIVE单次北京时间2026-10-21 20:11，并读取配置验证；首次含多余TOML字段的调用被拒，随后规范字段调用成功。保留原prompt/name/target，未新建任务。quota_wait_until=12:11Z，不是PM人工暂停。届时先实查真实额度，恢复才通过应用工具改回15min并清除等待；不能把预约回执当端到端唤醒已通过。当前无采集/研究worker，无账户操作或订单。
+
+PM最新明确人工暂停研究与续跑；btc应用PAUSED已验证，checkpoint.pm_manual_pause=true，quota_wait清空。不得额度恢复后自行唤醒。复盘入口docs/sessions/2026-10-21-pm-pause-review.md；43配置/16对照/10机制格，0研究/0Demo，本轮无新实验。

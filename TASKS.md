@@ -189,3 +189,5 @@ N-026：补全每次研究manifest的传递依赖/环境与恢复契约；不追
 | DATA-023 | 前瞻主数据版本与合约面值变化监测 | in_progress | 027/028已冻结实现，实际2GET、2master/20OI一致；研究入口强制时效/整项失效保护，191测试；长期连续性/真实漂移未验收，见BTC_MASTER_GATE_027_028.md |
 
 027/028收尾：223冻结源码、恢复191测试/原NAV通过；实际主9%触发quota等待，btc已应用确认2026-10-21 20:11单次复核。OPS-006端到端唤醒仍未通过，不能以预约成功代替。
+
+PM最新明确人工暂停研究与续跑；btc应用PAUSED已验证，checkpoint.pm_manual_pause=true，quota_wait清空。不得额度恢复后自行唤醒。复盘入口docs/sessions/2026-10-21-pm-pause-review.md；43配置/16对照/10机制格，0研究/0Demo，本轮无新实验。

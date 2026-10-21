@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-21T11:02:55.906711+00:00",
+  "updated_at": "2026-10-21T12:57:48.629643+00:00",
   "authorization": "PM 2026-10-21 requests continuous idea->research->validation loop",
   "current_experiment": "BTC-OI-FORECAST-024",
   "last_completed_experiment": "BTC-LOOP-008",
@@ -13,7 +13,7 @@
   "plan": "research/plans/BTC_RESEARCH_LOOP.md",
   "registry": "research/loop/registry.json",
   "automation_id": "btc",
-  "automation_status": "ACTIVE",
+  "automation_status": "PAUSED",
   "active_worker": null,
   "last_evidence": "research/notes/BTC_MASTER_GATE_027_028.md",
   "foreground_policy": "Continue immediately while resources permit; 15min heartbeat is recovery, not planned idle time",
@@ -21,7 +21,7 @@
   "last_process_review": "research/notes/BTC_ADAPTIVE_LOOP_REVIEW_007.md",
   "last_process_review_new_batches": 3,
   "quota_policy": "research/loop/policy.json",
-  "pm_manual_pause": false,
-  "quota_wait_until": "2026-10-21T12:11:00+00:00",
-  "quota_schedule_status": "app_update_confirmed_ACTIVE_single_wake_2026-10-21_20:11_Shanghai;end_to_end_delivery_unproven"
+  "pm_manual_pause": true,
+  "quota_wait_until": null,
+  "quota_schedule_status": "PM_manual_pause_app_confirmed_no_self_wake"
 }
