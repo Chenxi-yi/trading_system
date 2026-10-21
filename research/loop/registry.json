@@ -85,10 +85,26 @@
         "paired calendar block bootstrap7/14/30d",
         "base/stress/delay4h"
       ]
+    },
+    {
+      "id": "BTC-LOOP-036",
+      "protocol": "research/experiments/BTC-LOOP-036.json",
+      "alpha_candidates": 1,
+      "controls": 4,
+      "report": "research/reports/BTC_LOOP_036.md",
+      "result": "rejected_or_insufficient",
+      "diagnostics": [
+        "45 independent ledger reconstructions",
+        "two old C0 books exact",
+        "actual future perturbation and truncation invariant",
+        "paired utility7/14/30calendar bootstrap"
+      ],
+      "process_review": "research/notes/BTC_ADAPTIVE_LOOP_REVIEW_036.md",
+      "note": "Direction gated grid; utility metric and all controls fixed before new returns, known adaptive history, not OOS. No gate/horizon/grid parameter search."
     }
   ],
-  "cumulative_alpha_candidates": 46,
-  "cumulative_controls": 20,
+  "cumulative_alpha_candidates": 47,
+  "cumulative_controls": 24,
   "mechanism_diagnostics": [
     {
       "id": "BTC-EVENT-004",
@@ -345,6 +361,33 @@
       "controls": 0,
       "return_tests": 0,
       "status": "three_original_books_daily_NAV_exact_FIFO_identity_not_per_cell_profit"
+    },
+    {
+      "id": "BTC-GRID-CELLS-034",
+      "protocol": "research/audits/BTC-GRID-CELLS-034.json",
+      "report": "research/notes/BTC_GRID_CELLS_034.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "exact_three_grid_accounts_and_causal_cell_trace"
+    },
+    {
+      "id": "BTC-GRID-CYCLE-REVIEW-035",
+      "protocol": "research/audits/BTC-GRID-CYCLE-REVIEW-035.json",
+      "report": "research/notes/BTC_GRID_CYCLE_REVIEW_035.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "closed_and_open_counts_partition_fixed_in_new_audit_original034_preserved"
+    },
+    {
+      "id": "BTC-REGIME-METHODS-037",
+      "protocol": "research/audits/BTC-REGIME-METHODS-037.json",
+      "report": "research/notes/BTC_REGIME_METHODS_037.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "primary_scan_methods_read_contract038_frozen_not_computed"
     }
   ],
   "prospective_mechanisms": [

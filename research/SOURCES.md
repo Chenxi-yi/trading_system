@@ -37,3 +37,5 @@ P13 Hansen/Kim/Kimbrough crypto量/波动时段结构；P14 Shen/Urquhart/Wang B
 完整来源、实际阅读范围/访问失败与迁移限制见research/notes/BTC_LOOP_LITERATURE.md，未声明全部精读或复现。
 
 市场状态方向：2026-10-21重读Moreira/Muir Yale作者稿引言p1–6，非全篇复现；AQR Century网页已读。Ang/Bekaert How Regimes Affect Asset Allocation与Ang/Timmermann综述仅检索摘要，NBER403，未精读。边界与本轮用途见research/notes/BTC_REGIME_RESEARCH_029_032.md。
+
+P15 Lo/MacKinlay章2：大学扫描https://www.cis.upenn.edu/~mkearns/teaching/cis700/lo-excerpt.pdf ，037视觉核对纸面p17–26方法，非全文/表/实证复制；038仅契约未计算。笔记BTC_REGIME_METHODS_037.md。

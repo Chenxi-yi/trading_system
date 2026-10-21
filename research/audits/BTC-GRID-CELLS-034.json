@@ -1,0 +1,29 @@
+{
+  "experiment_id": "BTC-GRID-CELLS-034",
+  "created_at": "2026-10-21T13:27:26.425047+00:00",
+  "purpose": "Add per-cell/cycle provenance without changing old grid economics",
+  "parent": "BTC-GRID-ATTRIBUTION-033",
+  "original_source_sha256": "6966429abc8cb0f9404aae104d1385b90219a810f5c9a27d90e9714ee02b60c1",
+  "runs": [
+    "grid_6_2024-01-01_2025-01-01_base",
+    "grid_8_2025-01-01_2026-01-01_base",
+    "grid_8_2026-01-01_2026-07-01_base"
+  ],
+  "rules": "Exact original replay copy into new diagnostic module; only extra event records/cell IDs/reset-reason metadata, no modifying frozen source or original artifacts. No strategy branch/cost/fill/timing changes.",
+  "identity": "Require complete original economic fills and every daily NAV exactly equal, fee/turnover/exposure unchanged. One emitted trace event per actual fill; owner inventory sum matches account; cash and total realized+unrealized reconcile.",
+  "ownership": "Each buy creates net-BTC cost lot inside immutable reset:cell owner. Limit sell matches FIFO within SAME owner. Aggregate reset/terminal sales allocate sold net BTC proportionally over all owner quantities including old dust, then FIFO within owner, final residual allocated deterministically. Allocation is attribution, no additional broker fill rounding.",
+  "dust": "Never discard unclosed subminimum residual; retain old owner after reset. Completion flag only quantity <=1e-12; dust is not a certified full profitable cycle.",
+  "reset_reason": "Record at decision from then-known close/bounds/clock: initial,lower_bound,upper_bound,scheduled30d; multiple flags retained. Execution later carries fixed decision metadata. No causal claim about reset benefit from sale PnL.",
+  "outputs": [
+    "per-fill cell/cycle attribution",
+    "all reset decisions and executions",
+    "daily cash/inventory/basis/marked PnL identity",
+    "sell reason x causal reset flags aggregation",
+    "independent saved NAV and economic fill comparison",
+    "actual future-prefix perturbation check"
+  ],
+  "alpha_candidates": 0,
+  "controls": 0,
+  "return_tests": 0,
+  "limits": "Known historical diagnostic. Inherits original zero-volume and OHLC crossing/queue assumptions; no execution certification or trading authorization. No states selected by outcomes."
+}

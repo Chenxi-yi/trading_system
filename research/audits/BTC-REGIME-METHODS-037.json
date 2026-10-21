@@ -1,0 +1,12 @@
+{
+  "experiment_id": "BTC-REGIME-METHODS-037",
+  "created_at": "2026-10-21T13:52:06.813750+00:00",
+  "purpose": "Manual primary methods review, no new alpha/returns",
+  "source": "https://www.cis.upenn.edu/~mkearns/teaching/cis700/lo-excerpt.pdf",
+  "local_source": "data/literature/lo-mackinlay-chapter/source.pdf",
+  "source_sha256": "1f653ab3a69bb47d2922114d477674838ed54864b05930a7106f2c59890195ec",
+  "reading_scope": "Scanned author chapter2 paperpages17-26 methods visually read, p27 data setting browsed; not fullchapter/tables or journal-original replication",
+  "alpha_candidates": 0,
+  "controls": 0,
+  "pnl_tests": 0
+}

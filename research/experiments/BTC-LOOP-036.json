@@ -1,0 +1,80 @@
+{
+  "experiment_id": "BTC-LOOP-036",
+  "created_at": "2026-10-21T13:35:00.657582+00:00",
+  "mechanism": "Spot grid downside inventory: test an observable long-trend gate.034 informs hypothesis; adaptive exploration, not fresh OOS.",
+  "alpha_candidates": 1,
+  "controls": 4,
+  "primary": "G120_active",
+  "parameters_frozen": {
+    "grid_count": 8,
+    "grid_bounds": [
+      0.8,
+      1.2
+    ],
+    "anchor_days": 20,
+    "reset_days": 30,
+    "gate_days": 120,
+    "confirmation_days": 1,
+    "budget_fraction": 0.95
+  },
+  "gate": "Each completed UTC daily close enables iff close>=mean(last120 completed daily closes). Missing warmup disables. Active off cancels grid after decision and targets cash>=1h later. No future drawdown or smoothed labels.",
+  "candidates": [
+    {
+      "id": "G120_active",
+      "mode": "active",
+      "budget_fraction": 0.95
+    }
+  ],
+  "control_variants": [
+    {
+      "id": "C0_grid",
+      "mode": "always",
+      "budget_fraction": 0.95
+    },
+    {
+      "id": "C1_half_grid",
+      "mode": "always",
+      "budget_fraction": 0.475
+    },
+    {
+      "id": "C2_gated_hold",
+      "mode": "hold",
+      "budget_fraction": 0.95
+    },
+    {
+      "id": "C3_entry_only",
+      "mode": "entry_only",
+      "budget_fraction": 0.95
+    }
+  ],
+  "control_interpretation": "Half tests simple risk reduction; hold isolates directional exposure; entry_only gates NEW grids but keeps existing until original reset, then liquidates if off. Never select control by performance.",
+  "execution": "One cash/inventory account, original penetration/onefill percell/hour; first intent TTL12H, no zero-volume fills, risk stop overrides reset; no grid fills while pendingreset/stop. Hold5pp band enabled, all tradable residual off. All exits/reentry/reset costs. No leverage/funding.",
+  "periods": [
+    [
+      "2024-01-01",
+      "2025-01-01"
+    ],
+    [
+      "2025-01-01",
+      "2026-01-01"
+    ],
+    [
+      "2026-01-01",
+      "2026-07-01"
+    ]
+  ],
+  "costs": {
+    "base_fee_bps": 10,
+    "base_slip_bps": 5,
+    "stress_fee_bps": 20,
+    "stress_slip_bps": 10,
+    "base_lag_hours": 1,
+    "delay_hours": 4
+  },
+  "primary_metric": "Daily utility proxy r-1.5*r^2 (gamma3 research scenario, not PM risk preference or exact certainty equivalent); G120 minus C0 and C1 on stitched2024-2025; paired7/14/30day calendar block bootstrap2000 seed20261021.",
+  "secondary": "All net returns/vol/drawdown/exposure/cost/turnover byperiod/scenario; C2 isolates grid vsdirection, C3 active exits; no threshold/grid/horizon search.",
+  "historical_support": "Base aggregate netpositive and drawdown<=35%; lower5% utility increment>0 vsBOTH C0/C1 for allblocks; mean utility increment positive vsboth stress/delay and known2026H1. No requirement absolute profitable everyyear. At best historical candidate, no automatic research/Demo qualification.",
+  "engineering": "C0 existing2025/2026p8 base fullfills/NAV exact absent zero-volume conflict; all45books independent ledger; synthetic cancellation/zero-volume/TTL; actualfuture perturbation/truncation. Equivalence failure stops, preserve manifest.",
+  "limits": "Inherited modeled queue/old numeric lot limits, not exactOKXbot. Gate is direction filter, not proof ofstationarity. Cross-batch adaptive trials retained.",
+  "method_audit": "Third new alpha batch since007 (008,030,036) requires process audit irrespective outcome"
+}

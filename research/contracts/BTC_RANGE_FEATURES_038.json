@@ -1,0 +1,50 @@
+{
+  "contract_id": "BTC-RANGE-FEATURES-038",
+  "created_at": "2026-10-21T13:52:06.813750+00:00",
+  "stage": "planned_not_implemented_or_computed",
+  "purpose": "Past-only serial-dependence/direction/volatility descriptors, not trading states",
+  "data": "BTC-USDT spot1H aggregate completeUTC4H;721 contiguous completedcloses perfeature",
+  "time": "Historical final bars modeled availableat end, not certified original publication. Live requires actual available_at, no retrospective decisions.",
+  "window_returns": 720,
+  "return_definition": "r=log(close_i/close_i-1)",
+  "horizons_q": [
+    6,
+    42
+  ],
+  "estimators": {
+    "drift": "mu=mean(r1..rN)",
+    "sigma1": "sum((r-mu)^2)/(N-1)",
+    "m": "q*(N-q+1)*(1-q/N)",
+    "sigmaq": "sum((overlapping_q_return-q*mu)^2)/m",
+    "VR": "sigmaq/sigma1; explicit nullstatus zero_variance if sigma1<=1e-24",
+    "robust_delta_j": "N*sum_{t=j+1..N}(e_t^2*e_{t-j}^2)/(sum(e_t^2))^2; e=r-mu",
+    "robust_theta": "sum_{j=1..q-1}([2*(q-j)/q]^2*delta_j)",
+    "z": "sqrt(N)*(VR-1)/sqrt(theta); explicit nullstatus for nonfinite/nonpositive theta",
+    "direction": "sum last360 4H logreturns (60d), no learned cut",
+    "volatility": "sample stdev last1204Hreturns *sqrt(6*365),20d"
+  },
+  "missing": "Reject gaps/duplicates/nonfinite/nonpositive/unfinished prices; do not fill zeros. Constant prices give undefined VR, not a trading signal.",
+  "simulation": {
+    "paths_per_process": 1000,
+    "N": 720,
+    "seed": 20261021,
+    "burnin": 1000,
+    "cases": [
+      "iidGaussian std.02",
+      "GARCH omega.000004 alpha.08 beta.90 Gaussian",
+      "AR1rho+.2 Gaussian innovations std.02",
+      "AR1rho-.2 Gaussian innovations std.02"
+    ],
+    "checks": "Report fixed VR distributions and abs(z)>1.96 rates perq/process; never tune q/N/cut byoutcomes. IID/GARCH uncorrelated nullcalibration; ARpower diagnostic only. Independent simulated paths not independent market windows."
+  },
+  "historical_output": "Coverage/distribution of2021-2026H1 pricefeatures and explicit last archived timestamp only. No strategy returns, conditional PnL, profitable-state fitting or threshold selection.",
+  "limits": [
+    "VR<1 is weighted serial dependence, not price stationarity/equilibrium bounds or tradable alpha",
+    "q42 has only~17 nonoverlapping spans in720increments, not679independent observations",
+    "Finite samples/heavy tails/instability mayinvalidate asymptotic z; no automatic significance gate",
+    "Known adaptive history; never restore unknown OOS byrenaming"
+  ],
+  "alpha_candidates": 0,
+  "controls": 0,
+  "return_tests": 0
+}
