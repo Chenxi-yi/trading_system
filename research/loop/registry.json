@@ -184,6 +184,24 @@
       "controls": 0,
       "return_tests": 0,
       "status": "actual_first_GET_HTTP451_persistent_block_no_market_data_no_bypass"
+    },
+    {
+      "id": "BTC-OKX-UNITS-017",
+      "protocol": "research/audits/BTC-OKX-UNITS-017.json",
+      "report": "research/notes/BTC_OKX_UNITS_017_018.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "first_GET_HTTPError_status_not_recorded_no_retry_no_samples"
+    },
+    {
+      "id": "BTC-OKX-SAVED-UNITS-018",
+      "protocol": "research/audits/BTC-OKX-SAVED-UNITS-018.json",
+      "report": "research/notes/BTC_OKX_UNITS_017_018.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "offline_saved_spec_300candle_and_OI_conversions_consistent_no_vintage_certification"
     }
   ]
 }

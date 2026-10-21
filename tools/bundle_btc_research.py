@@ -36,12 +36,15 @@ PUBLIC_ROOTS = (
     'artifacts/BTC-DERIVATIVES-COVERAGE-014',
     'artifacts/BTC-METRICS-CONTRACT-015',
     'artifacts/BTC-BINANCE-FORWARD-016',
+    'artifacts/BTC-OKX-UNITS-017',
+    'artifacts/BTC-OKX-SAVED-UNITS-018',
     'data/binance-metrics/BTCUSDT-2023-2026-retry-v2',
     'data/binance-metrics/BTCUSDT-2023-2026',
     'data/market-audit/btc-long-index-20261021',
     'data/forward-observation/BTC',
     'data/forward-pressure/BTC',
     'data/forward-binance/BTC',
+    'data/market-audit/20261020T154059431686Z/instrumentsSWAP.json',
 )
 
 
@@ -53,7 +56,11 @@ def main():
     if any(p.name == 'config.toml' or 'config/local' in str(p.relative_to(ROOT)) or p.name.startswith('.env') and p.name != '.env.example' for p in paths):
         raise ValueError('Private configuration tracked; refusing to package')
     for name in PUBLIC_ROOTS:
-        paths.extend(p for p in (ROOT / name).rglob('*') if p.is_file() and p.suffix not in ('.lock', '.tmp'))
+        public = ROOT / name
+        if public.is_file():
+            paths.append(public)
+        else:
+            paths.extend(p for p in public.rglob('*') if p.is_file() and p.suffix not in ('.lock', '.tmp'))
     paths = sorted(set(paths))
     if any(p.is_symlink() or not p.is_file() for p in paths):
         raise ValueError('Only regular files are allowed')

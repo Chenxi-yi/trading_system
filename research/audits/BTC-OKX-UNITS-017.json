@@ -1,0 +1,31 @@
+{
+  "id": "BTC-OKX-UNITS-017",
+  "registered_at": "2026-10-21T09:38:25.762159+00:00",
+  "type": "same_venue_unit_time_quality_only",
+  "symbol": "BTC-USDT-SWAP",
+  "maximum_market_GETs": 4,
+  "jobs": [
+    "time",
+    "instruments_SWAP",
+    "open_interest_BTC_USDT_SWAP",
+    "trade_candles_15m_limit4"
+  ],
+  "sources": [
+    "https://www.okx.com/docs-v5/en/",
+    "https://app.okx.com/docs-v5/en"
+  ],
+  "hypothesis": "Current linear BTC contract oi/oiCcy and candle vol/volCcy may share an explicit contract-to-base unit; actual equality alone cannot certify sidedness or vintage. Test fixed conversions without choosing price returns.",
+  "sampling": "Current public response only; first snapshot, no date selection or pagination; existing raw OI retained but no volume-based alpha",
+  "bounds": "Dedicated fixed-host whitelisted unsigned GET client; four actual HTTP attempts max, no retries/redirects/auth;4MB,10s per request; stop on error; no change to immutable old PublicClient",
+  "checks": [
+    "instrument exact match/current linear settlement",
+    "OI quantity equals contracts times current ctVal only if ctValCcy BTC and ctMult interpretation clear",
+    "complete 15m candle volCcy/vol conversion with Decimal; tolerance fixed1e-8BTC",
+    "first-observed timestamps vs event label, incomplete bars excluded",
+    "sidedness and period-boundary mismatch remain uncertified; no absolute dOI-volume inequality claim from asynchronous sparse snapshots"
+  ],
+  "alpha_candidates": 0,
+  "controls": 0,
+  "return_tests": 0,
+  "pre_execution_revision": "Code inspection found old PublicClient has hidden retries. Before any017HTTP or source freeze, use separate bounded transport; budget unchanged."
+}

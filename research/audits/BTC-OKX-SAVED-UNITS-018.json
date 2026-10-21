@@ -1,0 +1,18 @@
+{
+  "id": "BTC-OKX-SAVED-UNITS-018",
+  "registered_at": "2026-10-21T09:43:37.599478+00:00",
+  "type": "offline_existing_public_snapshot_diagnostic",
+  "inputs": {
+    "data/market-audit/20261020T154059431686Z/instrumentsSWAP.json": "e56778c0c9838db63cd8eb3e1895a92d90ad2f85183100f3ff0c82a190fa1ada",
+    "data/forward-observation/BTC/1792575000000/oi.raw.json": "54057752f40da73600912cbd00555a09649167f05851034a287b3ee1eebf5cf5",
+    "data/market-audit/btc-overnight-20261021/raw/02133f112003471c9e0b1938cfe1e077.json": "044e5ece513020091a4c9151569ac1a96b8a571c67e89c6e323a1f278a3fc21f"
+  },
+  "selection": "Already existing latest OI at registration; earliest collected metadata; first lexical BTC-USDT-SWAP trade raw page in original archive, selected by URL without reading quantities or returns",
+  "new_HTTP_attempts": 0,
+  "assumptions": "Use saved ctVal with ctMult=1 only; metadata time is not event-time historic contract specification. Check each quantity in saved page without date/price filters. Exclude incomplete; no OI-change/volume inequality, no PnL or alpha.",
+  "tolerance_btc": "0.00000001",
+  "historical_units_certified": false,
+  "alpha_candidates": 0,
+  "controls": 0,
+  "return_tests": 0
+}
