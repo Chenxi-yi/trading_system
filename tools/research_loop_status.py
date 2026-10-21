@@ -35,12 +35,23 @@ def main():
                 if hashlib.sha256(saved.read_bytes()).hexdigest()!=digest:
                     raise ValueError('Frozen source snapshot mismatch')
                 snapshots+=1
+    diagnostic_cells=0
+    for item in registry.get('mechanism_diagnostics',[]):
+        manifest=json.loads((ROOT/'artifacts'/item['id']/'manifest.json').read_text())
+        if hashlib.sha256((ROOT/item['protocol']).read_bytes()).hexdigest()!=manifest['protocol_sha256']:
+            raise ValueError('Frozen diagnostic protocol modified')
+        for name,digest in manifest['code'].items():
+            saved=ROOT/'artifacts'/item['id']/'source_snapshot'/name
+            if hashlib.sha256(saved.read_bytes()).hexdigest()!=digest:
+                raise ValueError('Frozen diagnostic source snapshot mismatch')
+            snapshots+=1
+        diagnostic_cells+=item['cells']
     daily_limit=policy['maximum_new_batches_per_shanghai_day']
     if daily_limit is not None and launched_today>daily_limit:
         raise ValueError('Daily search budget exceeded')
     print(json.dumps(dict(cumulative_alpha_candidates=registry['cumulative_alpha_candidates'],cumulative_controls=registry['cumulative_controls'],
                           todays_new_batches=launched_today,remaining_new_batches_today=daily_limit-launched_today if daily_limit is not None else 'no_clock_pacing_limit; batch/review/evidence_limits_still_apply',
-                          frozen_source_files_verified=snapshots,next_action=checkpoint['next_action'],research_qualified=checkpoint['research_qualified'],demo_ready=checkpoint['demo_ready']),ensure_ascii=False,indent=2))
+                          frozen_source_files_verified=snapshots,registered_mechanism_cells=diagnostic_cells,next_action=checkpoint['next_action'],research_qualified=checkpoint['research_qualified'],demo_ready=checkpoint['demo_ready']),ensure_ascii=False,indent=2))
 
 
 if __name__=='__main__':main()

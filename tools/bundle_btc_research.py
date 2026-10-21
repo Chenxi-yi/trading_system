@@ -23,6 +23,7 @@ PUBLIC_ROOTS = (
     'artifacts/BTC-NIGHT-001-PERP',
     'artifacts/BTC-LOOP-002',
     'artifacts/BTC-LOOP-003',
+    'artifacts/BTC-EVENT-004',
     'data/forward-observation/BTC',
 )
 

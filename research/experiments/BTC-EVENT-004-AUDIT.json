@@ -1,0 +1,18 @@
+{
+  "id": "BTC-EVENT-004-AUDIT",
+  "registered_at": "2026-10-21T02:11:13.965451+00:00",
+  "parent": "BTC-EVENT-004",
+  "results_already_seen": true,
+  "scope": "Follow-up descriptive concentration/failure audit, not new untouched confirmation or strategy search",
+  "cells": "All6 original cells, no reselection",
+  "metrics": [
+    "median",
+    "worst_event",
+    "best_event",
+    "mean_after_removing_best5_events",
+    "fraction_of_positive_event_payoff_from_best5",
+    "median_standardized_shock"
+  ],
+  "new_alpha_candidates": 0,
+  "selection": "No threshold/exit/risk changes. Tail removal diagnostic only, not implementable ex-ante policy"
+}

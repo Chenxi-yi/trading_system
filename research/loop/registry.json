@@ -44,5 +44,23 @@
     }
   ],
   "cumulative_alpha_candidates": 36,
-  "cumulative_controls": 10
+  "cumulative_controls": 10,
+  "mechanism_diagnostics": [
+    {
+      "id": "BTC-EVENT-004",
+      "protocol": "research/experiments/BTC-EVENT-004.json",
+      "report": "research/reports/BTC_EVENT_004.md",
+      "cells": 6,
+      "alpha_candidates": 0,
+      "controls": 0,
+      "post_result_audit": "research/experiments/BTC-EVENT-004-AUDIT.json",
+      "status": "insufficient_for_strategy_promotion",
+      "known_adaptive_history": true,
+      "primary_comparisons": 1,
+      "secondary_cells": 5,
+      "post_hoc_audit_metrics_per_cell": 6,
+      "post_hoc_audit_cells": 6,
+      "selection_note": "All exploratory dimensions retained. These are descriptive diagnostics, not independent effective trials or strategy candidates."
+    }
+  ]
 }

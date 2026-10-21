@@ -53,7 +53,7 @@ python3.11 tools/okx_demo_audit.py
 python3.11 -m tools.okx_capabilities
 python3.11 tools/okx_market_audit.py --page-budget 120
 
-离线测试覆盖教学算例及审计器只读/脱敏/模拟环境控制；实际脚本检查 Demo REST 能力与无签名公开市场历史，均为 GET；共 79 项离线测试。
+离线测试覆盖教学算例及审计器只读/脱敏/模拟环境控制；实际脚本检查 Demo REST 能力与无签名公开市场历史，均为 GET；共 85 项离线测试。
 数据契约见 docs/DATA_CONTRACT.md；覆盖与研究入口见 docs/workpackages/W2.md。本夜已获PM批准，冻结实验 research/experiments/BTC-NIGHT-001.json；先读本夜最新交接，保护封存历史样本。
 生产模块建立时再加入对应的数值、时间因果、账本和故障测试。
 
@@ -76,3 +76,6 @@ PM要求资源可用立即推进，不等定时；取消Agent自设每日2批节
 btc为15分钟中断恢复保险；前台顺序继续有意义研究/数据/工程，不能把ACTIVE说成在计算。
 当前36alpha+10对照，79测试；最新交接2026-10-21-foreground-loop003.md。
 下一步量价事件诊断/公开前瞻观测，累计登记与三批方法审计保留；无资金操作授权。
+
+最新恢复交接2026-10-21-event004.md；004六格365事件机制诊断已完成，不新增alpha配置（仍36+10），85测试。
+主24h比较不确定，高量72h不能凭均值晋级；下一步匹配机制对照，保持原历史已知属性。

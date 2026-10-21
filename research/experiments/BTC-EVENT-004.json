@@ -1,0 +1,42 @@
+{
+  "experiment_id": "BTC-EVENT-004",
+  "type": "mechanism_diagnostic_not_strategy_search",
+  "registered_at": "2026-10-21T02:07:40.406873+00:00",
+  "motivation": "After three failed price-only cohorts, distinguish volume-conditioned temporary selling pressure from continuation; do not tune a trading strategy to these cells",
+  "historical_status": "All dates known/adaptive; exploratory only",
+  "data": "Frozen spot1H OHLCV2020-2026 snapshot;4H aggregate from1H, no native4H source substitution",
+  "event_start": "2021-01-01",
+  "shock": "Completed4H logreturn<=-1.5*sample stdev of preceding30returns excluding event; volatility floor1e-4; currentvolume>0",
+  "seasonal_volume": "Median of8 previous observations exactly42 four-hour bars apart (same weekday and UTC4H slot), exclude current/future",
+  "volume_bins": {
+    "low": "ratio<0.75",
+    "normal": "0.75<=ratio<1.5",
+    "high": "ratio>=1.5"
+  },
+  "spacing": "Keep chronological first eligible shock, suppress following events until72h from previous event signal; no future-dependent thinning",
+  "horizons_hours": [
+    24,
+    72
+  ],
+  "execution": "Signal end+1hour hourly open entry, scheduled hourly open exit24/72h later; missing/zero-volume execution label unavailable rather than fill; no actual orders",
+  "costs": {
+    "base_fee_bps": 10,
+    "base_slip_bps": 5,
+    "stress_fee_bps": 20,
+    "stress_slip_bps": 10
+  },
+  "cells": 6,
+  "primary_comparison": "High-volume minus normal-volume mean net24h return; descriptive/confounded, not causal identification or alpha",
+  "uncertainty": "Joint circular calendar-day block bootstrap, blocks14/30d,2000reps,seed20261021; resample date sums/counts identically across6cells, retain non-event days; pointwise5/95 bands and simultaneous max-standardized-deviation95 bands reported as exploratory",
+  "minimum_events_per_cell": 30,
+  "subperiods": [
+    "2021-2023",
+    "2024-2025",
+    "2026-known"
+  ],
+  "selection": "No threshold/horizon/bin reselection. All6cells, costs, subperiods, invalid/missing labels and primarydifference retained, no trading candidate promotion",
+  "alpha_candidates": 0,
+  "controls": 0,
+  "diagnostic_hypothesis_cells": 6,
+  "stop_policy": "No count as qualified strategy; future candidate requires separate preregistration and genuinely unknown data"
+}

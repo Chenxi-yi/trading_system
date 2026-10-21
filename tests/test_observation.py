@@ -1,4 +1,5 @@
 import json
+import hashlib
 from pathlib import Path
 import sys
 import unittest
@@ -8,7 +9,9 @@ from miniquant.data.okx_public import DataError
 
 
 class ObservationTests(unittest.TestCase):
-    def envelope(self,row):return dict(body_text=json.dumps(dict(code='0',data=[row])),ingested_at_ms=100000,body_sha256='fixture')
+    def envelope(self,row):
+        body=json.dumps(dict(code='0',data=[row]))
+        return dict(body_text=body,ingested_at_ms=100000,body_sha256=hashlib.sha256(body.encode()).hexdigest())
     def test_availability_is_observation_not_source_timestamp(self):
         x=normalize_observation('open_interest',self.envelope(dict(ts='99000',instId='BTC-USDT-SWAP',oi='10',oiCcy='.1',oiUsd='8000')),'BTC-USDT-SWAP')
         self.assertNotEqual(x['event_time'],x['available_at']);self.assertEqual(x['available_at'],x['ingested_at']);self.assertTrue(x['fresh'])
@@ -21,3 +24,9 @@ class ObservationTests(unittest.TestCase):
     def test_negative_oi_or_wrong_instrument_rejected(self):
         for inst,oi in [('BTC-USDT-SWAP','-1'),('OTHER','1')]:
             with self.assertRaises(DataError):normalize_observation('open_interest',self.envelope(dict(ts='99000',instId=inst,oi=oi,oiCcy='1',oiUsd='1')),'BTC-USDT-SWAP')
+
+    def test_tampered_raw_body_rejected_before_normalization(self):
+        envelope=self.envelope(dict(ts='99000',instId='BTC-USDT-SWAP',oi='10',oiCcy='.1',oiUsd='8000'))
+        envelope['body_text']+=' '
+        with self.assertRaisesRegex(DataError,'snapshot_hash_mismatch'):
+            normalize_observation('open_interest',envelope,'BTC-USDT-SWAP')

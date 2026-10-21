@@ -45,13 +45,13 @@ python3.11 tools/okx_market_audit.py --page-budget 120
 审计器固定读取根目录已忽略的 config.toml 中 profiles.demo，不使用 default_profile。
 仅向 Global 官方域名发出模拟环境 GET 请求，不下单、不跟随重定向；报告在 ignored runtime/。
 最近结果：14 项 GET 检查成功，六个 crypto USDT 现货/永续产品可见且费用/单位已读；四个股票样例未返回。
-详见 docs/ACCOUNT_CAPABILITIES.md 与 docs/workpackages/W1_REVIEW.md。79 项统一离线测试通过；WS、真实交易链路和账户资金/库存保护尚未验收。
+详见 docs/ACCOUNT_CAPABILITIES.md 与 docs/workpackages/W1_REVIEW.md。85 项统一离线测试通过；WS、真实交易链路和账户资金/库存保护尚未验收。
 
 生产代码将按架构文档中的职责逐步建立，不以空目录和未实现接口冒充完成的系统。
 阶段推进以验收证据为准，不以日历日期为准。
 
 首轮通宵结果：[BTC-NIGHT-001 报告](research/reports/BTC_OVERNIGHT_2026-10-21.md)。
-当前79项测试通过。研究测试包含numpy，可使用Python3.11环境安装可选依赖 `pip install -e ".[research]"`；
+当前85项测试通过。研究测试包含numpy，可使用Python3.11环境安装可选依赖 `pip install -e ".[research]"`；
 已下载数据和研究缓存不在Git内，重现需对应manifest数据；报告不表示Demo或实盘就绪。
 
 本机paper预算与订单故障语义见[ADR-0005](docs/decisions/0005-local-paper-order-journal.md)。
@@ -59,6 +59,8 @@ python3.11 tools/okx_market_audit.py --page-budget 120
 
 持续研究循环已获PM授权并启动：[研究循环计划](research/plans/BTC_RESEARCH_LOOP.md)、
 [第二批结果](research/reports/BTC_LOOP_002.md)、[论文与失败机制](research/notes/BTC_LOOP_LITERATURE.md)。
-当前统一79测试，累计36alpha候选+10固定对照，仍无研究/Demo达标者；后续由同对话定时续跑推进。
+当前统一85测试，累计36alpha候选+10固定对照，仍无研究/Demo达标者；后续由同对话定时续跑推进。
 
 当前按ADR-0007前台立即推进，15分钟定时只作中断恢复；第三批见[实际永续结果](research/reports/BTC_LOOP_003.md)。
+
+量价机制诊断：[BTC-EVENT-004](research/reports/BTC_EVENT_004.md)，6格365事件，仍无准入；85测试。

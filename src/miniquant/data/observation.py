@@ -1,9 +1,12 @@
 """Normalize actually observed public snapshots, with conservative availability."""
+import hashlib
 import json
 from miniquant.data.okx_public import DataError,number,integer,utc
 
 
 def normalize_observation(kind,envelope,inst_id):
+    if hashlib.sha256(envelope['body_text'].encode('utf-8')).hexdigest()!=envelope['body_sha256']:
+        raise DataError('snapshot_hash_mismatch')
     payload=json.loads(envelope['body_text'])
     if payload.get('code')!='0' or len(payload.get('data',[]))!=1:raise DataError('snapshot_schema')
     row=payload['data'][0];ingested=envelope['ingested_at_ms'];event=integer(row['ts'])
