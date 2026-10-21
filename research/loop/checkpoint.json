@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-21T03:56:54.730525+00:00",
+  "updated_at": "2026-10-21T03:57:35.975043+00:00",
   "authorization": "PM 2026-10-21 requests continuous idea->research->validation loop",
   "current_experiment": "BTC-DERIVATIVES-COLLECT-010",
   "last_completed_experiment": "BTC-LOOP-008",
-  "next_action": "Quota wait proposed14:35Shanghai, scheduler confirmation pending. At wake actual get_usage_limits + gate; if recovered and PM not paused restore15min using app tool and clear quota_wait.010 cumulative150days/43200rows; continue frozen<=100GET chunks with immutable logs/invocation snapshots; no PnL.",
+  "next_action": "Quota wait14:35Shanghai confirmed by app update and persisted config. At wake actual get_usage_limits + gate; if recovered and PM not paused restore15min using app tool and clear quota_wait.010 cumulative150days/43200rows; continue frozen<=100GET chunks with immutable logs/invocation snapshots; no PnL.",
   "known_history": "All saved historical BTC data through2026-10 is development/adaptive challenge, not fresh OOS",
   "required_independent_evidence": "Unseen future observations bound to frozen rules/code and actual availability/execution times",
   "research_qualified": 0,
@@ -23,5 +23,5 @@
   "quota_policy": "research/loop/policy.json",
   "pm_manual_pause": false,
   "quota_wait_until": "2026-10-21T14:35:00+08:00",
-  "quota_schedule_status": "pending_app_update"
+  "quota_schedule_status": "app_update_confirmed_ACTIVE_one_off"
 }
