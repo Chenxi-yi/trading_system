@@ -41,3 +41,5 @@ invocation-0003再完成100GET，累计100日/28800行（2023-01-01至04-10）�
 最终恢复进展：0006完成100GET，0007完成44GET后URLError，累计240日/69120行（2023-01-01..08-28），余1129日，0不完整网格。缺失sum_toptrader_long_short_ratio=2、count_toptrader_long_short_ratio=10、count_long_short_ratio=1。实际下一重试 2026-10-21T15:33:19.632580+08:00，不得提前重复采集。0006/0007快照和日志均保留。共享额度一次返回非JSON导致编排安全停止，未启动下一段；一次有限真实复核恢复93%/66%。原始账户回包不保存。当前无worker，网络退避不冒充额度等待，15min保险已恢复。
 
 010 invocation0008累计290日/83517行，待采1079日；缺失{"sum_toptrader_long_short_ratio": 2, "count_toptrader_long_short_ratio": 10, "count_long_short_ratio": 1}；last_error=null。独立快照/原始失败保留；无PnL/可得性认证。
+
+010 invocation0009累计320日/92157行，待采1049日；缺失{"sum_toptrader_long_short_ratio": 3, "count_toptrader_long_short_ratio": 11, "count_long_short_ratio": 2}；last_error={"day": "2023-11-17", "error_type": "URLError"}。独立快照/原始失败保留；无PnL/可得性认证。

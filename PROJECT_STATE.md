@@ -106,3 +106,5 @@ PM已明确解除人工暂停并批准额度调度，btc经应用工具确认为
 07:28UTC保险heartbeat已实际送达并进入本对话，证明恢复后的一个触发可用，不能反推14:35一次唤醒成功。主额度实查91%/次66%。网络退避中补OI/成交量自洽论文方法阅读，DATA-015先登记依赖，不新增alpha。
 
 010 invocation0008累计290日/83517行，待采1079日；缺失{"sum_toptrader_long_short_ratio": 2, "count_toptrader_long_short_ratio": 10, "count_long_short_ratio": 1}；last_error=null。独立快照/原始失败保留；无PnL/可得性认证。
+
+010 invocation0009累计320日/92157行，待采1049日；缺失{"sum_toptrader_long_short_ratio": 3, "count_toptrader_long_short_ratio": 11, "count_long_short_ratio": 2}；last_error={"day": "2023-11-17", "error_type": "URLError"}。独立快照/原始失败保留；无PnL/可得性认证。
