@@ -147,3 +147,5 @@ N-026：补全每次研究manifest的传递依赖/环境与恢复契约；不追
 | DATA-011 | 压力变量真实首次观测 | in_progress | 首个独立funding/premium桶2项成功且fresh，真实HTTP接收时间/哈希/来源快照；后续每次恢复运行observe_btc_pressure.py，不是策略前瞻PnL |
 
 | LOOP-012 | 突破失败/临时价格冲击的机制审查 | backlog | 独立文献与反驳预测优先；不可仅将失败趋势反向。实际永续+funding、延续对照、先冻结小批；不足则转数据/执行工程 |
+
+| OPS-005 | PM人工暂停与额度调度讨论 | waiting_input | btc已PAUSED；不自动恢复。可读共享额度/刷新时间，低额保存与刷新后复核方案尚未启用；等PM解除人工暂停 |
