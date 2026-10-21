@@ -132,3 +132,5 @@ ADR-0009：013独立重试数据来源，父010停在353日101661行永久保留
 013 invocation0006累计652日/187648行，待采717日；transport_errors累计2，last_error=null；旧010父数据不变，无PnL/可得性认证。
 
 013 invocation0007累计702日/202046行，待采667日；transport_errors累计2，last_error=null；旧010父数据不变，无PnL/可得性认证。
+
+013 invocation0008累计751日/216158行，待采618日；transport_errors累计4，last_error=null；旧010父数据不变，无PnL/可得性认证。
