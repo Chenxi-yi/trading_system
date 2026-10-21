@@ -52,6 +52,7 @@ PUBLIC_ROOTS = (
     'artifacts/BTC-LOOP-030',
     'artifacts/BTC-STATE-COVERAGE-031',
     'artifacts/BTC-REGIME-VERIFY-032',
+    'artifacts/BTC-GRID-ATTRIBUTION-033',
     'data/instrument-master/BTC-USDT-SWAP',
     'data/binance-metrics/BTCUSDT-2023-2026-retry-v2',
     'data/binance-metrics/BTCUSDT-2023-2026',

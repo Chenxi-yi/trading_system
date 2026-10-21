@@ -1,0 +1,22 @@
+{
+  "experiment_id": "BTC-GRID-ATTRIBUTION-033",
+  "created_at": "2026-10-21T13:21:29.349556+00:00",
+  "purpose": "Fixed original grid ledger attribution before any new grid/state rule",
+  "runs": [
+    "grid_6_2024-01-01_2025-01-01_base",
+    "grid_8_2025-01-01_2026-01-01_base",
+    "grid_8_2026-01-01_2026-07-01_base"
+  ],
+  "method": "FIFO effective cash cost per NET received BTC, cash proceeds after sell fee; daily equity minus initial equals cumulative realized plus marked unrealized. Buy fee paid in BTC embedded in net quantity, no double fee subtraction.",
+  "limits": "Original fills omit cell_id; FIFO attribution is accounting convention, not proof of per-grid paired cycle profit. Fee/fill assumptions inherit original model. No state fitting or future winner slicing.",
+  "outputs": [
+    "whole-period PnL identity",
+    "reason-wise FIFO realization",
+    "worst daily unrealized inventory PnL",
+    "max inventory weight",
+    "counts and costs"
+  ],
+  "alpha_candidates": 0,
+  "controls": 0,
+  "return_tests": 0
+}

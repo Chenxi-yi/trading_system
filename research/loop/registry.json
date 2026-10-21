@@ -336,6 +336,15 @@
       "controls": 0,
       "return_tests": 0,
       "status": "new_transitive_checkpoint_three_exact_reproductions_no_new_hypotheses"
+    },
+    {
+      "id": "BTC-GRID-ATTRIBUTION-033",
+      "protocol": "research/audits/BTC-GRID-ATTRIBUTION-033.json",
+      "report": "research/notes/BTC_GRID_ATTRIBUTION_033.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "three_original_books_daily_NAV_exact_FIFO_identity_not_per_cell_profit"
     }
   ],
   "prospective_mechanisms": [
