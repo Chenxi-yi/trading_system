@@ -38,3 +38,20 @@ def normalize_observation(kind,envelope,inst_id):
         result['fresh']=0<=result['age_ms']<=30000
     else:raise DataError('unsupported_observation')
     return result
+
+
+def normalize_pressure_observation(kind,envelope,inst_id):
+    """Latest historical settlement/premium observed now; not publication reconstruction."""
+    if hashlib.sha256(envelope['body_text'].encode()).hexdigest()!=envelope['body_sha256']:raise DataError('snapshot_hash_mismatch')
+    payload=json.loads(envelope['body_text'])
+    if kind not in ('funding','premium') or payload.get('code')!='0' or len(payload.get('data',[]))!=1:raise DataError('pressure_snapshot_schema')
+    row=payload['data'][0]
+    if row.get('instId')!=inst_id:raise DataError('wrong_instrument')
+    event=integer(row['fundingTime'] if kind=='funding' else row['ts']);ingested=envelope['ingested_at_ms']
+    if event>ingested:raise DataError('pressure_event_not_yet_occurred')
+    if kind=='funding':
+        if row.get('realizedRate') in (None,''):raise DataError('unknown_realized_rate')
+        values=dict(realized_rate=str(number(row['realizedRate'])),formula_type=row.get('formulaType'),method=row.get('method'))
+        maxage=9*3600000
+    else:values=dict(premium=str(number(row['premium'])));maxage=180000
+    return dict(schema_version=1,venue='OKX',environment='public_market',kind=kind,inst_id=inst_id,event_time=utc(event),available_at=utc(ingested),ingested_at=utc(ingested),availability_basis='first_observed_HTTP_response; not historical first publication',source_sha256=envelope['body_sha256'],values=values,age_ms=ingested-event,fresh=ingested-event<=maxage,note='Sparse observation only; no predicted pre-settlement rate, strategy signal, order or PnL generated')

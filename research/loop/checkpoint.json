@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-21T02:38:58.770986+00:00",
+  "updated_at": "2026-10-21T02:55:57.940330+00:00",
   "authorization": "PM 2026-10-21 requests continuous idea->research->validation loop",
-  "current_experiment": "BTC-PRESSURE-DATA-006",
-  "last_completed_experiment": "BTC-MATCH-005",
-  "next_action": "Preregister small crowding-pressure overlay study on fixed cohort3 P0 actual-perpetual trend baseline: lagged settled funding, synchronized trade/index-close proxy and joint pressure; include unfiltered and fixed long-risk-reduction controls. Use independent long-index snapshot and funding-joined4107 snapshot; historical availability remains explicit assumption. No conditional PnL inspected in006. Preserve earlier results. Continue actual public observations.",
+  "current_experiment": "BTC-LOOP-007",
+  "last_completed_experiment": "BTC-LOOP-007",
+  "next_action": "Run tools/observe_btc_pressure.py in addition to required OI/books observer on every resume; retain actual first-observed times.007 completed, all3 rejected; do not retune lag/threshold or reverse direction on viewed history. Review mechanism literature and preregister failed-breakout temporary-pressure hypothesis with actual perpetual execution/funding and continuation control, only if it adds falsifiable information; otherwise advance clock/execution/risk engineering. Three-new-batch review saved.",
   "known_history": "All saved historical BTC data through2026-10 is development/adaptive challenge, not fresh OOS",
   "required_independent_evidence": "Unseen future observations bound to frozen rules/code and actual availability/execution times",
   "research_qualified": 0,
@@ -15,7 +15,7 @@
   "automation_id": "btc",
   "automation_status": "ACTIVE",
   "active_worker": null,
-  "last_evidence": "research/notes/BTC_PRESSURE_DATA_006.md",
+  "last_evidence": "research/reports/BTC_LOOP_007.md",
   "foreground_policy": "Continue immediately while resources permit; 15min heartbeat is recovery, not planned idle time",
   "last_completed_data_audit": "BTC-PRESSURE-DATA-006"
 }

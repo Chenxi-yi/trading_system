@@ -22,7 +22,7 @@ def signed_weight(closes,param):
     return score*risk
 
 
-def replay_cohort3(bars,marks,funding,param,start,end,fee_bps=5,slip_bps=5,lag_hours=4):
+def replay_cohort3(bars,marks,funding,param,start,end,fee_bps=5,slip_bps=5,lag_hours=4,target_transform=None):
     step=4*HOUR
     if lag_hours not in (4,8) or start%DAY or end%DAY or end<=start:raise ValueError('Invalid clock')
     for rows in (bars,marks):
@@ -63,6 +63,9 @@ def replay_cohort3(bars,marks,funding,param,start,end,fee_bps=5,slip_bps=5,lag_h
             daily.append(dict(ts=close,nav=nav))
             history=days[:bisect_right(ends,close)]
             target=signed_weight([d['c'] for d in history],param)
+            if target is not None and target_transform is not None:
+                target=target_transform(close,target)
+                if not math.isfinite(target) or abs(target)>.75:raise ValueError('Invalid transformed target')
             actual=account.quantity*mark['c']/nav
             if target is not None and abs(target-actual)>.05 and pending is None and not halted:
                 pending=dict(weight=target,decision_at=close,execute_at=close+lag_hours*HOUR,expires_at=close+12*HOUR)

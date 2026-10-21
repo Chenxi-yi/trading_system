@@ -1,0 +1,73 @@
+{
+  "experiment_id": "BTC-LOOP-007",
+  "created_at": "2026-10-21T02:47:08.250677+00:00",
+  "motivation": "Does crowded leveraged-long pressure identify when fixed P0 trend longs should reduce risk, beyond simply holding smaller longs?",
+  "source": "BIS Crypto carry2023 partial methods/Table8; mechanism transfer only, not perpetual/4H replication; research/notes/BTC_PRESSURE_DATA_006.md",
+  "historical_status": "All historical/adaptive, no new OOS",
+  "baseline": {
+    "horizons": [
+      20,
+      60,
+      120
+    ],
+    "risk_mode": "vol_scaled",
+    "long_only": false
+  },
+  "variants": [
+    {
+      "id": "F",
+      "mode": "funding"
+    },
+    {
+      "id": "P",
+      "mode": "premium"
+    },
+    {
+      "id": "J",
+      "mode": "joint"
+    }
+  ],
+  "primary": "P",
+  "controls": [
+    {
+      "id": "C0",
+      "mode": "none"
+    },
+    {
+      "id": "C1",
+      "mode": "half_long"
+    }
+  ],
+  "alpha_candidates": 3,
+  "controls_count": 2,
+  "pressure_rule": "At daily close only; if positive trend target and required pressure(s) strictly above max(0,past90day linear90th percentile), halve long target. Short target unchanged; no selecting winner.",
+  "funding_feature": "Last realized settlement with event+4H<=decision, age<=24H; quantile of distinct preceding events in[current_event-90days,current_event), require>=250",
+  "premium_feature": "Synchronized completed actual-perp/index close ratio-1; require end+4H<=decision and age<=24H; quantile of540 immediately preceding4H proxy observations, require exact continuity and current event>=first+90days",
+  "missing": "Only for positive target: required feature missing/stale/not warmed ->0 long; controls no pressure requirement. Record all missing/activation. No missing expected in2024 onward complete frozen inputs.",
+  "time_assumptions": "Historical available_at unknown; +4H explicit assumption, sensitivity+8H on both pressure inputs. Current daily trend-price publication follows unchanged cohort3 assumption.",
+  "execution": "Unchanged cohort3 pending-first TTL12H,5pp rebalance band,4H execution delay; zero volume no fills; actual perp/mark/funding cost, synthetic10% maintenance only",
+  "costs": "base eachside5bps fee+5bps slip; stress10+10; actual funding included",
+  "windows": {
+    "development": [
+      "2023-05-01",
+      "2024-01-01"
+    ],
+    "evaluation_years": [
+      2024,
+      2025
+    ],
+    "known_challenge": [
+      "2026-01-01",
+      "2026-07-01"
+    ]
+  },
+  "scenarios": [
+    "base",
+    "stress",
+    "delay8h",
+    "featurelag8h"
+  ],
+  "statistical_policy": "All3 alpha results, paired daily-return differences vsC0/C1, calendar block lengths7/14/30 days each2000, seed20261021; development-only3-column CSCV blocks8. No ranking selection; cumulative cross-batch search retained.",
+  "historical_screen": "Each2024/2025 positive, challenge/stress/execution-delay/feature-delay positive, WF/challenge maxDD>=-35%,>=20fills, mean bootstrap lower bounds positive, paired improvement lower bounds positive against BOTH controls, no margin breach, PBO<=.2, at least75% of3 mechanism variants positive total. Necessary screen only; independent future/engineering required for research/demo.",
+  "prohibitions": "No carry-income strategy, account access, orders, transfers or paid services"
+}

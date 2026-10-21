@@ -41,10 +41,25 @@
         "paired block bootstrap"
       ],
       "note": "Actual perpetual rates/mark; synthetic liquidation only; all historical dates known/adaptive"
+    },
+    {
+      "id": "BTC-LOOP-007",
+      "protocol": "research/experiments/BTC-LOOP-007.json",
+      "alpha_candidates": 3,
+      "controls": 2,
+      "report": "research/reports/BTC_LOOP_007.md",
+      "result": "rejected_or_insufficient",
+      "note": "Pressure overlay on fixed P0; primaryP fixed; adaptive history. Separate featurelag sensitivity; costs actual perpetual rates.",
+      "diagnostics": [
+        "50run ledger identity",
+        "3 actual-data future perturbations",
+        "feature-clock and challenge-activation descriptive audit"
+      ],
+      "process_review": "research/notes/BTC_ADAPTIVE_LOOP_REVIEW_007.md"
     }
   ],
-  "cumulative_alpha_candidates": 36,
-  "cumulative_controls": 10,
+  "cumulative_alpha_candidates": 39,
+  "cumulative_controls": 12,
   "mechanism_diagnostics": [
     {
       "id": "BTC-EVENT-004",
