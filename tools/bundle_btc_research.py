@@ -21,6 +21,7 @@ PUBLIC_ROOTS = (
     'data/funding-archive/BTC-USDT-SWAP',
     'artifacts/BTC-NIGHT-001',
     'artifacts/BTC-NIGHT-001-PERP',
+    'artifacts/BTC-LOOP-002',
 )
 
 
@@ -89,6 +90,8 @@ print('Restored selected BTC replay matches preserved daily NAV exactly')
                     archive_sha256=hashlib.sha256(target.read_bytes()).hexdigest(),
                     restored_tests=tests.stderr[-300:], restored_replay=replay.stdout.strip(),
                     local_only=True, off_device_backup=False)
+    atomic_json(out / (target.name + '.manifest.json'), manifest)
+    os.chmod(out / (target.name + '.manifest.json'), 0o600)
     atomic_json(out / 'manifest.json', manifest)
     os.chmod(out / 'manifest.json', 0o600)
     print(json.dumps({k:manifest[k] for k in ('git_head', 'archive', 'archive_bytes', 'archive_sha256', 'restored_replay', 'local_only')}, indent=2))

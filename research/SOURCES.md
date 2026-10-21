@@ -29,3 +29,9 @@
 
 - [BIS Working Paper 1087: Crypto carry](https://www.bis.org/publications/working-paper-1087-crypto-carry)：基差经济机制与风险，待全文精读/复现。
 - [OKX Spot grid FAQ](https://www.okx.com/help/spot-grid-bot-faq)：产品行为、费用与库存风险参考；产品说明不作为 alpha 实证。
+
+## 持续循环新增文献（2026-10-21）
+
+P10 Liu/Tsyvinski crypto动量与注意力；P11 Moreira/Muir波动管理及P12 Cederburg等对实施稳健性的反证；
+P13 Hansen/Kim/Kimbrough crypto量/波动时段结构；P14 Shen/Urquhart/Wang BTC日内动量。
+完整来源、实际阅读范围/访问失败与迁移限制见research/notes/BTC_LOOP_LITERATURE.md，未声明全部精读或复现。

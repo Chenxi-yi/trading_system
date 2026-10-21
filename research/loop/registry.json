@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "interpretation": "Counts track declared trials, not independent effective trials; diagnostic runs retained separately",
+  "experiments": [
+    {
+      "id": "BTC-NIGHT-001",
+      "protocol": "research/experiments/BTC-NIGHT-001.json",
+      "alpha_candidates": 20,
+      "controls": 2,
+      "report": "research/reports/BTC_OVERNIGHT_2026-10-21.md",
+      "result": "rejected_or_insufficient",
+      "diagnostics": [
+        "BTC-NIGHT-001-PERP",
+        "BTC-NIGHT-001-DELAY-AUDIT"
+      ],
+      "note": "PERP fills original4 variants, not additional4; 103 cached evaluations are overlapping windows/scenarios, not103 independent strategies"
+    },
+    {
+      "id": "BTC-LOOP-002",
+      "protocol": "research/experiments/BTC-LOOP-002.json",
+      "alpha_candidates": 8,
+      "controls": 4,
+      "report": "research/reports/BTC_LOOP_002.md",
+      "result": "rejected_or_insufficient",
+      "diagnostics": [
+        "cost stress",
+        "execution lag4h"
+      ],
+      "note": "Adaptive historical exploration; primary T0/R0 fixed before new returns"
+    }
+  ],
+  "cumulative_alpha_candidates": 28,
+  "cumulative_controls": 6
+}

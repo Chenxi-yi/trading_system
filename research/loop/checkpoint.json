@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-21T01:43:19.329208+00:00",
+  "authorization": "PM 2026-10-21 requests continuous idea->research->validation loop",
+  "current_experiment": "BTC-LOOP-002",
+  "last_completed_experiment": "BTC-LOOP-002",
+  "next_action": "Review second-cohort failed mechanisms and preregister actual-perpetual multiscale long/short vs fixed controls; implement/test real funding/mark before computing new returns",
+  "known_history": "All saved historical BTC data through2026-10 is development/adaptive challenge, not fresh OOS",
+  "required_independent_evidence": "Unseen future observations bound to frozen rules/code and actual availability/execution times",
+  "research_qualified": 0,
+  "demo_ready": 0,
+  "task_entry": "TASKS.md",
+  "plan": "research/plans/BTC_RESEARCH_LOOP.md",
+  "registry": "research/loop/registry.json",
+  "automation_id": "btc",
+  "automation_status": "ACTIVE",
+  "active_worker": null,
+  "last_evidence": "research/reports/BTC_LOOP_002.md"
+}

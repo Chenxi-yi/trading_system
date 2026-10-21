@@ -53,7 +53,7 @@ python3.11 tools/okx_demo_audit.py
 python3.11 -m tools.okx_capabilities
 python3.11 tools/okx_market_audit.py --page-budget 120
 
-离线测试覆盖教学算例及审计器只读/脱敏/模拟环境控制；实际脚本检查 Demo REST 能力与无签名公开市场历史，均为 GET；共 61 项离线测试。
+离线测试覆盖教学算例及审计器只读/脱敏/模拟环境控制；实际脚本检查 Demo REST 能力与无签名公开市场历史，均为 GET；共 68 项离线测试。
 数据契约见 docs/DATA_CONTRACT.md；覆盖与研究入口见 docs/workpackages/W2.md。本夜已获PM批准，冻结实验 research/experiments/BTC-NIGHT-001.json；先读本夜最新交接，保护封存历史样本。
 生产模块建立时再加入对应的数值、时间因果、账本和故障测试。
 
@@ -61,3 +61,11 @@ python3.11 tools/okx_market_audit.py --page-budget 120
 历史研究全门槛0通过、Demo准入0；禁止凑5个修改已访问样本或超预算搜索。
 固定原WF参数的延迟诊断与paper工程不改变原结论；原runner指纹拒绝是保护，不删除manifest绕过。
 worker已完成；恢复时仍先检查进程与锁，避免重复采集/写入；本夜heartbeat关闭状态见最新交接。
+
+## 2026-10-21持续循环新授权
+
+PM已明确要求失败后继续提出新机制并研究，见ADR-0006和research/plans/BTC_RESEARCH_LOOP.md。
+旧20配置预算/结果不改；允许独立冻结后续批次，当前累计28alpha+6固定对照、68测试。
+最新恢复入口docs/sessions/2026-10-21-research-loop.md与research/loop/checkpoint.json；先运行tools/research_loop_status.py。
+btc现每4小时ACTIVE；单次最多1批、每天最多2新批，每批8alpha+4对照，每3批做方法审计。
+所有已看历史只作适应性探索，不以累计搜索/PBO冒充独立新OOS；无交易/新增付费授权。

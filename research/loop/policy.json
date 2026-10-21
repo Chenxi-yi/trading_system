@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "maximum_alpha_candidates_per_batch": 8,
+  "maximum_fixed_controls_per_batch": 4,
+  "maximum_new_batches_per_shanghai_day": 2,
+  "maximum_batches_per_heartbeat": 1,
+  "process_review_every_new_batches": 3,
+  "automatic_exchange_orders": false,
+  "paid_services": false,
+  "stop_search_when": "Research and engineering gates satisfied: pause scheduled search, notify PM with concrete demo proposal; no live authorization",
+  "historical_claim": "Historical adaptation cannot become new independent OOS by renaming a split",
+  "notification": "Quiet for unchanged/nonactionable state; notify meaningful discoveries, completion, operational failures or PM-required input"
+}
