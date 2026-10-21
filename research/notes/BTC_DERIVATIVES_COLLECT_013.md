@@ -7,3 +7,5 @@
 当前0001实际运行中，未证明真实重试成功；多天数据完整不等于历史单位/available_at认证。alpha43/固定对照16、研究0/Demo0不变，无PnL或订单/费用。
 
 013 invocation0001累计402日/115773行，待采967日；transport_errors累计1，last_error=null；旧010父数据不变，无PnL/可得性认证。
+
+013 invocation0002累计452日/130048行，待采917日；transport_errors累计1，last_error=null；旧010父数据不变，无PnL/可得性认证。
