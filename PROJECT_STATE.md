@@ -96,3 +96,7 @@ PM已明确解除人工暂停并批准额度调度，btc经应用工具确认为
 011新增独立完整性复核：337raw/168完成日重新解析一致，123测试，4源码血缘；不改变010采集源码。0005新增18日后URLError，累计168日/48384行，下一重试以data checkpoint为准。14:30–14:39应用日志有连接超时，属调度故障线索，不足以确证唯一原因。
 
 010 invocation0006: cumulative 218 days/62784 rows; pending 1151; missing {"sum_toptrader_long_short_ratio": 1, "count_toptrader_long_short_ratio": 9}; last_error null. No publication/unit certification or PnL.
+
+010 invocation0007: cumulative 240 days/69120 rows; pending 1129; missing {"sum_toptrader_long_short_ratio": 2, "count_toptrader_long_short_ratio": 10, "count_long_short_ratio": 1}; last_error {"day": "2023-08-29", "error_type": "URLError"}. No publication/unit certification or PnL.
+
+最终恢复进展：0006完成100GET，0007完成44GET后URLError，累计240日/69120行（2023-01-01..08-28），余1129日，0不完整网格。缺失sum_toptrader_long_short_ratio=2、count_toptrader_long_short_ratio=10、count_long_short_ratio=1。实际下一重试 2026-10-21T15:33:19.632580+08:00，不得提前重复采集。0006/0007快照和日志均保留。共享额度一次返回非JSON导致编排安全停止，未启动下一段；一次有限真实复核恢复93%/66%。原始账户回包不保存。当前无worker，网络退避不冒充额度等待，15min保险已恢复。
