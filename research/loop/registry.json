@@ -61,6 +61,17 @@
       "post_hoc_audit_metrics_per_cell": 6,
       "post_hoc_audit_cells": 6,
       "selection_note": "All exploratory dimensions retained. These are descriptive diagnostics, not independent effective trials or strategy candidates."
+    },
+    {
+      "id": "BTC-MATCH-005",
+      "protocol": "research/experiments/BTC-MATCH-005.json",
+      "report": "research/reports/BTC_MATCH_005.md",
+      "cells": 4,
+      "alpha_candidates": 0,
+      "controls": 0,
+      "status": "insufficient_for_strategy_promotion",
+      "known_adaptive_history": true,
+      "note": "Four fixed descriptive comparisons; matched normal shocks and non-severity-matched ordinary declines at24/72h. Donor reuse retained; no iid significance claim."
     }
   ]
 }

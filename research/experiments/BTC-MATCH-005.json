@@ -1,0 +1,33 @@
+{
+  "experiment_id": "BTC-MATCH-005",
+  "registered_at": "2026-10-21T02:21:28.008858+00:00",
+  "type": "adaptive_descriptive_matched_mechanism_diagnostic",
+  "motivation": "EVENT004 high-volume shocks had larger standardized declines; test severity/state confounding before proposing alpha",
+  "historical_status": "All data known/adaptive; no causal identification, fresh OOS or strategy qualification",
+  "treated": "All high-volume shocks retained in immutable BTC-EVENT-004 events.json",
+  "shock_control": "Normal-volume shocks retained in same frozen event set",
+  "ordinary_control": "Completed4H negative return in [-1.5,-0.5) prior30 sigma, normal volume ratio[.75,1.5), chronological first eligible event with72h cooldown, same prior8week seasonal volume normalization",
+  "features": "Prior30 four-hour return sample sigma excluding event; standardized current shock; prior180 four-hour log return excluding event normalized by sigma*sqrt(180)",
+  "matching": {
+    "donor_age_days": 365,
+    "maturity_hours": 73,
+    "volatility_ratio_max": 2,
+    "trend_z_caliper": 1,
+    "trend_sign_equal": true,
+    "shock_severity_caliper": 0.5,
+    "ordinary_severity_matched": false,
+    "distance": "sum normalized absolute log sigma ratio and trend z difference; shock controls additionally standardized severity difference/.5",
+    "selection": "Nearest eligible preceding donor; ties newest; reuse permitted and disclosed; no future returns/label availability used in matching"
+  },
+  "horizons_hours": [
+    24,
+    72
+  ],
+  "costs": "Unchanged EVENT004 base10bps fee+5bps slip each side, stress20+10",
+  "comparisons": 4,
+  "alpha_candidates": 0,
+  "controls": 0,
+  "uncertainty": "Descriptive paired means/medians and reuse counts only; no iid pair significance or bootstrap claim because reused donors link distant dates",
+  "report": "All four comparisons, unmatched/missing/unique donors/max reuse, feature balance and subperiods; no re-tuning or winner promotion",
+  "ordinary_interpretation": "Market-state reference, explicitly not severity matched; cannot isolate volume effect"
+}
