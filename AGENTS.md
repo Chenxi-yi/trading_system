@@ -131,3 +131,5 @@ PM已恢复并授权市场状态/策略适配研究，btc实际15minACTIVE。最
 037前台继续：后续实际下载/渲染核对Lo/MacKinlay方法p17–26，故较早“未形成可读正文”已由本单元更新，非全文或BTC实证。冻结research/contracts/BTC_RANGE_FEATURES_038.json，下一步038过去720个4H收益q6/42有限样本/异方差模拟校准和价格特征覆盖，不读策略收益或调036参数。目前仅契约未计算，214测试/47+24/0准入不变；交接仍grid036.md。初次037生成脚本将return作为关键字导致SyntaxError，未写文件/计算，修正后才保存契约。
 
 最新交接docs/sessions/2026-10-21-features040.md：038已固定校准/2007日锚价格描述特征，未读策略收益，不是状态/alpha。039实际跨桶/单锁/SIGTERM通过；新增无关src导致039启动拒绝保留，040固定父执行依赖+自身freeze已成功、原runtime不改，快照后启动。226测试；47alpha24对照40格/0准入。恢复先查runtime/research-loop/public-worker/status.json+实际pid/锁，活动时不重复公开写入/prepare，停止才按条件启动v2。下一项先冻同格子持有时长/成本审查，对齐回复跨度，不把VR<1当真回复或按收益选阶段。48raw仍0未来特征/标签/预测；15minACTIVE、人工暂停false。
+
+040快照后已实际启动PID45236并完成首tick，当前public_data_only等待下一桶，不是策略计算。590冻结源码/恢复226测试和原NAV一致，恢复包绑定6c845767；先核对runtime状态+真实pid/锁，健康时勿重复采样/prepare。btc应用15minACTIVE确认，结束真实quota52%/46%允许，无人工暂停。最新features040交接附证据。

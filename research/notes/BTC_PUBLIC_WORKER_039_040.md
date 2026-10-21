@@ -13,3 +13,9 @@
 操作入口python3.11 tools/observe_btc_worker_v2.py；先查runtime/research-loop/public-worker/status.json的pid、真实进程和worker.lock，活动时不重复启动写入/prepare。状态waiting_for_next_bucket是数据进程等采样，不是在做策略研究。停止时写该run的STOP文件或向确认属于本项目的workerPID发SIGTERM；人工暂停需同时设置checkpoint并应用PAUSED，不能额度恢复自醒。低额度自动等待时缓存会阻止新tick；恢复须实查app额度，再重启同版本。
 
 备份必须先确认数据worker和子流程停止/锁释放，避免变化中的原始数据清单被当一致快照；完成后恢复数据组件。恢复能否连续采到数据取决于本机/网络/真实quota缓存，不保证固定时刻或盈利。
+
+## 保存与040实际恢复
+
+源码主提交6c845767d710394fefa4eebf2185e37224a14a30；590冻结来源核验通过。恢复包artifacts/recovery/BTC-NIGHT-001-6c845767d710.tar.gz，70663553字节/0600，SHA256 d9247b02ecc0da735d8a1dc591e9cb44158ee691ee423db8ae7759ef230953ee；全部成员哈希、恢复226测试及原BTC逐日NAV一致。本机完整副本，行情/恢复包不在GitHub，快照截止实际040启动前。
+
+快照后实际启动040 PID45236，已核对真实命令/单锁状态和首tick完整成功（复用既有14:15桶，保留原接收时刻），当前waiting_for_next_bucket只是数据进程等下个采样，不是策略计算。039先前实际跨到14:15新桶。父039源码/manifest未动，新增038研究文件后040启动已实际通过；完整4h/长期覆盖未验收。btc应用已确认15minACTIVE，prompt增加worker优先/避免重复写入、人工暂停须停止组件等规则，读配置一致。结束实际主52%/次46%允许，非额度等待/人工暂停；无账户或订单。worker之后新增数据不属于本恢复包快照。

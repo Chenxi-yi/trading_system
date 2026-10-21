@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-21T14:21:41.222332+00:00",
+  "updated_at": "2026-10-21T14:27:01.050613+00:00",
   "authorization": "PM 2026-10-21 requests continuous idea->research->validation loop",
   "current_experiment": "BTC-LOOP-036",
   "last_completed_experiment": "BTC-LOOP-036",
-  "next_action": "Actual quota->inspect public-worker runtime status+realPID/lock.039 stopped for consistent backup; start tools/observe_btc_worker_v2.py AFTER snapshot then verify firsttick. Active worker handles original public/pressure/028prepare; do not duplicate writers.038 done fixed calibration/2007 price-only anchors,226tests;47alpha24controls40cells0research0Demo. Next preregister034 samecell holding-duration/cost/exit-reason audit ALL cycles, align q6/q42 economics before new state hypothesis. No VRthreshold or030036/gamma winner search. Method audit008030036 done. OI fixedend/nopeek013014immutable016019blocked; no orders/paidservices.",
+  "next_action": "Actual quota gate refresh->inspect public-worker status/realPID/lock.040PID45236 actual startup+firsttick passed, currently waits nextbucket; bounded public data only, NOT strategy computation.Healthy worker owns original public/pressure/028prepare, do not duplicate writers. If stopped, honor reason/manualpause/quota and restart samefrozen040 only when allowed. Next independent research preregister034 same-cell holding-duration/cost/exit-reason audit ALL cycles, align q6/q42 economics before new state hypothesis.038 fixed calibration+2007 price-only anchors done, no strategyreturns read;226tests47alpha24controls40cells0research0Demo.008030036 audit done. No VRthreshold/030036/gamma search; OI end/nopeek013014immutable016019blocked, no orders/paidservices.",
   "known_history": "All saved historical BTC data through2026-10 is development/adaptive challenge, not fresh OOS",
   "required_independent_evidence": "Unseen future observations bound to frozen rules/code and actual availability/execution times",
   "research_qualified": 0,
@@ -14,7 +14,13 @@
   "registry": "research/loop/registry.json",
   "automation_id": "btc",
   "automation_status": "ACTIVE",
-  "active_worker": null,
+  "active_worker": {
+    "pid": 45236,
+    "role": "public_data_only",
+    "entrypoint": "tools/observe_btc_worker_v2.py",
+    "runtime_status": "runtime/research-loop/public-worker/status.json",
+    "status_at_last_check": "waiting_for_next_bucket"
+  },
   "last_evidence": "research/notes/BTC_PUBLIC_WORKER_039_040.md",
   "foreground_policy": "Continue immediately while resources permit; 15min heartbeat is recovery, not planned idle time",
   "last_completed_data_audit": "BTC-PUBLIC-WORKER-040",

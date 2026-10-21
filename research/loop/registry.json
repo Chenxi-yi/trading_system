@@ -414,7 +414,7 @@
       "alpha_candidates": 0,
       "controls": 0,
       "return_tests": 0,
-      "status": "fixed_parent_closure_provider_freeze_passed_pending_postsnapshot_live_start"
+      "status": "actual_v2_startup_first_tick_complete_after_unrelated_src_added_fixed_closure"
     }
   ],
   "prospective_mechanisms": [
