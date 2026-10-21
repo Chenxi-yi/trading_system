@@ -1,0 +1,13 @@
+{
+  "id": "BTC-OI-EVALUATOR-025",
+  "registered_at": "2026-10-21T10:21:02.793569+00:00",
+  "parent": "BTC-OI-FORECAST-024",
+  "scope": "Implement final clock gate and fixed pairedQLIKE/daymovingblock bootstrap; synthetic tests only, no real outcome access beforeend",
+  "clarifications": "Coverage: >=80% full planned anchors with complete feature/label, plus>=80% planned forecast anchors after full120-label warmup and nextUTCday refit; >=120 actual paired predictions. No zero filling. Same fixed60day end. Entire UTCcalendar incl empty days retained in bootstrap; any zero-weight replicate makes evidence inconclusive, no redraw. Sensitivity1/4day descriptive only.",
+  "loader": "Clock check before loading any raw/labels/predictions. After end use largest completed024 input inventory, verify raw hashes and024 frozen sources, reconstruct labels with original code; validate prediction timing/training count and pair outcomes. No retro predictions.",
+  "new_HTTP_attempts": 0,
+  "alpha_candidates": 0,
+  "controls": 0,
+  "return_tests": 0,
+  "real_evaluations": 0
+}

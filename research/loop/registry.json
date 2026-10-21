@@ -256,6 +256,15 @@
       "controls": 0,
       "return_tests": 0,
       "status": "code_frozen_before_cutoff_34raw0features0predictions_real_fits0"
+    },
+    {
+      "id": "BTC-OI-EVALUATOR-025",
+      "protocol": "research/audits/BTC-OI-EVALUATOR-025.json",
+      "report": "research/notes/BTC_OI_EVALUATOR_025.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "synthetic178tests_actual_premature_gate_not_due_no_real_labels_loaded"
     }
   ],
   "prospective_mechanisms": [
