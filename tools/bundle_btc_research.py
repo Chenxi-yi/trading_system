@@ -28,6 +28,7 @@ PUBLIC_ROOTS = (
     'artifacts/BTC-EVENT-004',
     'artifacts/BTC-MATCH-005',
     'artifacts/BTC-PRESSURE-DATA-006',
+    'artifacts/BTC-DERIVATIVES-DATA-009',
     'data/market-audit/btc-long-index-20261021',
     'data/forward-observation/BTC',
     'data/forward-pressure/BTC',

@@ -1,0 +1,17 @@
+{
+  "id": "BTC-DERIVATIVES-DATA-009",
+  "registered_at": "2026-10-21T03:21:50.846271+00:00",
+  "kind": "bounded_free_data_feasibility_not_alpha",
+  "request_budget": 10,
+  "source": "Official data.binance.vision futures UM daily metrics BTCUSDT; official README andAPI docs; issue reports unconfirmed unless directly validated",
+  "sample_dates": [
+    "2022-01-01",
+    "2024-01-01",
+    "2026-06-24",
+    "2026-06-25",
+    "2026-09-30"
+  ],
+  "requests": "One ZIP and one SHA256 CHECKSUM each, total10. No accounts/auth/paid services; no retries beyond finite request timeout. No full archive collection or conditional PnL.",
+  "audit": "VerifySHA256, one CSV bounded size, header fields/types/nonnegative OI/ratio fields, UTC timestamp spacing/duplicates/coverage and first/last labels, adjacent June24/25 overlap. Historical publication unknown; create_time not treated as availability. Units not inferred silently.",
+  "result_limit": "Samples only do not establish multi-year completeness; Binance metrics cannot replace actual OKX execution prices/costs; no new candidate or return test"
+}
