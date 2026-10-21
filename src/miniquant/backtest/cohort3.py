@@ -22,8 +22,9 @@ def signed_weight(closes,param):
     return score*risk
 
 
-def replay_cohort3(bars,marks,funding,param,start,end,fee_bps=5,slip_bps=5,lag_hours=4,target_transform=None):
+def replay_cohort3(bars,marks,funding,param,start,end,fee_bps=5,slip_bps=5,lag_hours=4,target_transform=None,decision_hours=24):
     step=4*HOUR
+    if decision_hours not in (4,24):raise ValueError('Invalid decision frequency')
     if lag_hours not in (4,8) or start%DAY or end%DAY or end<=start:raise ValueError('Invalid clock')
     for rows in (bars,marks):
         if not rows or any(b['ts']-a['ts']!=step for a,b in zip(rows,rows[1:])):raise ValueError('Input gaps/duplicates')
@@ -61,6 +62,7 @@ def replay_cohort3(bars,marks,funding,param,start,end,fee_bps=5,slip_bps=5,lag_h
         exposure+=abs(account.quantity)*mark['c']/nav
         if close%DAY==0:
             daily.append(dict(ts=close,nav=nav))
+        if close%(decision_hours*HOUR)==0:
             history=days[:bisect_right(ends,close)]
             target=signed_weight([d['c'] for d in history],param)
             if target is not None and target_transform is not None:

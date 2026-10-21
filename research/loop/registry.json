@@ -56,10 +56,24 @@
         "feature-clock and challenge-activation descriptive audit"
       ],
       "process_review": "research/notes/BTC_ADAPTIVE_LOOP_REVIEW_007.md"
+    },
+    {
+      "id": "BTC-LOOP-008",
+      "protocol": "research/experiments/BTC-LOOP-008.json",
+      "alpha_candidates": 4,
+      "controls": 4,
+      "report": "research/reports/BTC_LOOP_008.md",
+      "result": "rejected_or_insufficient",
+      "note": "Fresh multiweek range close break then timely reentry; four matched opposite-direction controls; no sign chosen after returns. Adaptive history.",
+      "diagnostics": [
+        "64run ledger identities",
+        "default24H P0 exact replication",
+        "4 actual-data future-prefix checks"
+      ]
     }
   ],
-  "cumulative_alpha_candidates": 39,
-  "cumulative_controls": 12,
+  "cumulative_alpha_candidates": 43,
+  "cumulative_controls": 16,
   "mechanism_diagnostics": [
     {
       "id": "BTC-EVENT-004",

@@ -1,0 +1,93 @@
+{
+  "experiment_id": "BTC-LOOP-008",
+  "created_at": "2026-10-21T03:12:23.112221+00:00",
+  "hypothesis": "A fresh close outside a previously known multiweek range followed by prompt close back inside may distinguish temporary pressure from persistent information; failed-breakout reversion must beat continuation after identical signals and real costs.",
+  "sources": [
+    "https://www.newyorkfed.org/medialibrary/media/research/staff_reports/sr125.pdf",
+    "https://www.newyorkfed.org/medialibrary/media/research/staff_reports/sr150.pdf"
+  ],
+  "source_limit": "FX conditional order data/round numbers, effects mainly hours. BTC multiweek extrema are an unverified proxy; no actual stop orders/liquidation causal identification.",
+  "historical_status": "All historical adaptive exploration; no fresh OOS",
+  "event_rule": "Daily range max high/min low over last20 or60 completeUTC days ending<=current4H bar opening-day00UTC; previous4H close inside this range, current completed4H close strictly outside withvolume>0 starts frozen-level watch. First subsequent4H close back inside inclusive within next3bars andvolume>0 confirms failure. No same-bar wick inference; expired watches discarded, require fresh cross to rearm.",
+  "spacing": "Chronological first confirmed event; next96H suppressed independently of outcome; watch reset on confirmed/suppressed failures. Both sides retained.",
+  "variants": [
+    {
+      "id": "R20_24",
+      "range_days": 20,
+      "hold_hours": 24,
+      "mode": "reversion"
+    },
+    {
+      "id": "R20_72",
+      "range_days": 20,
+      "hold_hours": 72,
+      "mode": "reversion"
+    },
+    {
+      "id": "R60_24",
+      "range_days": 60,
+      "hold_hours": 24,
+      "mode": "reversion"
+    },
+    {
+      "id": "R60_72",
+      "range_days": 60,
+      "hold_hours": 72,
+      "mode": "reversion"
+    }
+  ],
+  "controls": [
+    {
+      "id": "C20_24",
+      "range_days": 20,
+      "hold_hours": 24,
+      "mode": "continuation"
+    },
+    {
+      "id": "C20_72",
+      "range_days": 20,
+      "hold_hours": 72,
+      "mode": "continuation"
+    },
+    {
+      "id": "C60_24",
+      "range_days": 60,
+      "hold_hours": 24,
+      "mode": "continuation"
+    },
+    {
+      "id": "C60_72",
+      "range_days": 60,
+      "hold_hours": 72,
+      "mode": "continuation"
+    }
+  ],
+  "primary": "R20_24",
+  "alpha_candidates": 4,
+  "controls_count": 4,
+  "position": "Fixed +/-50%NAV target on confirmed event; reversion opposite original break, continuation same original break; target held until signal+24/72H then0. Every4H rebalance with same5pp band. No price stop; risk cap/synthetic margin screen, not production risk acceptance.",
+  "execution": "ActualBTC-USDT-SWAP4H open signal+4H earliest; stress8H. Pending first wins/TTL12H; no zero-volume fills. Scheduled exit target signal+hold, with same execution delay. Event started before annual evaluation start ignored; market event cooldown still global. End scheduled liquidation as cohort3. Research only.",
+  "costs": "Every side base fee/slip5+5bps; stress10+10. Actualfunding andmark; synthetic10%maintenance not certified exchange liquidation.",
+  "windows": {
+    "development": [
+      "2023-01-01",
+      "2024-01-01"
+    ],
+    "years": [
+      2024,
+      2025
+    ],
+    "challenge": [
+      "2026-01-01",
+      "2026-07-01"
+    ]
+  },
+  "scenarios": [
+    "base",
+    "stress",
+    "delay8h"
+  ],
+  "validation": "All4 candidates retained; paired daily differences against matching continuation at7/14/30d blocks2000seed20261021; development4candidate CSCV8blocks. Primary fixed, no choose profitable neighbor.",
+  "historical_screen": "Positive each2024/2025/challenge/stress/delay, WF/challengeDD>=-35%,>=20fills, positive lower mean/bootstrap and paired increment over matching control, no margin breach, PBO<=.2, >=75%variants totalpositive. Independent future+engineering still required; research/demo not automatic.",
+  "prohibitions": "No orders, account access, funding-income strategy, threshold optimization or postresult sign reversal"
+}
