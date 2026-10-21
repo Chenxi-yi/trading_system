@@ -1,0 +1,24 @@
+{
+  "id": "BTC-BINANCE-FORWARD-016",
+  "registered_at": "2026-10-21T09:26:58.609798+00:00",
+  "type": "actual_first_observed_public_REST_only",
+  "host": "https://fapi.binance.com",
+  "symbol": "BTCUSDT",
+  "max_requests_per_invocation": 5,
+  "jobs": [
+    "time",
+    "open_interest_current",
+    "open_interest_history",
+    "global_ratio",
+    "taker_ratio"
+  ],
+  "period": "5m",
+  "limit": 2,
+  "excluded": "Both top-trader APIs documented as API-key-required; no keys/paid sources/account endpoints",
+  "bounds": "GET only/no redirects/auth;<=1MB response,10s timeout; no retries;403451 persist access block and do not retry or bypass",
+  "time_contract": "Actual response reception=available_at/ingested_at; current OI label snapshot; history/global label end; taker label start+5min; only closed rows by response receive time; no archive backfill or unit assertion",
+  "account_reads": 0,
+  "orders_sent": 0,
+  "pnl_tests": 0,
+  "alpha_candidates": 0
+}

@@ -160,10 +160,12 @@ N-026：补全每次研究manifest的传递依赖/环境与恢复契约；不追
 
 | DATA-014 | 已完成日文件独立完整性复核 | done | 011预登记；337raw/168完成日哈希/官方checksum/统计复核一致；2损坏/统计改写测试，统一123通过；不新增PnL或可得性认证 |
 
-| DATA-015 | 同市场OI/成交量数量约束与时间单位认证 | backlog | BTC_OI_VOLUME_RECONCILIATION_LITERATURE.md；先独立冻结日期/请求预算并确认Binance数量/计数/时间，再取同场所成交量；未实施，不以OKX量替代或计算条件PnL |
+| DATA-015 | 同市场OI/成交量数量约束与时间单位认证 | in_progress | BTC_OI_VOLUME_RECONCILIATION_LITERATURE.md；015当前REST字段/区间标签审查完成但CSV映射、单位/计数及原始发布时间未认证；保持未验收，未取成交量/未跑PnL；016前瞻REST首GET451停止 |
 
 | OPS-008 | 历史归档网络错误只读观测 | done | 012独立冻结，只读trace已有010异常，记录白名单类型/数值码；原采集代码/100GET/退避不变，不额外请求，不输出异常文本或凭证 |
 
 | DATA-016 | 保留旧实验来源的TLS EOF有界重试采集版本 | done | ADR-0009/013新路径与父快照，132测试；21段2042GET含10EOF恢复，失败计入100上限，父010不改，完整日期采集完成 |
 
 | DATA-017 | 013全区间原始/跨日标签与旧样例复核 | done | 014：2738原始body/5476文件哈希与重解析通过；跨日重复0、缺133标签、143乱序日，4旧样例逐字节一致；134测试，OI零值未认证，无PnL |
+
+| DATA-018 | Binance无认证REST真实first-observed观测 | blocked | 016实际首time GET为HTTP451，1GET/0市场观测，持久access_blocked且禁止自动重试/绕路；8新增测试/统一142通过，成功路径未验收 |

@@ -1,0 +1,65 @@
+{
+  "id": "BINANCE_METRICS_015",
+  "reviewed_at": "2026-10-21T09:26:58.609798+00:00",
+  "source": "https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-usd-s-m-futures/api/rest-api/market-data",
+  "archive_mapping_certified": false,
+  "quantity_unit_certified": false,
+  "sided_counting_certified": false,
+  "historical_first_publication_certified": false,
+  "research_ready": false,
+  "fields": [
+    {
+      "archive_field": "sum_open_interest",
+      "candidate_rest_endpoint": "/futures/data/openInterestHist",
+      "rest_field": "sumOpenInterest",
+      "current_rest_documented_timestamp_role": "period_end",
+      "current_rest_api_key_required": false,
+      "archive_mapping_status": "unverified_hypothesis_not_a_certification"
+    },
+    {
+      "archive_field": "sum_open_interest_value",
+      "candidate_rest_endpoint": "/futures/data/openInterestHist",
+      "rest_field": "sumOpenInterestValue",
+      "current_rest_documented_timestamp_role": "period_end",
+      "current_rest_api_key_required": false,
+      "archive_mapping_status": "unverified_hypothesis_not_a_certification"
+    },
+    {
+      "archive_field": "count_toptrader_long_short_ratio",
+      "candidate_rest_endpoint": "/futures/data/topLongShortAccountRatio",
+      "rest_field": "longShortRatio",
+      "current_rest_documented_timestamp_role": "period_end",
+      "current_rest_api_key_required": true,
+      "archive_mapping_status": "unverified_hypothesis_not_a_certification"
+    },
+    {
+      "archive_field": "sum_toptrader_long_short_ratio",
+      "candidate_rest_endpoint": "/futures/data/topLongShortPositionRatio",
+      "rest_field": "longShortRatio",
+      "current_rest_documented_timestamp_role": "period_end",
+      "current_rest_api_key_required": true,
+      "archive_mapping_status": "unverified_hypothesis_not_a_certification"
+    },
+    {
+      "archive_field": "count_long_short_ratio",
+      "candidate_rest_endpoint": "/futures/data/globalLongShortAccountRatio",
+      "rest_field": "longShortRatio",
+      "current_rest_documented_timestamp_role": "period_end",
+      "current_rest_api_key_required": false,
+      "archive_mapping_status": "unverified_hypothesis_not_a_certification"
+    },
+    {
+      "archive_field": "sum_taker_long_short_vol_ratio",
+      "candidate_rest_endpoint": "/futures/data/takerlongshortRatio",
+      "rest_field": "buySellRatio",
+      "current_rest_documented_timestamp_role": "period_start",
+      "current_rest_api_key_required": false,
+      "archive_mapping_status": "unverified_hypothesis_not_a_certification"
+    }
+  ],
+  "decision": "Only timestamp roles and access requirements of current REST documentation are recorded; do not apply them automatically to archive create_time. Forward response reception can provide a new actual first-observed bound, not historical publication.",
+  "documentation_quality_flags": [
+    "Global-ratio example and field descriptions are not internally consistent; do not use examples as calibration ground truth",
+    "Neither archive quantity units nor one/two-sided count nor vintage availability were established by reviewed sources"
+  ]
+}

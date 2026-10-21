@@ -166,6 +166,24 @@
       "controls": 0,
       "return_tests": 0,
       "status": "all_files_rechecked_four_gap_days143_disorder_days_units_time_unknown"
+    },
+    {
+      "id": "BTC-METRICS-CONTRACT-015",
+      "protocol": "research/audits/BTC-METRICS-CONTRACT-015.json",
+      "report": "research/notes/BTC_METRICS_CONTRACT_015.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "partial_current_REST_definitions_archive_mapping_not_certified"
+    },
+    {
+      "id": "BTC-BINANCE-FORWARD-016",
+      "protocol": "research/audits/BTC-BINANCE-FORWARD-016.json",
+      "report": "research/notes/BTC_BINANCE_FORWARD_016.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "actual_first_GET_HTTP451_persistent_block_no_market_data_no_bypass"
     }
   ]
 }

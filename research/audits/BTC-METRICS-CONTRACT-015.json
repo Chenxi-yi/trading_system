@@ -1,0 +1,17 @@
+{
+  "id": "BTC-METRICS-CONTRACT-015",
+  "registered_at": "2026-10-21T09:26:58.609798+00:00",
+  "type": "manual_primary_source_definition_audit",
+  "sources": [
+    "https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-usd-s-m-futures/api/rest-api/market-data",
+    "https://github.com/binance/binance-public-data",
+    "https://github.com/binance/binance-public-data/issues/513",
+    "https://github.com/binance/binance-public-data/issues/484"
+  ],
+  "contract": "research/contracts/BINANCE_METRICS_015.json",
+  "method": "Read primary rendered documentation; distinguish currentREST and historical archive; issue authors are not official confirmation; no account/API credential call or data mutation",
+  "market_requests": 0,
+  "alpha_candidates": 0,
+  "controls": 0,
+  "return_tests": 0
+}
