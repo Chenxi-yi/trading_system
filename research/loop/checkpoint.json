@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-21T09:04:59.352651+00:00",
+  "updated_at": "2026-10-21T09:08:17.170748+00:00",
   "authorization": "PM 2026-10-21 requests continuous idea->research->validation loop",
   "current_experiment": "BTC-DERIVATIVES-COLLECT-013",
   "last_completed_experiment": "BTC-LOOP-008",
-  "next_action": "Actual quota gate first.013 independent retry lineage cumulative 1298 days/373691 rows. Inspect BOTH OSlocks/source and new-root retry_after_epoch before<=100GET continuation.010 parent immutable353days. Unique013 logs/snapshots. Completion requires independent recheck and time/unit audit, no PnL.",
+  "next_action": "Actual quota gate first.013 independent retry lineage cumulative 1348 days/388091 rows. Inspect BOTH OSlocks/source and new-root retry_after_epoch before<=100GET continuation.010 parent immutable353days. Unique013 logs/snapshots. Completion requires independent recheck and time/unit audit, no PnL.",
   "known_history": "All saved historical BTC data through2026-10 is development/adaptive challenge, not fresh OOS",
   "required_independent_evidence": "Unseen future observations bound to frozen rules/code and actual availability/execution times",
   "research_qualified": 0,
