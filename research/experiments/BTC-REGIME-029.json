@@ -1,0 +1,50 @@
+{
+  "created_at": "2026-10-21T13:07:02.825234+00:00",
+  "authorization": "PM explicitly resumes and requests BTC observable regimes and strategy selection",
+  "known_history": "All historical data is adaptive exploration; no fresh OOS",
+  "state": {
+    "lookback_days": 60,
+    "efficiency_definition": "abs(sum(last60 log returns))/sum(abs(last60 log returns)); zero path=0",
+    "primary_efficiency_threshold": 0.35,
+    "trend_direction": "sign of last60 log return sum",
+    "confirmation_consecutive_days": 3,
+    "volatility_days": 20,
+    "volatility_threshold": "strictly above prior365 rolling20d annualized vol 75th percentile; require180 prior estimates; excludes today",
+    "states": [
+      "up_normal",
+      "up_high",
+      "range_normal",
+      "range_high",
+      "down_normal",
+      "down_high"
+    ],
+    "available_at": "completed UTC daily close, modeled final-bar availability; target executed >=1h later",
+    "warmup": "unknown -> no risk; do not fill holes",
+    "not_used": [
+      "future drawdown",
+      "full sample quantile",
+      "smoothed latent states",
+      "future returns as state labels"
+    ]
+  },
+  "experiment_id": "BTC-REGIME-029",
+  "purpose": "Conditional attribution of already observed fixed walk-forward returns, not deployable switching PnL",
+  "data_path": "data/market-audit/btc-overnight-20261021/trade_BTC-USDT_1H.json",
+  "strategies": [
+    "trend",
+    "reversion",
+    "grid",
+    "constant_mix",
+    "breakout"
+  ],
+  "periods": [
+    "2024",
+    "2025"
+  ],
+  "cells": 30,
+  "alpha_candidates": 0,
+  "controls": 0,
+  "attribution": "For return closing dayD, state known at start of dayD. Existing strategies retain carried inventory. Conditional means are not resettable strategy portfolios. Include six cells even empty; min60 labeled days per cell flagged.",
+  "statistics": "Descriptive means, rms, worst day, day counts, transitions/duration; no significance or selecting best expert per cell. No optimal hindsight or rule tuning.",
+  "stop": "No strategy promotion based on conditional attribution; grid execution and inherited bar/fill limits remain."
+}

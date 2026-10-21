@@ -1,0 +1,14 @@
+{
+  "experiment_id": "BTC-REGIME-VERIFY-032",
+  "created_at": "2026-10-21T13:16:45.351529+00:00",
+  "purpose": "Additional transitive project-source capture and new actual replay equality, not retroactively certify omitted dependencies in029/030/031",
+  "parents": [
+    "BTC-REGIME-029",
+    "BTC-LOOP-030",
+    "BTC-STATE-COVERAGE-031"
+  ],
+  "scope": "Snapshot all current src py plus actual local tool imports/tests/pyproject; numpy and Python versions; check parent frozen core against current. Recompute three router2024base runs and require full object equality with originals. No rule changes, new alpha or additional parameter scores.",
+  "alpha_candidates": 0,
+  "controls": 0,
+  "pnl_tests": "reproduction only, not new hypotheses"
+}

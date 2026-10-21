@@ -70,10 +70,25 @@
         "default24H P0 exact replication",
         "4 actual-data future-prefix checks"
       ]
+    },
+    {
+      "id": "BTC-LOOP-030",
+      "protocol": "research/experiments/BTC-LOOP-030.json",
+      "alpha_candidates": 3,
+      "controls": 4,
+      "report": "research/reports/BTC_LOOP_030.md",
+      "result": "rejected_or_insufficient",
+      "note": "PM requests observable regimes; routing fixed before029 attribution, actual spot cash/inventory switching; all history adaptive; new incremental gates do not rewrite old gates.",
+      "diagnostics": [
+        "63 independent ledger checks",
+        "3 actual future-price prefix checks",
+        "paired calendar block bootstrap7/14/30d",
+        "base/stress/delay4h"
+      ]
     }
   ],
-  "cumulative_alpha_candidates": 43,
-  "cumulative_controls": 16,
+  "cumulative_alpha_candidates": 46,
+  "cumulative_controls": 20,
   "mechanism_diagnostics": [
     {
       "id": "BTC-EVENT-004",
@@ -101,6 +116,17 @@
       "status": "insufficient_for_strategy_promotion",
       "known_adaptive_history": true,
       "note": "Four fixed descriptive comparisons; matched normal shocks and non-severity-matched ordinary declines at24/72h. Donor reuse retained; no iid significance claim."
+    },
+    {
+      "id": "BTC-REGIME-029",
+      "protocol": "research/experiments/BTC-REGIME-029.json",
+      "report": "research/reports/BTC_REGIME_029.md",
+      "cells": 30,
+      "alpha_candidates": 0,
+      "controls": 0,
+      "status": "descriptive_known_returns_no_selection_or_promotion",
+      "known_adaptive_history": true,
+      "note": "Six states x five existing experts, unknown retained; not tradable sliced portfolios."
     }
   ],
   "data_audits": [
@@ -292,6 +318,24 @@
       "controls": 0,
       "return_tests": 0,
       "status": "implemented191tests_actual_master_consistent_guarded_prepare_and_not_due"
+    },
+    {
+      "id": "BTC-STATE-COVERAGE-031",
+      "protocol": "research/audits/BTC-STATE-COVERAGE-031.json",
+      "report": "research/notes/BTC_STATE_COVERAGE_031.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "completed_price_only_coverage"
+    },
+    {
+      "id": "BTC-REGIME-VERIFY-032",
+      "protocol": "research/audits/BTC-REGIME-VERIFY-032.json",
+      "report": "research/notes/BTC_REGIME_RESEARCH_029_032.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "new_transitive_checkpoint_three_exact_reproductions_no_new_hypotheses"
     }
   ],
   "prospective_mechanisms": [

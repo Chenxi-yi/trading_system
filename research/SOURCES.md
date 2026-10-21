@@ -35,3 +35,5 @@
 P10 Liu/Tsyvinski crypto动量与注意力；P11 Moreira/Muir波动管理及P12 Cederburg等对实施稳健性的反证；
 P13 Hansen/Kim/Kimbrough crypto量/波动时段结构；P14 Shen/Urquhart/Wang BTC日内动量。
 完整来源、实际阅读范围/访问失败与迁移限制见research/notes/BTC_LOOP_LITERATURE.md，未声明全部精读或复现。
+
+市场状态方向：2026-10-21重读Moreira/Muir Yale作者稿引言p1–6，非全篇复现；AQR Century网页已读。Ang/Bekaert How Regimes Affect Asset Allocation与Ang/Timmermann综述仅检索摘要，NBER403，未精读。边界与本轮用途见research/notes/BTC_REGIME_RESEARCH_029_032.md。

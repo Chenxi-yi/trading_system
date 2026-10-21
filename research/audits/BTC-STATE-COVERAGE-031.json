@@ -1,0 +1,21 @@
+{
+  "experiment_id": "BTC-STATE-COVERAGE-031",
+  "created_at": "2026-10-21T13:14:04.729853+00:00",
+  "purpose": "Explain frozen029 observable detector coverage without reading strategy returns or choosing a replacement threshold",
+  "inputs": [
+    "artifacts/BTC-REGIME-029/states.json",
+    "artifacts/BTC-REGIME-029/manifest.json"
+  ],
+  "scope": "2021-01-01 through2026-07-01; all historical already known",
+  "outputs": [
+    "yearly state counts",
+    "efficiency10/50/90/95 quantiles",
+    "raw vs confirmed state mismatch fraction",
+    "state changes",
+    "last full historical state timestamp clearly stale, not current tradable diagnosis"
+  ],
+  "selection": "Only frozen .35 detector; no alternate feature or fitted state/threshold/return labels",
+  "alpha_candidates": 0,
+  "controls": 0,
+  "pnl_tests": 0
+}

@@ -1,0 +1,92 @@
+{
+  "created_at": "2026-10-21T13:07:02.825234+00:00",
+  "authorization": "PM explicitly resumes and requests BTC observable regimes and strategy selection",
+  "known_history": "All historical data is adaptive exploration; no fresh OOS",
+  "state": {
+    "lookback_days": 60,
+    "efficiency_definition": "abs(sum(last60 log returns))/sum(abs(last60 log returns)); zero path=0",
+    "primary_efficiency_threshold": 0.35,
+    "trend_direction": "sign of last60 log return sum",
+    "confirmation_consecutive_days": 3,
+    "volatility_days": 20,
+    "volatility_threshold": "strictly above prior365 rolling20d annualized vol 75th percentile; require180 prior estimates; excludes today",
+    "states": [
+      "up_normal",
+      "up_high",
+      "range_normal",
+      "range_high",
+      "down_normal",
+      "down_high"
+    ],
+    "available_at": "completed UTC daily close, modeled final-bar availability; target executed >=1h later",
+    "warmup": "unknown -> no risk; do not fill holes",
+    "not_used": [
+      "future drawdown",
+      "full sample quantile",
+      "smoothed latent states",
+      "future returns as state labels"
+    ]
+  },
+  "experiment_id": "BTC-LOOP-030",
+  "purpose": "Does a predetermined observable state router add net utility over experts/static mix/vol-only?",
+  "alpha_candidates": 3,
+  "controls": 4,
+  "primary": "R35",
+  "candidates": [
+    {
+      "id": "R25",
+      "efficiency_threshold": 0.25
+    },
+    {
+      "id": "R35",
+      "efficiency_threshold": 0.35
+    },
+    {
+      "id": "R45",
+      "efficiency_threshold": 0.45
+    }
+  ],
+  "controls_ids": [
+    "trend_only",
+    "reversion_only",
+    "equal_mix",
+    "vol_only"
+  ],
+  "routing": "up -> trend; range -> reversion; down/unknown -> cash. No direction chosen from029 results. No grid yet; stateful grid needs separate inventory cancellation model.",
+  "experts": {
+    "trend": "mean(sign20,60,120 daily return) positive part times risk cap",
+    "reversion": "4H logclose z versus previous180 bars; enter z<=-1.5; exit z>=0 or48h since signal or close<=signal close-2*prior14 ATR; independent desired-exposure process, not fictitious PnL; survives state changes; no intrabar stop assumption",
+    "common_risk": "20% annual vol target based20daily returns; cap75%; reversion cap50%; high-vol state imposes no extra suppression, test routing separately from continuous risk scaling",
+    "schedule": "4H target evaluation using completed bars, expert trend updates daily; same experts for all controls/router; 5pp no-trade band, first intent fixed untilfill/TTL12H, no fills at zero volume",
+    "no_leverage": true
+  },
+  "periods": [
+    [
+      "2024-01-01",
+      "2025-01-01"
+    ],
+    [
+      "2025-01-01",
+      "2026-01-01"
+    ],
+    [
+      "2026-01-01",
+      "2026-07-01"
+    ]
+  ],
+  "historical_warmup": "preceding data only; reset book at each period; models not fitted",
+  "costs": {
+    "base_fee_bps": 10,
+    "base_slip_bps": 5,
+    "stress_fee_bps": 20,
+    "stress_slip_bps": 10,
+    "lag_hours": 1,
+    "delay_hours": 4,
+    "funding": "none unlevered spot"
+  },
+  "primary_comparison": "R35 minus equal_mix daily net returns in2024-2025; append2026H1 descriptive challenge (known). All7 rules3periods3scenarios; no optimize router using attribution.",
+  "statistics": "paired calendar moving block mean difference7/14/30d,2000 replicates seed20261021; all primary lower5% bounds>0 and positive incremental average in each known period/base stress delay to flag historical support; no requirement every strategy year positive and no retrofit old results; no PBO on only3 predetermined correlated sensitivity variants as certification.",
+  "risk_limit": "research safety maximum drawdown35%; PM initial-principal loss limit not changed",
+  "qualification": "At best adaptive historical candidate. Never research-qualified/demo-ready absent frozen forward and execution evidence.",
+  "engineering": "Manual ledger recon, synthetic and actual future perturbation, missing/invalid input rejection, delayed execution and no zero-volume fills"
+}
