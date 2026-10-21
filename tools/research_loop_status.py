@@ -46,6 +46,18 @@ def main():
                 raise ValueError('Frozen diagnostic source snapshot mismatch')
             snapshots+=1
         diagnostic_cells+=item['cells']
+    for item in registry.get('data_audits',[]):
+        manifest=json.loads((ROOT/'artifacts'/item['id']/'manifest.json').read_text())
+        if hashlib.sha256((ROOT/item['protocol']).read_bytes()).hexdigest()!=manifest['protocol_sha256']:
+            raise ValueError('Frozen data audit protocol modified')
+        for name,digest in manifest['code'].items():
+            saved=ROOT/'artifacts'/item['id']/'source_snapshot'/name
+            if hashlib.sha256(saved.read_bytes()).hexdigest()!=digest:
+                raise ValueError('Frozen data audit source snapshot mismatch')
+            snapshots+=1
+        for name,digest in manifest['inputs'].items():
+            if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=digest:
+                raise ValueError('Frozen data audit input changed')
     daily_limit=policy['maximum_new_batches_per_shanghai_day']
     if daily_limit is not None and launched_today>daily_limit:
         raise ValueError('Daily search budget exceeded')

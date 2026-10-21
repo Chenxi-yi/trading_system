@@ -73,5 +73,16 @@
       "known_adaptive_history": true,
       "note": "Four fixed descriptive comparisons; matched normal shocks and non-severity-matched ordinary declines at24/72h. Donor reuse retained; no iid significance claim."
     }
+  ],
+  "data_audits": [
+    {
+      "id": "BTC-PRESSURE-DATA-006",
+      "protocol": "research/audits/BTC-PRESSURE-DATA-006.json",
+      "report": "research/notes/BTC_PRESSURE_DATA_006.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "completed_with_limits_no_return_test"
+    }
   ]
 }

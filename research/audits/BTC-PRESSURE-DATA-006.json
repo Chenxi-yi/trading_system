@@ -1,0 +1,23 @@
+{
+  "id": "BTC-PRESSURE-DATA-006",
+  "registered_at": "2026-10-21T02:31:35.317592+00:00",
+  "kind": "data_feasibility_no_return_tests",
+  "requests_max": 8,
+  "probes": [
+    "premium latest100",
+    "premium after90days100",
+    "premium after200days100",
+    "index4H2024limit2",
+    "index4H2023limit2",
+    "funding recent100",
+    "funding after2024limit2"
+  ],
+  "local_audit": [
+    "frozen actual perp/index/mark/spot time coverage",
+    "funding archive gaps/nonstandard event times",
+    "finite features without forward fill",
+    "last completed settlement plus4H availability assumption, max age24H; no future realized rates"
+  ],
+  "forbidden": "No conditional PnL, alpha selection or pretending publication times were observed; original files untouched",
+  "hypotheses_next": "Only formulate crowding/pressure mechanism after documenting data limitations; no carry-income strategy"
+}

@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-21T02:24:02.744393+00:00",
+  "updated_at": "2026-10-21T02:38:58.770986+00:00",
   "authorization": "PM 2026-10-21 requests continuous idea->research->validation loop",
-  "current_experiment": "BTC-MATCH-005",
+  "current_experiment": "BTC-PRESSURE-DATA-006",
   "last_completed_experiment": "BTC-MATCH-005",
-  "next_action": "Audit free historical perpetual premium/funding stress features: coverage, publication/availability lag and price-only incremental mechanism; no carry-income strategy. Register a new falsifiable test before viewing conditional PnL. Continue actual public observations; matched005 is completed and must not be rerun/optimized.",
+  "next_action": "Preregister small crowding-pressure overlay study on fixed cohort3 P0 actual-perpetual trend baseline: lagged settled funding, synchronized trade/index-close proxy and joint pressure; include unfiltered and fixed long-risk-reduction controls. Use independent long-index snapshot and funding-joined4107 snapshot; historical availability remains explicit assumption. No conditional PnL inspected in006. Preserve earlier results. Continue actual public observations.",
   "known_history": "All saved historical BTC data through2026-10 is development/adaptive challenge, not fresh OOS",
   "required_independent_evidence": "Unseen future observations bound to frozen rules/code and actual availability/execution times",
   "research_qualified": 0,
@@ -15,6 +15,7 @@
   "automation_id": "btc",
   "automation_status": "ACTIVE",
   "active_worker": null,
-  "last_evidence": "research/reports/BTC_MATCH_005.md",
-  "foreground_policy": "Continue immediately while resources permit; 15min heartbeat is recovery, not planned idle time"
+  "last_evidence": "research/notes/BTC_PRESSURE_DATA_006.md",
+  "foreground_policy": "Continue immediately while resources permit; 15min heartbeat is recovery, not planned idle time",
+  "last_completed_data_audit": "BTC-PRESSURE-DATA-006"
 }
