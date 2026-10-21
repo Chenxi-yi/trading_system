@@ -29,6 +29,8 @@ PUBLIC_ROOTS = (
     'artifacts/BTC-MATCH-005',
     'artifacts/BTC-PRESSURE-DATA-006',
     'artifacts/BTC-DERIVATIVES-DATA-009',
+    'artifacts/BTC-DERIVATIVES-COLLECT-010',
+    'data/binance-metrics/BTCUSDT-2023-2026',
     'data/market-audit/btc-long-index-20261021',
     'data/forward-observation/BTC',
     'data/forward-pressure/BTC',

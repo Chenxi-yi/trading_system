@@ -1,0 +1,16 @@
+{
+  "id": "BTC-DERIVATIVES-COLLECT-010",
+  "registered_at": "2026-10-21T03:33:52.448226+00:00",
+  "type": "bounded_collection_and_coverage_only",
+  "symbol": "BTCUSDT",
+  "start": "2023-01-01",
+  "end_exclusive": "2026-10-01",
+  "max_new_http_requests_per_invocation": 100,
+  "source": "https://data.binance.vision/data/futures/um/daily/metrics/BTCUSDT/",
+  "files": "One ZIP andCHECKSUM per date. GET only, no auth/redirects; body<=3MB,ZIPuncompressed<=10MB singleCSV.",
+  "resumption": "OS lock; immutable per-file body+metadata+SHA; day checkpoint after validation. Partial day resumes missing checksum only; orphan body without metadata fails closed, no invented ingestion. Stop at budget, leave checkpoint.",
+  "errors": "404/410 date missing retained;403/451 access block stops no bypass;429 and network failures stop with finite next-retry delay; validation/hash errors stop/quarantine original bytes. No repeated busy retry.",
+  "quality": "Record NaN/blank fields, raw order/duplicate labels and sorted UTC-assumed daily5min grid. Original labels/units preserved; sorted inspection only, available_at unknown. Full historical publication/stock unit certification pending.",
+  "prohibitions": "No conditional PnL, candidate generation, paid sources, account calls or OKX execution substitution",
+  "total_expected_days": 1369
+}

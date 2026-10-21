@@ -121,6 +121,15 @@
       "controls": 0,
       "return_tests": 0,
       "status": "five_samples_verified_full_coverage_and_time_semantics_unverified"
+    },
+    {
+      "id": "BTC-DERIVATIVES-COLLECT-010",
+      "protocol": "research/audits/BTC-DERIVATIVES-COLLECT-010.json",
+      "report": "research/notes/BTC_DERIVATIVES_COLLECT_010.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "bounded_collection_in_progress"
     }
   ]
 }
