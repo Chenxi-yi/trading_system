@@ -150,3 +150,7 @@ filled/cancelled/rejected；增加 unknown 状态处理网络超时。
 目标架构其他能力不能从这些子模块推断为完成；完整组合Risk、真实订单恢复和监控尚未验收。
 Bar完整性不等于可交易性：无成交填充bar可没有时间缺口，仍须传播volume/场所状态。
 长执行延迟还须明确等待意图替换和TTL，目前只作已知历史诊断，不部署。
+
+## 严格现货预检查入口（026）
+
+新集成使用miniquant.risk.pretrade_strict.assess_spot_order：拒绝bool、非有限/无法表示的数字及溢出lot比值，再委托原风控规则。旧pretrade.py和包init被历史实验冻结，保留回放语义，不作为新集成入口。仍只是纯现货检查，无账户/发单连接；精确产品规则、原子预留、抵押品隔离和真实对账尚须验收，不将check通过当submission授权。

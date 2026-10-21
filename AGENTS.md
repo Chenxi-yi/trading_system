@@ -113,3 +113,5 @@ PM已解除人工暂停，ADR-0008额度调度已批准：每次恢复/每批前
 024已在10:11:52Z冻结实现，171测试；未来窗10:15Z至Dec20 10:15Z。每次观测后运行022 builder和tools/prepare_oi_variance.py，仅读质量summary，禁止结束前打开internal_samples_no_peek.json/真实分数；0实际拟合/预测。最新交接mechanism023.md；下项LOOP014合成最终评价/时间门禁。
 
 最新evaluator025.md：178测试，025实际提前调用not_due无真实标签加载；022/02436raw仍0完整特征/预测，首次截止后点已观测。终点前不重复评价/不读内部标签。恢复继续观测→022→024；独立选TASKS推进，别因前瞻等待全项目停工。
+
+026已保留旧pretrade/init冻结版，新增pretrade_strict输入边界（bool/溢出等拒绝），182独立测试；无账户集成/阈值变更。38raw/0特征/标签/预测，两截止后桶。最新交接仍evaluator025.md；下步DATA023公开master/面值漂移监测，先冻结采样与变化处理。

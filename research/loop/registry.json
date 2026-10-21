@@ -265,6 +265,15 @@
       "controls": 0,
       "return_tests": 0,
       "status": "synthetic178tests_actual_premature_gate_not_due_no_real_labels_loaded"
+    },
+    {
+      "id": "BTC-RISK-GUARD-026",
+      "protocol": "research/audits/BTC-RISK-GUARD-026.json",
+      "report": "research/notes/BTC_RISK_GUARD_026.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "synthetic_boolean_and_overflow_reproduced_new_guard_rejects_legacy_frozen"
     }
   ],
   "prospective_mechanisms": [

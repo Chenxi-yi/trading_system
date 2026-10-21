@@ -45,6 +45,7 @@ PUBLIC_ROOTS = (
     'artifacts/BTC-OI-MECHANISM-023',
     'artifacts/BTC-OI-FORECAST-024',
     'artifacts/BTC-OI-EVALUATOR-025',
+    'artifacts/BTC-RISK-GUARD-026',
     'data/binance-metrics/BTCUSDT-2023-2026-retry-v2',
     'data/binance-metrics/BTCUSDT-2023-2026',
     'data/market-audit/btc-long-index-20261021',

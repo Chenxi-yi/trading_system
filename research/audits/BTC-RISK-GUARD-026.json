@@ -1,0 +1,16 @@
+{
+  "id": "BTC-RISK-GUARD-026",
+  "registered_at": "2026-10-21T10:30:18.721569+00:00",
+  "type": "offline_versioned_input_validation_fix",
+  "parent_source": "src/miniquant/risk/pretrade.py",
+  "observed_failures": [
+    "bool quantity accepted by legacy checker on syntheticcash intent",
+    "finite extreme quantity/lot triggers OverflowError"
+  ],
+  "scope": "New pure strict guard delegates unchanged legacy risk semantics only after typed/finite/magnitude validation. Preserve old frozen source. No new numerical budget/leverage/mode, account or venue order integration.",
+  "checks": "Reject bools/unsupported types/nonfinite/unrepresentable huge integers, nonfinite lot quotient, malformedmapping. Keep ordinary valid orders identical, initial-principal loss stop and protected inventory checks. Submission always unauthorized.",
+  "new_HTTP_attempts": 0,
+  "alpha_candidates": 0,
+  "controls": 0,
+  "return_tests": 0
+}
