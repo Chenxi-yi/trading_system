@@ -1,0 +1,11 @@
+{
+  "id": "BTC-STUDY-GATE-028",
+  "registered_at": "2026-10-21T10:55:58.220818+00:00",
+  "scope": "Machine enforce027 quality and persistent invalidation around unchanged022/024/025; no hypothesis/cutoff/model/threshold change, no outcome access.027 current snapshot passed but machine stop path needs enforcement before any real features/fit.",
+  "prepare": "Refresh027 (daily acquisition reservation/max6 asalreadyfrozen), require boolean study_supported true and no persistentinvalidated file, then022 and024. Failure blocks both; raw observers independent.",
+  "evaluate": "Check unchanged fixed end FIRST with no refresh/data load; when due refresh027 and require support/no invalidation, then025 unchanged clock gate. Never score invalidated cohort.",
+  "alpha_candidates": 0,
+  "controls": 0,
+  "return_tests": 0,
+  "new_HTTP_authorization": "No new endpoint/budget; only existing027 acquisition scope, never016/019blocked transport."
+}

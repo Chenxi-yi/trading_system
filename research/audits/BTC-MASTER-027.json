@@ -1,0 +1,17 @@
+{
+  "id": "BTC-MASTER-027",
+  "registered_at": "2026-10-21T10:43:36.051971+00:00",
+  "type": "public_first_observed_master_and_OI_unit_monitor",
+  "symbol": "BTC-USDT-SWAP",
+  "baseline": "data/market-audit/20261020T154059431686Z/instrumentsSWAP.json",
+  "baseline_sha256": "e56778c0c9838db63cd8eb3e1895a92d90ad2f85183100f3ff0c82a190fa1ada",
+  "source": "https://app.okx.com/docs-v5/en/",
+  "acquisition": "One acquisition reservation perUTCday including failed/interrupted attempts; original authorized PublicClient same host/UA/TLS unchanged. Only time+public instrumentsSWAP; count actual opener attempts, max6/day (old3retry/job included), no other endpoints.403451 persistblock, no route/header/auth changes. Full raw retained.",
+  "master": "Immutable actual receive timestamp versions; no original effective/publication time asserted. Identity/linear/USDT/BTC/ctMult1 required for prospective scope. Material ctType/ctVal/ctMult/ctValCcy/settleCcy change afterstart invalidates whole risk study, no rescaling or selective trimming; tick/lot/min/max changes flag execution review.",
+  "OI": "For each existing actual OI choose last master received<=OI receive, compare oiCcy to oi*ctVal, absolute1e-8BTC tolerance.0OI/0coin isuncheckable, not deleveraging. Poststart unit disagreement persistently invalidates study, prestart retained diagnostic only. Most recent master older26h blocks continuation untilfresh.",
+  "integration": "Pure research-support flag only, no account/order/financial budget changes. Guardbefore024prepare; invalidating flag cannotbeauto-cleared; old predictions/samples retained, remaining work independent.",
+  "new_HTTP_max_attempts": 6,
+  "alpha_candidates": 0,
+  "controls": 0,
+  "return_tests": 0
+}

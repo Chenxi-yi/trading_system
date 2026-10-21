@@ -274,6 +274,24 @@
       "controls": 0,
       "return_tests": 0,
       "status": "synthetic_boolean_and_overflow_reproduced_new_guard_rejects_legacy_frozen"
+    },
+    {
+      "id": "BTC-MASTER-027",
+      "protocol": "research/audits/BTC-MASTER-027.json",
+      "report": "research/notes/BTC_MASTER_GATE_027_028.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "implemented191tests_actual_master_consistent_guarded_prepare_and_not_due"
+    },
+    {
+      "id": "BTC-STUDY-GATE-028",
+      "protocol": "research/audits/BTC-STUDY-GATE-028.json",
+      "report": "research/notes/BTC_MASTER_GATE_027_028.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "implemented191tests_actual_master_consistent_guarded_prepare_and_not_due"
     }
   ],
   "prospective_mechanisms": [
