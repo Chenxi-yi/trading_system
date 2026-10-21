@@ -1,0 +1,11 @@
+{
+  "id": "BTC-ARCHIVE-TRANSPORT-012",
+  "registered_at": "2026-10-21T07:45:36.628154+00:00",
+  "purpose": "Read-only exception tracing of one frozen010 collector invocation after due network backoff",
+  "limits": "Same original100GET maximum/no auth/no redirects/no changed retries; no extra network request, no mutation of010source or fingerprint",
+  "observation": "sys.settrace only archive_collection exception events; whitelist error class,nested reason class,numeric errno/SSL verification code; never messages/URLs/headers/credentials",
+  "parent": "BTC-DERIVATIVES-COLLECT-010",
+  "alpha_candidates": 0,
+  "controls": 0,
+  "pnl_tests": 0
+}
