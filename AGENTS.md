@@ -53,7 +53,7 @@ python3.11 tools/okx_demo_audit.py
 python3.11 -m tools.okx_capabilities
 python3.11 tools/okx_market_audit.py --page-budget 120
 
-离线测试覆盖教学算例及审计器只读/脱敏/模拟环境控制；实际脚本检查 Demo REST 能力与无签名公开市场历史，均为 GET；共 68 项离线测试。
+离线测试覆盖教学算例及审计器只读/脱敏/模拟环境控制；实际脚本检查 Demo REST 能力与无签名公开市场历史，均为 GET；共 79 项离线测试。
 数据契约见 docs/DATA_CONTRACT.md；覆盖与研究入口见 docs/workpackages/W2.md。本夜已获PM批准，冻结实验 research/experiments/BTC-NIGHT-001.json；先读本夜最新交接，保护封存历史样本。
 生产模块建立时再加入对应的数值、时间因果、账本和故障测试。
 
@@ -69,3 +69,10 @@ PM已明确要求失败后继续提出新机制并研究，见ADR-0006和researc
 最新恢复入口docs/sessions/2026-10-21-research-loop.md与research/loop/checkpoint.json；先运行tools/research_loop_status.py。
 btc现每4小时ACTIVE；单次最多1批、每天最多2新批，每批8alpha+4对照，每3批做方法审计。
 所有已看历史只作适应性探索，不以累计搜索/PBO冒充独立新OOS；无交易/新增付费授权。
+
+## 最新调度纠正（ADR-0007）
+
+PM要求资源可用立即推进，不等定时；取消Agent自设每日2批节奏，单批预算和证据门槛不改。
+btc为15分钟中断恢复保险；前台顺序继续有意义研究/数据/工程，不能把ACTIVE说成在计算。
+当前36alpha+10对照，79测试；最新交接2026-10-21-foreground-loop003.md。
+下一步量价事件诊断/公开前瞻观测，累计登记与三批方法审计保留；无资金操作授权。

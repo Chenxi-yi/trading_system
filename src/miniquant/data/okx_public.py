@@ -16,6 +16,8 @@ PATHS = {
     "time": "/api/v5/public/time",
     "ticker": "/api/v5/market/ticker",
     "archive": "/api/v5/public/market-data-history",
+    "open_interest": "/api/v5/public/open-interest",
+    "books": "/api/v5/market/books",
 }
 PARAMS = {
     "trade": {"instId", "bar", "after", "limit"},
@@ -23,6 +25,7 @@ PARAMS = {
     "index": {"instId", "bar", "after", "limit"},
     "funding": {"instId", "after", "limit"},
     "instruments": {"instType"}, "time": set(), "ticker": {"instId"},
+    "open_interest": {"instType", "instId"}, "books": {"instId", "sz"},
     "archive": {"module", "instType", "instIdList", "instFamilyList", "dateAggrType", "begin", "end"},
 }
 

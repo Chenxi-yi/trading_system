@@ -1,0 +1,144 @@
+{
+  "experiment_id": "BTC-LOOP-003",
+  "created_at": "2026-10-21T01:53:13.664207+00:00",
+  "status": "registered_before_new_candidate_returns",
+  "hypothesis": "Slower BTC directional underreaction plus short expression may differ from long/flat; risk scaling is separately falsified by fixed risk controls, not assumed beneficial",
+  "data_status": "Adaptive known historical exploration only; all first-cohort dates already accessible. No fresh OOS claim",
+  "alpha_candidate_budget": 8,
+  "control_budget": 4,
+  "variants": [
+    {
+      "id": "P0",
+      "horizons": [
+        20,
+        60,
+        120
+      ],
+      "risk_mode": "vol_scaled",
+      "long_only": false
+    },
+    {
+      "id": "P1",
+      "horizons": [
+        10,
+        40,
+        120
+      ],
+      "risk_mode": "vol_scaled",
+      "long_only": false
+    },
+    {
+      "id": "P2",
+      "horizons": [
+        20,
+        80,
+        160
+      ],
+      "risk_mode": "vol_scaled",
+      "long_only": false
+    },
+    {
+      "id": "P3",
+      "horizons": [
+        40,
+        80,
+        160
+      ],
+      "risk_mode": "vol_scaled",
+      "long_only": false
+    },
+    {
+      "id": "F0",
+      "horizons": [
+        20,
+        60,
+        120
+      ],
+      "risk_mode": "fixed",
+      "long_only": false
+    },
+    {
+      "id": "F1",
+      "horizons": [
+        10,
+        40,
+        120
+      ],
+      "risk_mode": "fixed",
+      "long_only": false
+    },
+    {
+      "id": "F2",
+      "horizons": [
+        20,
+        80,
+        160
+      ],
+      "risk_mode": "fixed",
+      "long_only": false
+    },
+    {
+      "id": "F3",
+      "horizons": [
+        40,
+        80,
+        160
+      ],
+      "risk_mode": "fixed",
+      "long_only": false
+    }
+  ],
+  "primary": "P0",
+  "secondary_fixed_primary": "F0",
+  "controls": [
+    {
+      "id": "long_only_scaled",
+      "horizons": [
+        20,
+        60,
+        120
+      ],
+      "risk_mode": "vol_scaled",
+      "long_only": true
+    },
+    {
+      "id": "long_only_fixed",
+      "horizons": [
+        20,
+        60,
+        120
+      ],
+      "risk_mode": "fixed",
+      "long_only": true
+    },
+    {
+      "id": "passive_long_fixed",
+      "horizons": [],
+      "risk_mode": "fixed",
+      "passive": true,
+      "long_only": true
+    },
+    {
+      "id": "passive_long_scaled",
+      "horizons": [],
+      "risk_mode": "vol_scaled",
+      "passive": true,
+      "long_only": true
+    }
+  ],
+  "rule": "Daily completed close momentum signs averaged across3 horizons; signed strength*min(0.75,0.20/20day annualized vol), fixed variants strength*0.75; rebalance daily only if target-current mark notional/NAV differs>5pp; actual USDT perpetual, no borrowing/leverage amplification",
+  "clock": "4H executable replay, daily signal end+4H; fixed pending intent, ttl12H; lag stress8H; all funding applied before same-boundary orders",
+  "coverage": "Use2022 trade for feature warmup only,2023 development and2024/2025/2026H1 known replays; complete mark/funding from2023 required",
+  "costs": {
+    "base_fee_bps": 5,
+    "base_slip_bps": 5,
+    "stress_fee_bps": 10,
+    "stress_slip_bps": 10
+  },
+  "risk": "abs(notional target)<=0.75NAV research cap, 10% synthetic worst-mark maintenance trigger and insolvency stop; not certified OKX historical liquidation, no demo pass",
+  "funding": "Official realized rates/time, pre-boundary quantity; mark4H open estimate, terminal mark at end boundary open when available, no zero filling",
+  "selection": "PrimaryP0 and fixedF0 frozen; no reselect best parameters, no choosing best lag; all8 retained with pool diagnostics",
+  "gate": "Unchanged conservative historical screen: each2024/25positive, known2026H1positive, coststresspositive, DD>=-35%,>=20fills, all blockbootstrap lower>0, PBO<=.2, >=75%neighbors positive; regardless history, research_qualified remainsFalse until prospective/selection audit; demo requires historical liquidation/account/risk/execution separately",
+  "cumulative_prior_alpha_candidates": 28,
+  "cumulative_prior_controls": 6
+}

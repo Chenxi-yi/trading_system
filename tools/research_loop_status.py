@@ -28,16 +28,18 @@ def main():
             launched_today+=date==today
             manifest=json.loads((ROOT/'artifacts'/item['id']/'manifest.json').read_text())
             expected=hashlib.sha256((ROOT/item['protocol']).read_bytes()).hexdigest()
-            if expected!=manifest['protocol_sha256']:raise ValueError('Frozen protocol modified')
+            saved_protocol_hash=manifest.get('protocol_sha256') or manifest['inputs']['protocol']['sha256']
+            if expected!=saved_protocol_hash:raise ValueError('Frozen protocol modified')
             for name,digest in manifest['code'].items():
                 saved=ROOT/'artifacts'/item['id']/'source_snapshot'/name
                 if hashlib.sha256(saved.read_bytes()).hexdigest()!=digest:
                     raise ValueError('Frozen source snapshot mismatch')
                 snapshots+=1
-    if launched_today>policy['maximum_new_batches_per_shanghai_day']:
+    daily_limit=policy['maximum_new_batches_per_shanghai_day']
+    if daily_limit is not None and launched_today>daily_limit:
         raise ValueError('Daily search budget exceeded')
     print(json.dumps(dict(cumulative_alpha_candidates=registry['cumulative_alpha_candidates'],cumulative_controls=registry['cumulative_controls'],
-                          todays_new_batches=launched_today,remaining_new_batches_today=policy['maximum_new_batches_per_shanghai_day']-launched_today,
+                          todays_new_batches=launched_today,remaining_new_batches_today=daily_limit-launched_today if daily_limit is not None else 'no_clock_pacing_limit; batch/review/evidence_limits_still_apply',
                           frozen_source_files_verified=snapshots,next_action=checkpoint['next_action'],research_qualified=checkpoint['research_qualified'],demo_ready=checkpoint['demo_ready']),ensure_ascii=False,indent=2))
 
 

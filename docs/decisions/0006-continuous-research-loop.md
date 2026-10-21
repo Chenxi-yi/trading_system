@@ -36,3 +36,5 @@
 PM可随时暂停/改方向；真正外部阻塞或额度不足保留检查点，避免忙等和重复启动。
 
 官方本地调度条件：[Scheduled tasks](https://learn.chatgpt.com/docs/automations?surface=app)。
+
+2026-10-21 PM后续纠正：本ADR每日2批/4小时节奏已被ADR-0007取代；原研究/未知样本门槛不变。

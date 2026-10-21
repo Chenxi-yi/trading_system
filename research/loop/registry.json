@@ -27,8 +27,22 @@
         "execution lag4h"
       ],
       "note": "Adaptive historical exploration; primary T0/R0 fixed before new returns"
+    },
+    {
+      "id": "BTC-LOOP-003",
+      "protocol": "research/experiments/BTC-LOOP-003.json",
+      "alpha_candidates": 8,
+      "controls": 4,
+      "report": "research/reports/BTC_LOOP_003.md",
+      "result": "rejected_or_insufficient",
+      "diagnostics": [
+        "base/stress/delay8H",
+        "76run ledger check",
+        "paired block bootstrap"
+      ],
+      "note": "Actual perpetual rates/mark; synthetic liquidation only; all historical dates known/adaptive"
     }
   ],
-  "cumulative_alpha_candidates": 28,
-  "cumulative_controls": 6
+  "cumulative_alpha_candidates": 36,
+  "cumulative_controls": 10
 }
