@@ -17,5 +17,7 @@
   "active_worker": null,
   "last_evidence": "research/reports/BTC_LOOP_007.md",
   "foreground_policy": "Continue immediately while resources permit; 15min heartbeat is recovery, not planned idle time",
-  "last_completed_data_audit": "BTC-PRESSURE-DATA-006"
+  "last_completed_data_audit": "BTC-PRESSURE-DATA-006",
+  "last_process_review": "research/notes/BTC_ADAPTIVE_LOOP_REVIEW_007.md",
+  "last_process_review_new_batches": 3
 }
