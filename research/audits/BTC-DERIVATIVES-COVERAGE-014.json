@@ -1,0 +1,17 @@
+{
+  "id": "BTC-DERIVATIVES-COVERAGE-014",
+  "registered_at": "2026-10-21T09:12:12.967204+00:00",
+  "type": "full_collection_quality_audit_no_returns",
+  "dataset": "data/binance-metrics/BTCUSDT-2023-2026-retry-v2",
+  "checks": [
+    "Everyrawbody+metadata SHA and official checksum; recompute saved summaries",
+    "Label gaps/outside-day/cross-file duplicates and raw disorder without imputation",
+    "Numeric zeros and wholly missing fields descriptive only, no exclusion rules",
+    "Exact raw SHA compare to4in-range009probes;2022probe outside scope",
+    "Bind all final raw+metadata files and checkpoint before audit; source snapshots before execution"
+  ],
+  "prohibitions": "No conditional PnL, alpha candidates, feature selection or availability/unit certification; observed gaps stay visible",
+  "alpha_candidates": 0,
+  "controls": 0,
+  "return_tests": 0
+}

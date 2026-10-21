@@ -129,7 +129,7 @@
       "alpha_candidates": 0,
       "controls": 0,
       "return_tests": 0,
-      "status": "bounded_collection_in_progress"
+      "status": "retired_immutable_parent353days_not_full_universe"
     },
     {
       "id": "BTC-DERIVATIVES-RECHECK-011",
@@ -156,7 +156,16 @@
       "alpha_candidates": 0,
       "controls": 0,
       "return_tests": 0,
-      "status": "independent_retry_lineage_in_progress"
+      "status": "completed1369days394139rows_time_units_not_certified"
+    },
+    {
+      "id": "BTC-DERIVATIVES-COVERAGE-014",
+      "protocol": "research/audits/BTC-DERIVATIVES-COVERAGE-014.json",
+      "report": "research/notes/BTC_DERIVATIVES_COVERAGE_014.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "all_files_rechecked_four_gap_days143_disorder_days_units_time_unknown"
     }
   ]
 }

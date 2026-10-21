@@ -33,6 +33,7 @@ PUBLIC_ROOTS = (
     'artifacts/BTC-DERIVATIVES-RECHECK-011',
     'artifacts/BTC-ARCHIVE-TRANSPORT-012',
     'artifacts/BTC-DERIVATIVES-COLLECT-013',
+    'artifacts/BTC-DERIVATIVES-COVERAGE-014',
     'data/binance-metrics/BTCUSDT-2023-2026-retry-v2',
     'data/binance-metrics/BTCUSDT-2023-2026',
     'data/market-audit/btc-long-index-20261021',
