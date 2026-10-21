@@ -11,3 +11,9 @@
 将DATA-015列为backlog：固定日期/请求预算后，取得相同市场成交量，再冻结时间边界、容差和缺失处理做独立质量审计。若只能作时间/单位假设，结果标记假设下诊断，不能定性造假或认证有效；宽区间不违例也不证明细粒度数据完整。此处未取新成交数据、未算条件收益、未增加alpha配置。
 
 备选论文[Cheng et al., Liquidation, Leverage and Optimal Margin in Bitcoin Futures Markets](https://arxiv.org/abs/2102.04591)本次只检索摘要，尚未精读，不据此设置OKX风险或杠杆参数。PM取消carry收益不变。
+
+## 本次官方口径检索边界
+
+[Binance USD-M REST市场文档](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-usd-s-m-futures/api/rest-api/market-data#open-interest-statistics)把openInterestHist的timestamp描述为区间结束毫秒时刻，并说明仅最近1月。这认证该REST字段的当前文档语义，不自动认证archive的create_time及其历史版本。数值示例不足以证明数量单位。
+
+[官方repo issue211](https://github.com/binance/binance-public-data/issues/211)有协作者2023年提供更细粒度数据的计划；计划不是已上线验收。[issue513](https://github.com/binance/binance-public-data/issues/513)是社区用户要求澄清archive映射/时间口径的问题，本次可读页没有提供可引用的权威映射答案，不以用户提问作官方定义。未向外发issue/评论或请求服务。
