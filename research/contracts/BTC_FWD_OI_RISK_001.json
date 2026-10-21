@@ -1,0 +1,32 @@
+{
+  "id": "BTC-FWD-OI-RISK-001",
+  "registered_at": "2026-10-21T10:06:23.152483+00:00",
+  "status": "plan_frozen_code_and_data_pending",
+  "research_type": "prospective_mechanism_forecasting_not_trading_alpha",
+  "hypothesis": "After controlling past same-venue realized variance, OI contraction adds positive information about next4H squared price variation. Association only, no forced-flow identification or rebound claim.",
+  "mechanism": "Inventory changes may accompany stress that persists beyond a price shock; aggregate OI nets all opening/closing, so forced liquidation is an alternative explanation not an identified label.",
+  "models": {
+    "B0": "OLS log(nextRV+1e-12) ~ intercept + log(pastRV+1e-12)",
+    "M1": "B0 + max(-fractional_OI_change_4H,0)"
+  },
+  "model_configurations": 2,
+  "alpha_candidates": 0,
+  "strategy_controls": 0,
+  "scope": "OKX BTC-USDT-SWAP actual public book/OI first-observed only; no legacy Binance or retrospectiveOI. No funding-income, order, leverage, account, paid data.",
+  "activation": "Not active until predictor code+tests+manifest frozen before outcomes accessed. Window start=max(022 cutoff, predictor manifest freeze time), then60calendar days; never extend based on scores.",
+  "feature_quality": "Use022 fixed first eligible per15min bucket and17consecutive buckets for pastOI/price. Both source receptions>=start; positiveOI, no fill; max elapsed3h45m..4h15m. Add pastRV from16 log-mid increments with this same past point set, do not edit022.",
+  "target_quality": "At t use only t features. Label nextRV is sum16 squared log-mid increments across next16UTC15min buckets plus currentpoint. Future price-only books fresh<=30s; do NOT require futureOI availability. Missing price bucket or elapsed outside3h45m..4h15m gives missing target, neverzero; report missingness.",
+  "sampling": "For statistical sample choose only end UTC15min bucket divisible by4H (6/day); earliest eligible point in bucket, no later replacement. Nearby endpoints may slightly overlap due receive jitter, so episode/day dependence retained.",
+  "fit": "Expanding OLS refit dailyUTC00, training includes labels actually received strictly before refit and predictions only afterfit; min120 fully observed training samples. Same training rows B0/M1, no parameters/window search. Predict positive RV via exp(log forecast)*mean(exp(training residual)); epsilon1e-12. Nonfinite fit/forecast stops and records model failure.",
+  "evaluation": "Do not inspect target values or relative scores before predictor freeze; no human evaluation peeks until fixed60day end. Data-quality/coverage and immutable predictions may be monitored without showing labels. Min120 common chronological evaluation targets and>=80percent planned anchors coverage; otherwise inconclusive, no extending window or relabelling known data.",
+  "primary": "Mean QLIKE(B0)-QLIKE(M1), QLIKE=log(forecastRV)+observedRV/forecastRV. One primary comparison. Day-block moving bootstrap fixed2day blocks10000replications seed20261021; sensitivity1day/4day descriptive only. Need positive point gain AND primary95percent lower bound>0 for incremental forecast evidence, not trading admission.",
+  "secondary": "Paired logRV squared error, coefficient sign and chronological half gains descriptive only. Record fit/coverage failures. Primary fail cannot be rescued by secondaries. Model can improve volatility forecast without producing net trading alpha.",
+  "invalidating": "No increment after baseline; negative gain; missingness concentrated in stress; unstable coefficient/halves; inadequate regimes; stale/changed instrument data; numerical failure. Any changes after outcome access create new adaptive trial, no old-plan rewriting.",
+  "next_gate": "Forecast evidence only -> separate frozen position/risk utility and realistic costs/funding/execution hypothesis; no automatic strategy/portfolio/demo qualification.",
+  "source_urls": [
+    "https://arxiv.org/pdf/2102.04591",
+    "https://github.com/edwinyeeshunwan/forced-or-frantic/blob/main/CORRECTIONS.md",
+    "https://github.com/edwinyeeshunwan/forced-or-frantic"
+  ],
+  "publication_limit": "Cheng paper examined sections2/3/5; Wan README+full CORRECTIONS examined, PDF raw unsupported and not fully read; independent working paper not authoritative alpha evidence."
+}

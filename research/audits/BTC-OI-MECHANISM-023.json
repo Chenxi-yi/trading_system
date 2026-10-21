@@ -1,0 +1,13 @@
+{
+  "id": "BTC-OI-MECHANISM-023",
+  "registered_at": "2026-10-21T10:06:23.152483+00:00",
+  "type": "manual_literature_review_and_future_mechanism_plan",
+  "plan": "research/contracts/BTC_FWD_OI_RISK_001.json",
+  "new_HTTP_market_requests": 0,
+  "alpha_candidates": 0,
+  "controls": 0,
+  "return_tests": 0,
+  "model_configurations_planned": 2,
+  "model_configurations_executed": 0,
+  "method": "Read cited primary body/correction sources, freeze one incremental volatility information comparison before implementation/outcome access; no source code run."
+}

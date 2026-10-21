@@ -1,0 +1,12 @@
+{
+  "id": "BTC-OI-FORECAST-024",
+  "registered_at": "2026-10-21T10:09:58.673336+00:00",
+  "plan": "research/contracts/BTC_FWD_OI_RISK_001.json",
+  "scope": "Implement fixed causal sample/price-only future target and2dailyOLS models, synthetic tests and future code activation only; no real score inspection",
+  "implementation_policies": "Manifest freeze time anchors activation. No retrospective predictions: only latest eligible anchor received<=120s ago may forecast; immutable per-decision predictions. Rank-deficient/nonfinite fit recorded failure. No outcome/scoring output before fixed60day end.",
+  "new_HTTP_attempts": 0,
+  "alpha_candidates": 0,
+  "controls": 0,
+  "return_tests": 0,
+  "real_model_fits": 0
+}

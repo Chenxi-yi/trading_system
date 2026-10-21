@@ -238,6 +238,36 @@
       "controls": 0,
       "return_tests": 0,
       "status": "frozen_before_cutoff_zero_features_wait_for_post_cutoff_17bucket_coverage"
+    },
+    {
+      "id": "BTC-OI-MECHANISM-023",
+      "protocol": "research/audits/BTC-OI-MECHANISM-023.json",
+      "report": "research/notes/BTC_OI_MECHANISM_023.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "primary_source_review_future_plan_frozen_no_fits"
+    },
+    {
+      "id": "BTC-OI-FORECAST-024",
+      "protocol": "research/audits/BTC-OI-FORECAST-024.json",
+      "report": "research/notes/BTC_OI_FORECAST_024.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "code_frozen_before_cutoff_34raw0features0predictions_real_fits0"
+    }
+  ],
+  "prospective_mechanisms": [
+    {
+      "id": "BTC-FWD-OI-RISK-001",
+      "plan": "research/contracts/BTC_FWD_OI_RISK_001.json",
+      "planned_model_configurations": 2,
+      "executed_model_configurations": 0,
+      "status": "code024_frozen_collecting_after10:15Z_no_real_fits",
+      "alpha_candidates": 0,
+      "relation": "Risk forecasting information only; not a trading candidate or increment to strategy controls",
+      "code_audit": "BTC-OI-FORECAST-024"
     }
   ]
 }
