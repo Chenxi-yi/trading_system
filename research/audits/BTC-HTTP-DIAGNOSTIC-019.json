@@ -1,0 +1,14 @@
+{
+  "id": "BTC-HTTP-DIAGNOSTIC-019",
+  "registered_at": "2026-10-21T09:48:14.521432+00:00",
+  "type": "one_request_failure_observability",
+  "parent": "BTC-OKX-UNITS-017",
+  "max_HTTP_attempts": 1,
+  "scope": "Only identical frozen017 BoundedClient.get(time); same URL,headers,TLS,redirect policy,timeout; no auth or changed route. No inference of old status code.",
+  "review": "Independent already-authorized OKX public observations still succeed on same fixed host; this does not explain017. One diagnostic permitted, then no retry;403451 persist block.",
+  "offline_fault_injection_first": true,
+  "persist": "Exception type, HTTP status, URLError reason class, integer errno only; never str(exception)/headers/body/account material",
+  "alpha_candidates": 0,
+  "controls": 0,
+  "return_tests": 0
+}

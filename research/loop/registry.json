@@ -202,6 +202,24 @@
       "controls": 0,
       "return_tests": 0,
       "status": "offline_saved_spec_300candle_and_OI_conversions_consistent_no_vintage_certification"
+    },
+    {
+      "id": "BTC-HTTP-DIAGNOSTIC-019",
+      "protocol": "research/audits/BTC-HTTP-DIAGNOSTIC-019.json",
+      "report": "research/notes/BTC_HTTP_ASOF_019_020.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "actual_one_GET_HTTP403_persistent_block_old017_cause_unknown"
+    },
+    {
+      "id": "BTC-CAUSAL-SNAPSHOT-020",
+      "protocol": "research/audits/BTC-CAUSAL-SNAPSHOT-020.json",
+      "report": "research/notes/BTC_HTTP_ASOF_019_020.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "32raw16causal_joins_max_gap12241523ms_noPnL"
     }
   ]
 }
