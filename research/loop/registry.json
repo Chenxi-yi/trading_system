@@ -148,6 +148,15 @@
       "controls": 0,
       "return_tests": 0,
       "status": "completed_actual_SSLEOFError_errno8_original_decisions_unchanged"
+    },
+    {
+      "id": "BTC-DERIVATIVES-COLLECT-013",
+      "protocol": "research/audits/BTC-DERIVATIVES-COLLECT-013.json",
+      "report": "research/notes/BTC_DERIVATIVES_COLLECT_013.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "independent_retry_lineage_in_progress"
     }
   ]
 }
