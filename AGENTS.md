@@ -87,3 +87,5 @@ btc为15分钟中断恢复保险；前台顺序继续有意义研究/数据/工�
 PM已解除人工暂停，ADR-0008额度调度已批准：每次恢复/每批前后先真实读get_usage_limits，脱敏stdin送tools/research_quota_gate.py，低于10%保存并通过应用工具预约刷新后复核；不买/不用重置券，人工暂停优先。最新2026-10-21-loop008.md；43alpha/16对照、113测试，008全失败。下一步免费历史衍生品增量数据审计，勿挑R20_72优化。
 
 009免费衍生品样例审计已完成，116测试，43alpha/16对照不变；恢复读2026-10-21-derivatives009.md。官方5日文件可取≠全历史可用，ratio缺失/乱序/时间单位未认证保留。先查真实额度，再独立冻结有界采集，不做条件PnL。
+
+010有界归档采集已冻结/实现，121测试；首1GET发生URLError、0日0行，600秒退避，不绕路/不猜原因。最新恢复2026-10-21-collect010.md，先quota gate和data/binance-metrics/BTCUSDT-2023-2026/checkpoint.json的retry_after_epoch；源指纹不可静默改，下一段独立日志/invocation快照。累计43alpha/16对照，研究0/Demo0。
