@@ -11,5 +11,16 @@
   "historical_claim": "Historical adaptation cannot become new independent OOS by renaming a split",
   "notification": "Quiet for unchanged/nonactionable state; notify meaningful discoveries, completion, operational failures or PM-required input",
   "foreground_policy": "Continue authorized meaningful work sequentially while resources permit; do not wait for scheduled heartbeat between completed batches",
-  "budget_revision_reason": "PM explicitly objects to idle available resources; previous daily2 cap was agent-chosen resource pacing, not a validation gate"
+  "budget_revision_reason": "PM explicitly objects to idle available resources; previous daily2 cap was agent-chosen resource pacing, not a validation gate",
+  "quota_policy": {
+    "check": "every_resume_and_before_after_each_batch",
+    "minimum_remaining_percent": 10,
+    "comparison": "strictly_below",
+    "wake_buffer_seconds": 120,
+    "helper": "tools/research_quota_gate.py",
+    "manual_pause_overrides": true,
+    "automatic_reset_credit_use": false,
+    "unknown": "save_and_requery_with_bounded_backoff; no busy loop",
+    "recovery_rrule": "FREQ=HOURLY;BYMINUTE=0,15,30,45;BYSECOND=0"
+  }
 }
