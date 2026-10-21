@@ -117,3 +117,5 @@ PM已解除人工暂停，ADR-0008额度调度已批准：每次恢复/每批前
 026已保留旧pretrade/init冻结版，新增pretrade_strict输入边界（bool/溢出等拒绝），182独立测试；无账户集成/阈值变更。38raw/0特征/标签/预测，两截止后桶。最新交接仍evaluator025.md；下步DATA023公开master/面值漂移监测，先冻结采样与变化处理。
 
 最新恢复docs/sessions/2026-10-21-master028.md：027公开主数据每日最多6底层GET，2版本/20OI一致，028强制master时效及整项失效保护。恢复观测后改用python3.11 tools/run_oi_study.py --mode prepare；只看质量，当前40raw/3截止后桶、0完整特征/标签/预测。统一191测试；旧模型/固定终点不变，真实结果未读，43alpha16对照研究0Demo0。DATA023长期连续性待验收。
+
+027/028已本机保存6ac4e8b，223源码/恢复191测试与原NAV一致；最新quota主9%触发，btc应用确认ACTIVE单次20:11北京时间，quota_wait_until12:11Z。恢复先真实quota，再应用恢复15min；不是PM暂停，端到端唤醒待验收。详见master028交接。

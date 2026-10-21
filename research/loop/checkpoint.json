@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-21T11:01:48.816507+00:00",
+  "updated_at": "2026-10-21T11:02:55.906711+00:00",
   "authorization": "PM 2026-10-21 requests continuous idea->research->validation loop",
   "current_experiment": "BTC-OI-FORECAST-024",
   "last_completed_experiment": "BTC-LOOP-008",
@@ -22,6 +22,6 @@
   "last_process_review_new_batches": 3,
   "quota_policy": "research/loop/policy.json",
   "pm_manual_pause": false,
-  "quota_wait_until": null,
-  "quota_schedule_status": "quota_recovered_by_PM_message;15min_restored_app_confirmed;automatic_wake_not_proven"
+  "quota_wait_until": "2026-10-21T12:11:00+00:00",
+  "quota_schedule_status": "app_update_confirmed_ACTIVE_single_wake_2026-10-21_20:11_Shanghai;end_to_end_delivery_unproven"
 }
