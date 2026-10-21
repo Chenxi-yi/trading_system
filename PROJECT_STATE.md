@@ -192,3 +192,9 @@ ADR-0009：013独立重试数据来源，父010停在353日101661行永久保留
 下一步优先OPS009新来源故障记录（先离线注入，不自动重试未知HTTP失败），或严格as-of实际观测特征对齐；不跨所混用、不暴力搜索。DATA019未验收、DATA020离线完成。TASKS唯一任务入口，15min中断保险不变，人工暂停false、quota_wait空。
 
 最新交接docs/sessions/2026-10-21-okx-units018.md；恢复包/最终quota结果另附。
+
+## 保存验收
+
+本地1b2c22d；恢复包artifacts/recovery/BTC-NIGHT-001-1b2c22dbb069.tar.gz，62643027字节/0600，SHA256 0768ada1c77bb535c8243a2a283f4400add92968b52bc63089ac07bfce3eaaf1。全部成员哈希、解包150测试、原选定BTC逐日NAV重放一致；明确加入唯一公开instrumentsSWAP输入，不包含其同目录私有资料。仅本机备份，GitHub同步仍未确认。
+
+结束真实主53%/次60%剩余，gate允许，无人工/额度暂停。164冻结源码核验，无活动采集/研究worker；15min保险不变。
