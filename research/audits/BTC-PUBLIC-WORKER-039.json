@@ -1,0 +1,23 @@
+{
+  "experiment_id": "BTC-PUBLIC-WORKER-039",
+  "created_at": "2026-10-21T13:57:30.587445+00:00",
+  "purpose": "Prevent missing15min public-data buckets during long foreground research; bounded local data component, not LLM wakeup replacement",
+  "allowed_commands": [
+    "tools/observe_btc_public.py",
+    "tools/observe_btc_pressure.py",
+    "tools/run_oi_study.py --mode prepare"
+  ],
+  "lifetime_seconds": 14400,
+  "maximum_ticks": 17,
+  "schedule": "Immediate actual current bucket then nextUTC15min boundary+2sec; never backfill missed buckets or repeatedly retry same bucket",
+  "quota": "Agent actual query gates launch; eachcommand requires cached gate actioncontinue no more30min old and checkpoint.pm_manual_pause exactlyfalse. Unknown/low/stale stops; worker does not pretend query live Codex quota itself.",
+  "stop": "Stop file, manualpause, quota disallowed/unknown/stale/futurecache, wallclock discontinuity>60sec, deadline,17ticks, childfailure/timeout, failed/incomplete/stale publicsummary or source/input hashdrift",
+  "command_timeout_seconds": 90,
+  "existing_boundaries": "Original public client host/headers/TLS/retries unchanged; no016/019 access bypass. Master027 retains6/day bound; no new endpoint/auth/trading or historical evaluator. Pipelineprepare only, never internal future labels/scores.",
+  "ownership": "One OS worker lock, child collectors ownlocks; perinvocation PID/status and immutabletick receipts inpublic data, sourcefreeze. Parentagent must observe live process/status rather than ACTIVEautomation and avoid duplicatewriters.",
+  "limits": "Local machine must remain awake/networked;17ticks not full60day uptime certification; collectorstop is not trading kill switch. No new strategy/OOS claim. Credentials/config remain unread.",
+  "alpha_candidates": 0,
+  "controls": 0,
+  "return_tests": 0,
+  "deadline": "No new commands after4h; each childtimeout limited to remaining lifetime, plus up to2s termination grace.15s poll means boundary+2 trigger may start up to17s afterboundary; actualreceive times retained."
+}

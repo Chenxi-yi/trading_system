@@ -388,6 +388,33 @@
       "controls": 0,
       "return_tests": 0,
       "status": "primary_scan_methods_read_contract038_frozen_not_computed"
+    },
+    {
+      "id": "BTC-RANGE-FEATURES-038",
+      "protocol": "research/audits/BTC-RANGE-FEATURES-038.json",
+      "report": "research/notes/BTC_RANGE_FEATURES_038.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "fixed_synthetic_calibration_and2007_price_only_anchors_no_strategyreturns"
+    },
+    {
+      "id": "BTC-PUBLIC-WORKER-039",
+      "protocol": "research/audits/BTC-PUBLIC-WORKER-039.json",
+      "report": "research/notes/BTC_PUBLIC_WORKER_039_040.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "actual_readonly_tick_and_crossbucket_plus_stop_lock_verified_startup_namespace_limitation_preserved"
+    },
+    {
+      "id": "BTC-PUBLIC-WORKER-040",
+      "protocol": "research/audits/BTC-PUBLIC-WORKER-040.json",
+      "report": "research/notes/BTC_PUBLIC_WORKER_039_040.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "fixed_parent_closure_provider_freeze_passed_pending_postsnapshot_live_start"
     }
   ],
   "prospective_mechanisms": [

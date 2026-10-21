@@ -1,0 +1,13 @@
+{
+  "experiment_id": "BTC-RANGE-FEATURES-038",
+  "created_at": "2026-10-21T14:09:04.185338+00:00",
+  "contract": "research/contracts/BTC_RANGE_FEATURES_038.json",
+  "contract_sha256": "a496b548ec2b320257ad6b25520125d955e987c96bd61d267805997ef8afbed8",
+  "notation_clarification": "return means log(close_i/close_{i-1}), not log(close_i/close_i minus1); sigmaq numerator sums squared demeaned overlapping q-return. No change to specified mathematics.",
+  "scope": "Implement fixed descriptor/synthetic calibration/known historical coverage only. No strategyreturn input, conditional PnL, trade state thresholds or fitted model.",
+  "calibration": "1000 fixed paths per each4process/q6,42; distribution/rejection rates descriptive only, no tuning.",
+  "output_dates": "2021-01-01<=daily UTCfeature_end<2026-07-01; use priorhistory forwarmup. Explicit latest saved feature time may include later archive but not current trading label.",
+  "alpha_candidates": 0,
+  "controls": 0,
+  "return_tests": 0
+}
