@@ -1,0 +1,19 @@
+{
+  "id": "BTC-DERIVATIVES-COLLECT-013",
+  "registered_at": "2026-10-21T07:55:16.715062+00:00",
+  "type": "new_collection_lineage_bounded_TLS_EOF_retry",
+  "start": "2023-01-01",
+  "end_exclusive": "2026-10-01",
+  "parent": "BTC-DERIVATIVES-COLLECT-010",
+  "parent_root": "data/binance-metrics/BTCUSDT-2023-2026",
+  "new_root": "data/binance-metrics/BTCUSDT-2023-2026-retry-v2",
+  "request_budget": 100,
+  "ssl_eof_retry_delays_seconds": [
+    2,
+    5
+  ],
+  "rules": "Only SSLEOFError, max2retries inside100actualGET including failures. Same URL/timeout/cert verification. Other errors retain old stops/backoff. Import verified parent and original metadata after independent hash/checksum audit; inherit parent retry_after_epoch. Never modify010source/fingerprint/data or historical PnL.",
+  "alpha_candidates": 0,
+  "controls": 0,
+  "pnl_tests": 0
+}
