@@ -220,6 +220,24 @@
       "controls": 0,
       "return_tests": 0,
       "status": "32raw16causal_joins_max_gap12241523ms_noPnL"
+    },
+    {
+      "id": "BTC-FUTURE-FEATURES-021",
+      "protocol": "research/audits/BTC-FUTURE-FEATURES-021.json",
+      "report": "research/notes/BTC_FUTURE_FEATURES_021_022.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "zero_feature_dryrun_superseded_by022_dependency_cutoff_and_resume_review"
+    },
+    {
+      "id": "BTC-FUTURE-FEATURES-022",
+      "protocol": "research/audits/BTC-FUTURE-FEATURES-022.json",
+      "report": "research/notes/BTC_FUTURE_FEATURES_021_022.md",
+      "alpha_candidates": 0,
+      "controls": 0,
+      "return_tests": 0,
+      "status": "frozen_before_cutoff_zero_features_wait_for_post_cutoff_17bucket_coverage"
     }
   ]
 }

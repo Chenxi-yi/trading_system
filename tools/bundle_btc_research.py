@@ -40,6 +40,8 @@ PUBLIC_ROOTS = (
     'artifacts/BTC-OKX-SAVED-UNITS-018',
     'artifacts/BTC-HTTP-DIAGNOSTIC-019',
     'artifacts/BTC-CAUSAL-SNAPSHOT-020',
+    'artifacts/BTC-FUTURE-FEATURES-021',
+    'artifacts/BTC-FUTURE-FEATURES-022',
     'data/binance-metrics/BTCUSDT-2023-2026-retry-v2',
     'data/binance-metrics/BTCUSDT-2023-2026',
     'data/market-audit/btc-long-index-20261021',

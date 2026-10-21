@@ -1,0 +1,22 @@
+{
+  "id": "BTC-FUTURE-FEATURES-022",
+  "registered_at": "2026-10-21T09:57:13.749587+00:00",
+  "cutoff_ms": 1792577700000,
+  "cutoff_utc": "2026-10-21T10:15:00+00:00",
+  "type": "future_feature_quality_only_no_alpha",
+  "features": [
+    "OI_contract_fractional_change",
+    "perpetual_mid_fractional_change",
+    "actual_elapsed_ms"
+  ],
+  "coverage": "17 consecutive UTC15min buckets; earliest eligible book/OI asof point per bucket, each actual receive>=cutoff. Endpoint elapsed between3h45m and4h15m; positive OI/mid, no zero filling. Every eligible end bucket; overlapping rows not independent trials.",
+  "inputs": "Saved public oi/perp_book raw only, immutable input+code manifest per inventory digest; first_observed actual receive; old32 inputs usable only for rejection checks not future feature output.",
+  "signals": 0,
+  "alpha_candidates": 0,
+  "controls": 0,
+  "return_tests": 0,
+  "new_HTTP_attempts": 0,
+  "orders": 0,
+  "parent": "BTC-FUTURE-FEATURES-021",
+  "engineering_revision": "021 dryrun0features retained. Review caught OI dependency cutoff not explicitly checked and incomplete inventory skip.022 checks BOTH receive times>=same cutoff, uses single-writer OS lock, resumes exact immutable inventory with absent summary; refuse provenance/input mismatch. No feature formula/threshold/returns change, no future inputs seen."
+}
