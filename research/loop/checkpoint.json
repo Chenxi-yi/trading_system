@@ -14,7 +14,7 @@
   "registry": "research/loop/registry.json",
   "automation_id": "btc",
   "automation_status": "ACTIVE",
-  "active_worker": "Frozen collector010 invocation0005, exec12604; check process/OSlock before restart",
+  "active_worker": null,
   "last_evidence": "research/notes/BTC_DERIVATIVES_COLLECT_010.md",
   "foreground_policy": "Continue immediately while resources permit; 15min heartbeat is recovery, not planned idle time",
   "last_completed_data_audit": "BTC-DERIVATIVES-DATA-009",

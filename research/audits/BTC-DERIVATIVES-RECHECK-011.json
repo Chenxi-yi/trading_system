@@ -1,0 +1,15 @@
+{
+  "id": "BTC-DERIVATIVES-RECHECK-011",
+  "registered_at": "2026-10-21T07:15:12.247384+00:00",
+  "type": "data_only_integrity_recheck",
+  "scope": "All currently acquired010 raw ZIP/checksum metadata and verified-day summaries; repeat later after more collection, immutable timestamped reports",
+  "checks": [
+    "Every acquired body matches download metadata SHA256",
+    "Every verified day re-parses against official checksum",
+    "Regenerated day statistics exactly equal saved checkpoint, preserving incomplete-grid/NaN/order flags",
+    "No new HTTP, no PnL/alpha, no availability or unit certification"
+  ],
+  "reason": "Collector resumes by skipping verified days; independent recheck must detect later corruption or stale summaries",
+  "alpha": 0,
+  "controls": 0
+}
