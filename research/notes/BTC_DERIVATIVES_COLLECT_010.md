@@ -33,3 +33,5 @@ invocation-0003再完成100GET，累计100日/28800行（2023-01-01至04-10）�
 实际共享主额度剩9%、次68%，gate要求停止新工作；建议今天14:35（北京时间）一次唤醒。checkpoint单独记录quota_wait_until，人工暂停仍false。先保存本地Git，再通过应用工具更新原btc并确认成功；成功证据另附，不提前声称已预约。恢复必须实查额度，允许后恢复15min保险。未购买/使用重置券。累计43alpha/16对照、研究0/Demo0，不运行收益检验。
 
 应用automation_update已成功确认原btc为ACTIVE单次规则 FREQ=DAILY;BYMONTH=10;BYMONTHDAY=21;BYHOUR=14;BYMINUTE=35;BYSECOND=0;COUNT=1；保存配置复核一致，名称/prompt/目标线程沿用原值。已预约北京时间2026-10-21 14:35复核。OPS-006仅真实低额保存/预约阶段通过，刷新后实际唤醒/恢复15min仍待验收；未把端到端标done。当前无活动采集进程，不启动新工作。
+
+010 invocation0006: cumulative 218 days/62784 rows; pending 1151; missing {"sum_toptrader_long_short_ratio": 1, "count_toptrader_long_short_ratio": 9}; last_error null. No publication/unit certification or PnL.

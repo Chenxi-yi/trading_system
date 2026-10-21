@@ -94,3 +94,5 @@ PM已明确解除人工暂停并批准额度调度，btc经应用工具确认为
 15:09 PM指出未续跑：实际额度100%/67%已恢复，14:35预约没有形成实际续跑，原因未确认；OPS-006自动唤醒端到端仍未通过，新增OPS-007。应用已确认恢复15min，清除额度等待并实际启动010 invocation0005；无交易操作。
 
 011新增独立完整性复核：337raw/168完成日重新解析一致，123测试，4源码血缘；不改变010采集源码。0005新增18日后URLError，累计168日/48384行，下一重试以data checkpoint为准。14:30–14:39应用日志有连接超时，属调度故障线索，不足以确证唯一原因。
+
+010 invocation0006: cumulative 218 days/62784 rows; pending 1151; missing {"sum_toptrader_long_short_ratio": 1, "count_toptrader_long_short_ratio": 9}; last_error null. No publication/unit certification or PnL.

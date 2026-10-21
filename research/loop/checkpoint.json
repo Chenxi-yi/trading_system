@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-21T07:17:34.215873+00:00",
+  "updated_at": "2026-10-21T07:23:17.100935+00:00",
   "authorization": "PM 2026-10-21 requests continuous idea->research->validation loop",
   "current_experiment": "BTC-DERIVATIVES-COLLECT-010",
   "last_completed_experiment": "BTC-LOOP-008",
-  "next_action": "Actual quota gate first.010 invocation0005 completed38GET then URLError; cumulative168days/48384rows. Respect data checkpoint retry_after_epoch1792567176.5767128; after deadline resume0006<=100GET using unique log/snapshot and same frozen source.011 independent337raw/168day recheck passed,123tests.15min app restored; automatic wake still unproven. No PnL.",
+  "next_action": "Actual quota gate first.010 cumulative 218 day states/62784 rows. Check source/OSlock/data retry_after_epoch before frozen<=100GET continuation. Unique log and invocation snapshots. If complete perform independent recheck/coverage; no PnL.",
   "known_history": "All saved historical BTC data through2026-10 is development/adaptive challenge, not fresh OOS",
   "required_independent_evidence": "Unseen future observations bound to frozen rules/code and actual availability/execution times",
   "research_qualified": 0,
